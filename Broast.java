@@ -1,5 +1,5 @@
 
-public class Broast extends Meal implements sicable {
+public class Broast extends Meal implements spicable {
 	
 	private boolean Spicy;
 	public static final String NAME="Broast";
