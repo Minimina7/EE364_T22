@@ -94,7 +94,7 @@ public class Order {
 	// for talal
 	public boolean setisitSpecial() {
 		Sandwich checkSandwich = new Sandwich();
-		if(checkSandwich.checkGarlic()! || checkSandwich.checkPickles()!){
+		if(!checkSandwich.checkGarlic() || !checkSandwich.checkPickles()){
 			return true;
 		}
 		else

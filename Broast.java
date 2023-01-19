@@ -1,24 +1,24 @@
 
 public class Broast extends Meal implements spicable {
 
-	private boolean Spicy;
+	private boolean spicy;
 	public static final String NAME = "Broast";
 	public static final int PREPARETIME = 12;
-	private int TimeOnBeanch;
+	private int timeOnBeanch;
 
 	public void editQuality() {
-		TimeOnBeanch += 1;
-		if (TimeOnBeanch > 5)
+		timeOnBeanch += 1;
+		if (timeOnBeanch > 5)
 			if (super.getQuality() > 30)
-				setQuality(100 - (TimeOnBeanch - 5) * 5);
+				setQuality(100 - (timeOnBeanch - 5) * 5);
 	}
 
 	public void makeSpicy() {
-		Spicy = true;
+		spicy = true;
 	}
 
 	public boolean isItSpicy() {
-		if (Spicy == true)
+		if (spicy == true)
 			return true;
 		else
 			return false;

@@ -1,19 +1,19 @@
 
 public class Sandwich extends Meal implements spicable {
 
-	private boolean Spicy;
+	private boolean spicy;
 	private boolean chickenOrFish;
 	private boolean pickles = true;
 	private boolean garlic = true;
 	public static final String NAME = "Sandwich";
 	public static final int PREPARETIME = 5;
-	private int TimeOnBeanch;
+	private int timeOnBeanch;
 
 	public void editQuality() {
-		TimeOnBeanch += 1;
-		if (TimeOnBeanch > 15)
+		timeOnBeanch += 1;
+		if (timeOnBeanch > 15)
 			if (super.getQuality() > 30)
-				setQuality(100 - (TimeOnBeanch - 15));
+				setQuality(100 - (timeOnBeanch - 15));
 	}
 
 	public Sandwich() {
@@ -47,11 +47,11 @@ public class Sandwich extends Meal implements spicable {
 	}
 
 	public void makeSpicy() {
-		Spicy = true;
+		spicy = true;
 	}
 
 	public boolean isItSpicy() {
-		if (Spicy == true)
+		if (spicy == true)
 			return true;
 		else
 			return false;
