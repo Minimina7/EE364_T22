@@ -5,7 +5,7 @@ public class Order {
 	private ArrayList<Snacks> snacks = new ArrayList<Snacks>();
 	private int orderNumber;
 	private int orderAmount;
-	private boolean IsitSpecial;
+	private boolean isitSpecial;
 	
 	
 
@@ -84,13 +84,13 @@ public class Order {
 
 
 
-	public boolean getIsItSpecial() {
-		return IsitSpecial;
+	public boolean getisItSpecial() {
+		return isitSpecial;
 	}
 
 
 	// for talal
-	public boolean setIsitSpecial() {
+	public boolean setisitSpecial() {
 		Sandwich checkSandwich = new Sandwich();
 		if(checkSandwich.checkGarlic()! || checkSandwich.checkPickles()!){
 			return true;
