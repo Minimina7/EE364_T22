@@ -5,9 +5,11 @@ public class Order {
 	private ArrayList<Snacks> snacks = new ArrayList<Snacks>();
 	private int orderNumber;
 	private int orderAmount;
+	private boolean IsitSpecial;
 	
 	
-	 // constructor
+
+	// constructor
 	public Order() {
 	}
 	
@@ -82,7 +84,21 @@ public class Order {
 
 
 
+	public boolean getIsItSpecial() {
+		return IsitSpecial;
+	}
 
-	
+
+	// for talal
+	public boolean setIsitSpecial() {
+		Sandwich checkSandwich = new Sandwich();
+		if(checkSandwich.checkGarlic()! || checkSandwich.checkPickles()!){
+			return true;
+		}
+		else
+		return false;
+	}
+
+
 
 }
