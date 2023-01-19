@@ -4,7 +4,7 @@ public class Order {
 	private ArrayList<Meal> meals = new ArrayList<Meal>();
 	private ArrayList<Snacks> snacks = new ArrayList<Snacks>();
 	private int orderNumber;
-	private int orderAmount;
+	private int orderAmount = 0;
 	private boolean isitSpecial;
 	
 	
@@ -39,6 +39,7 @@ public class Order {
 
 	public void setMeals(Meal meals) {
 		this.meals.add(meals);
+		orderAmount ++;
 	}
 
 
@@ -52,6 +53,7 @@ public class Order {
 
 	public void setSnacks(Snacks snacks) {
 		this.snacks.add(snacks);
+		orderAmount ++;
 	}
 
 
