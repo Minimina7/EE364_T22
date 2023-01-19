@@ -1,6 +1,6 @@
 
-public abstract class Snacks extends Food{
+public abstract class Snacks extends Food {
 
-	public static final String TYPE="Snack";
+	public static final String TYPE = "Snack";
 
 }
