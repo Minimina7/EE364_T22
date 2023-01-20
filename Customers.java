@@ -68,5 +68,5 @@ public class Customers {
 		return customerRating;}//done 
 
 	public void setCustomerRating(double customerRating) {
-		customerRating = customerRating;}//need more thinking // from server
+		this.customerRating = customerRating;}//need more thinking // from server
 	}
