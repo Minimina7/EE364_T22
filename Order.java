@@ -7,6 +7,12 @@ public class Order {
 	private int orderNumber;
 	private int orderAmount = 0;
 	private boolean isitSpecial;
+	private	int numberOfBroast = 0;
+	private	int numberOfNuggets = 0;
+	private	int numberOfJumboShrimp = 0;
+	private	int numberOfSandwich = 0;
+
+
 	Random Random = new Random();
 
 
@@ -32,6 +38,7 @@ public class Order {
 				break;
 			}
 			else if ( mealPercentage <= 35){
+				numberOfBroast++;
 				if (mealPercentage > 25 && mealPercentage <= 35){
 					Meal spicy = new Broast();
 					((Broast) spicy).makeSpicy();
@@ -41,6 +48,7 @@ public class Order {
 				setMeals(new Broast());
 			}
 				else if ( mealPercentage > 35 && mealPercentage <= 70){
+					numberOfNuggets++;
 					if (mealPercentage > 60 && mealPercentage <= 70){
 						Meal spicy = new Nuggets();
 						((Nuggets) spicy).makeSpicy();
@@ -50,9 +58,11 @@ public class Order {
 					setMeals(new Nuggets());
 			}
 					else if ( mealPercentage > 70 && mealPercentage <= 75){
+						numberOfJumboShrimp++;
 						setMeals(new JumboShrimp());
 					}
 						else if ( mealPercentage > 75 && mealPercentage <= 100){
+							numberOfSandwich++;
 							if (mealPercentage > 75 && mealPercentage <= 90){
 								if ( sandwichPercentage <= 50){
 									setMeals(new Sandwich());
@@ -155,14 +165,13 @@ public class Order {
 }
 	
 	
-	// for Talal
-	public Snacks generateOrderSnacks(int numberOfSnacks) {
+	
+	public void generateOrderSnacks(int numberOfSnacks) {
 		Snacks x = null;
-		return x;
 	}
 	
 	
-	// check pls
+	
 	public ArrayList<Meal> getMeals() {
 		return meals;
 	}
@@ -224,11 +233,35 @@ public class Order {
 	}
 
 
-	// for talal
+	
 	public void makeItSpecial() {
 			isitSpecial= true;
 	}
 
+	public int getNumberOfBroast() {
+		return numberOfBroast;
+	}
+
+
+
+
+	public int getNumberOfNuggets() {
+		return numberOfNuggets;
+	}
+
+
+
+
+	public int getNumberOfJumboShrimp() {
+		return numberOfJumboShrimp;
+	}
+
+
+
+
+	public int getNumberOfSandwich() {
+		return numberOfSandwich;
+	}
 
 
 }
