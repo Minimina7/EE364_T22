@@ -12,9 +12,10 @@ public class Order {
 
 	// constructor
 	public Order() {
-		int x = Random.nextInt(101);
-		generateOrderMeal(5);
-		generateOrderSnacks();
+		int amount = Random.nextInt(21); // from 0 to 20
+		generateOrderMeal(amount);
+		int amountt = 20- amount;
+		generateOrderSnacks(amountt);
 		//number of snaks must be rilstc : no 1meal and 12 drinks
 		
 	}
@@ -22,9 +23,9 @@ public class Order {
 	
 	
 	
-	public void generateOrderMeal(int numberOfmeal) {
+	public void generateOrderMeal(int numberOfMeal) {
 
-		for(int i = 0 ; i < numberOfmeal ; i++){
+		for(int i = 0 ; i < numberOfMeal ; i++){
 			int mealPercentage = Random.nextInt(101);
 			int sandwichPercentage = Random.nextInt(101);
 			if( mealPercentage == 0){
@@ -155,7 +156,7 @@ public class Order {
 	
 	
 	// for Talal
-	public Snacks generateOrderSnacks() {
+	public Snacks generateOrderSnacks(int numberOfSnacks) {
 		Snacks x = null;
 		return x;
 	}
