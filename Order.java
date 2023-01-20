@@ -15,6 +15,8 @@ public class Order {
 	// constructor
 	public Order() {
 		// generateOrderMeal()
+		//generateOrderSnacks()
+		//number of snaks must be rilstc : no 1meal and 12 drinks
 	}
 	
 	
@@ -22,7 +24,6 @@ public class Order {
 	// for Talal
 	// make it static to use in constrvter?
 	public Meal generateOrderMeal() {
-		
 		Meal x = null;
 		return x;
 	}
