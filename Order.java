@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.ArrayList;
 
 public class Order {
@@ -7,8 +8,9 @@ public class Order {
 	private int orderAmount = 0;
 	private boolean isitSpecial;
 	
-	
-
+	// to generate an Order
+	double Random1 = Math.random();
+	Random Random2 = new Random();
 	// constructor
 	public Order() {
 	}
@@ -17,6 +19,7 @@ public class Order {
 	
 	// for Talal
 	public Meal generateOrderMeal() {
+		
 		Meal x = null;
 		return x;
 	}
