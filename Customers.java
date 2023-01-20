@@ -16,7 +16,7 @@ public class Customers {
 		setSpecialOrder(customerOrder);
 		setLargeOrder(customerOrder);
 		setNumberOfOrders(customerOrder);
-		setOnlineOrder(restaurant.getRandom(0, 101));}
+		setOnlineOrder(Restaurant.getRandom(0, 101));}
 	
 	
 	public boolean isSpecialOrder() {
