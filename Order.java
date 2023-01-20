@@ -25,10 +25,12 @@ public class Order {
 		if (random <= 50) { // i can remove amountMeal and use Random.nextInt(2) dirict//
 			amountMeal = Random.nextInt(2); // from 0 to 2
 			generateOrderMeal(amountMeal);
-		} else if (50 < random && random <= 85) {
+		}
+			else if (50 < random && random <= 85) {
 			amountMeal = Random.nextInt(5); // from 0 to 5
 			generateOrderMeal(amountMeal);
-		} else {
+		} 
+			else {
 			amountMeal = Random.nextInt(21); // from 0 to 20
 			generateOrderMeal(amountMeal);
 		}
@@ -36,6 +38,7 @@ public class Order {
 		int amountSnacks = Random.nextInt(amountMeal); // from 1 to 20-
 		generateOrderSnacks(amountSnacks);
 		// number of snaks must be rilstc : no 1meal and 12 drinks
+
 	}
 	
 	
