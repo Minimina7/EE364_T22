@@ -1,73 +1,65 @@
 
 public class Customers {
-	private boolean specialOrder; // detirmine if the customer have special order or not 
-	private boolean largeOrder; // detirmine if the customer have large order or not 
-	private boolean onlineOrder; // detirmine if the customer order online or not
-	private int numberOfOrders; // detirmine how many meal the customer want // con
+	private boolean specialOrder; // determine if the customer have special order or not 
+	private boolean largeOrder; // determine if the customer have large order or not 
+	private boolean onlineOrder; // determine if the customer order online or not
+	private int numberOfOrders; // determine how many meal the customer want
 	private int orderNumber;// show the order number // given by cashier
-	private int waitingTime;// show how much time the customer wait // from restorant 
+	private int waitingTime;// show how much time the customer wait // from restaurant 
 	private Order customerOrder; // the order of the customer
-	private double customerRating; // the rating of the customer related to the food quality 
+	private double customerRating; // the rating of the customer related to the food quality // from server
 
 	
 	public Customers() {
-		// craete order arraymeal array snacks //Order amount
-		if 
-	}
-	
-
-	
-	
-	
+		Order customerOrder = new Order();
+		this.customerOrder = customerOrder;
+		setSpecialOrder(customerOrder);
+		setLargeOrder(customerOrder);
+		setNumberOfOrders(customerOrder);
+		setOnlineOrder(restaurant.getRandom(0, 101));}
 	
 	
-	
-	
-	
-	
-	
-
-
 	public boolean isSpecialOrder() {
-		return specialOrder;}//done
+		return specialOrder;}
 
-	public void setSpecialOrder() {
-		specialOrder = true;}//done
+	public void setSpecialOrder(Order customerOrder ) {
+		if(customerOrder.getisItSpecial())
+			specialOrder = true;}
 
 	public boolean isLargeOrder() {
-		return largeOrder;}//done
+		return largeOrder;}
 
-	public void setLargeOrder(int numberOfOrder) {
-		if (numberOfOrder>10)
-			largeOrder = true;}//check number
+	public void setLargeOrder(Order customerOrder) {
+		if (customerOrder.getOrderAmount()>=10) // check number
+			largeOrder = true;}
 
 	public boolean isOnlineOrder() {
-		return onlineOrder;}//done
+		return onlineOrder;}
 
-	public void setOnlineOrder() {
-		// random method needed
-		onlineOrder = onlineOrder;}
+	public void setOnlineOrder(int random) {
+		if (random>75)// check number
+			onlineOrder = true;}
 
 	public int getNumberOfOrders() {
 		return numberOfOrders;}//done
 
-	public void setNumberOfOrders(int numberOfOrders) {
-		this.numberOfOrders = numberOfOrders;}//done
+	public void setNumberOfOrders(Order customerOrder) {
+		numberOfOrders = customerOrder.getOrderAmount();}//we can delete it and do it with large order
 
 	public int getOrderNumber() {
 		return orderNumber;}//done
 
 	public void setOrderNumber(int orderNumber) {
-		this.orderNumber = orderNumber;}//done
+		this.orderNumber = orderNumber;}//done // from cashier
 
 	public int getWaitingTime() {
-		return waitingTime;}//done
+		return waitingTime;}//done // from cashier
 
 	public void setWaitingTime(int waitingTime) {
-		this.waitingTime +=1;}//done
+		this.waitingTime +=1;}//done // from restaurant 
 
 	public Order getCustomerOrder() {
-		return customerOrder;}//done
+		return customerOrder;}//done // from restaurant
 
 	public void setCustomerOrder(Order customerOrder) {
 		this.customerOrder = customerOrder;}
@@ -76,5 +68,5 @@ public class Customers {
 		return customerRating;}//done 
 
 	public void setCustomerRating(double customerRating) {
-		customerRating = customerRating;}//need more thinking
+		customerRating = customerRating;}//need more thinking // from server
 	}
