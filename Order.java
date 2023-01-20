@@ -14,11 +14,13 @@ public class Order {
 	Random Random2 = new Random();
 	// constructor
 	public Order() {
+		// generateOrderMeal()
 	}
 	
 	
 	
 	// for Talal
+	// make it static to use in constrvter?
 	public Meal generateOrderMeal() {
 		
 		Meal x = null;
