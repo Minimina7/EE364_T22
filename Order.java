@@ -27,8 +27,6 @@ public class Order {
 	}
 	
 	
-	
-	
 	public void generateOrderMeal(int numberOfMeal) { // method to generate meals
 
 		for(int i = 0 ; i < numberOfMeal ; i++){ // loop to generate meals
@@ -180,7 +178,6 @@ public class Order {
 }
 	
 	
-	
 	public void generateOrderSnacks(int numberOfSnacks) { // method to generate snacks
 		for(int i = 0 ; i < numberOfSnacks ; i++){ // loop to generate snacks
 			int snackPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
@@ -203,20 +200,16 @@ public class Order {
 		}
 	}
 	
-	
-	
+
 	public ArrayList<Meal> getMeals() { // method to retrun all the meals
 		return meals;
 	}
 
 
-
-
 	public void setMeals(Meal meals) { // method to add meals in the arraylist
 		this.meals.add(meals);
-		orderAmount ++;
+		setOrderAmount();
 	}
-
 
 
 	public ArrayList<Snacks> getSnacks() { // method to retrun all the snacks
@@ -224,14 +217,10 @@ public class Order {
 	}
 
 
-
-
 	public void setSnacks(Snacks snacks) {// method to add snacks in the arraylist
 		this.snacks.add(snacks);
-		orderAmount ++;
+		setOrderAmount();
 	}
-
-
 
 
 	public int getOrderNumber() { // method to retrun order number
@@ -239,13 +228,9 @@ public class Order {
 	}
 
 
-
-
 	public void setOrderNumber(int orderNumber) { // method to enter order number
 		this.orderNumber = orderNumber;
 	}
-
-
 
 
 	public int getOrderAmount() { // method to retrun order amount
@@ -253,12 +238,9 @@ public class Order {
 	}
 
 
-
-
-	public void setOrderAmount(int orderAmount) { // method to enter order amount
-		this.orderAmount = orderAmount;
+	public void setOrderAmount() { // maybe deleted method to enter order amount
+		orderAmount ++;
 	}
-
 
 
 	public boolean getisItSpecial() { // method to retrun isitSpecial
@@ -266,16 +248,14 @@ public class Order {
 	}
 
 
-	
 	public void makeItSpecial() { // method to change the variable isitSpecial to true
 			isitSpecial= true;
 	}
 
+
 	public int getNumberOfBroast() { // method to return number of broast
 		return numberOfBroast;
 	}
-
-
 
 
 	public int getNumberOfNuggets() { // method to return number of nuggets
@@ -283,13 +263,9 @@ public class Order {
 	}
 
 
-
-
 	public int getNumberOfJumboShrimp() { // method to return number of jumboShrimp
 		return numberOfJumboShrimp;
 	}
-
-
 
 
 	public int getNumberOfSandwich() { // method to return number of snadwich
@@ -302,11 +278,10 @@ public class Order {
 	}
 
 
-
-
 	public int getNumberOfCorn() { // method to return number of corn
 		return numberOfCorn;
 	}
+
 
 	public int getNumberOfDrinks() { // method to return number of drinks
 		return numberOfDrinks;
