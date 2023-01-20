@@ -1,5 +1,5 @@
 
-public interface spicable {
+public interface Spicable {
 
 	public void makeSpicy();
 
