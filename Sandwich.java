@@ -1,5 +1,5 @@
 
-public class Sandwich extends Meal implements spicable {
+public class Sandwich extends Meal implements Spicable {
 
 	private boolean spicy;
 	private boolean chickenOrFish;

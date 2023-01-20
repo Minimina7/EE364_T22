@@ -1,5 +1,5 @@
 
-public class Nuggets extends Meal implements spicable {
+public class Nuggets extends Meal implements Spicable {
 
 	private boolean spicy;
 	public static final String NAME = "Nuggets";
