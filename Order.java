@@ -13,147 +13,176 @@ public class Order {
 	private	int numberOfSandwich = 0; // instance variable that count number of sandwich
 	private	int numberOfIcecream = 0; // instance variable that count number of icecream
 	private	int numberOfCorn = 0; // instance variable that count number of corn
+	private	int numberOfDrinks = 0; // instance variable that count number of drinks
 	Random Random = new Random(); // declare random object
 
 
 	// constructor
 	public Order() {
-		int amountMeal = Random.nextInt(21); // from 0 to 20
-		generateOrderMeal(amountMeal);
-		int amountSnacks = Random.nextInt(20 -amountMeal)+ 1; // from 1 to 20-
+		int random = Random.nextInt(101);
+		int amountMeal;
+		// normal order
+		if (random <= 70) {
+			amountMeal = Random.nextInt(2) + 1; // from 1 to 3
+			generateOrderMeal(amountMeal);
+		}
+		// medium order
+		else if (70 < random && random <= 95) {
+			amountMeal = Random.nextInt(4) + 1; // from 1 to 5
+		}
+		// large order
+		else {
+			amountMeal = Random.nextInt(19) + 1; // from 1 to 20
+			generateOrderMeal(amountMeal);
+		}
+		// snacks order
+		int amountSnacks = Random.nextInt(amountMeal) + 1; // from 1 use amountMeal //
 		generateOrderSnacks(amountSnacks);
-		//number of snaks must be rilstc : no 1meal and 12 drinks
+
 	}
 	
 	
-	
-	
-	public void generateOrderMeal(int numberOfMeal) {
+	public void generateOrderMeal(int numberOfMeal) { // method to generate meals
 
-		for(int i = 0 ; i < numberOfMeal ; i++){
-			int mealPercentage = Random.nextInt(101);
-			int sandwichPercentage = Random.nextInt(101);
-			if( mealPercentage == 0){
+		for(int i = 0 ; i < numberOfMeal ; i++){ // loop to generate meals
+			int mealPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
+			int sandwichPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
+			if( mealPercentage == 0){ // if the condition is true exit the method 
 				break;
 			}
-			else if ( mealPercentage <= 35){
+			else if ( mealPercentage <= 35){ // if the condition is true add broast to the arraylist
 				numberOfBroast++;
-				if (mealPercentage > 25 && mealPercentage <= 35){
-					Meal spicy = new Broast();
-					((Broast) spicy).makeSpicy();
-					setMeals(spicy);
+				if (mealPercentage > 25 && mealPercentage <= 35){ // if the condition is true the broast is spicy
+					Meal spicy = new Broast(); // create object from meal
+					((Broast) spicy).makeSpicy(); // make the broast spicy
+					setMeals(spicy); // add spicy broast to the arraylist
 				}
 				else
-				setMeals(new Broast());
+				setMeals(new Broast()); // add normal broast to the arraylist
 			}
-				else if ( mealPercentage > 35 && mealPercentage <= 70){
+				else if ( mealPercentage > 35 && mealPercentage <= 70){ // if the condition is true add nuggets to the arraylist
 					numberOfNuggets++;
-					if (mealPercentage > 60 && mealPercentage <= 70){
-						Meal spicy = new Nuggets();
-						((Nuggets) spicy).makeSpicy();
-						setMeals(spicy);
+					if (mealPercentage > 60 && mealPercentage <= 70){ // if the condition is true the nuggets is spicy
+						Meal spicy = new Nuggets(); // create object from meal
+						((Nuggets) spicy).makeSpicy(); // make the nugget spicy
+						setMeals(spicy); // add spicy nugget to the arraylist
 					}
 					else
-					setMeals(new Nuggets());
+					setMeals(new Nuggets()); // add normal nugget to the arraylist
 			}
-					else if ( mealPercentage > 70 && mealPercentage <= 75){
+					else if ( mealPercentage > 70 && mealPercentage <= 75){ // if the condition is true add jumboShrimp to the arraylist
 						numberOfJumboShrimp++;
-						setMeals(new JumboShrimp());
+						setMeals(new JumboShrimp()); // add jumboShrimp to the arraylist
 					}
-						else if ( mealPercentage > 75 && mealPercentage <= 100){
+						else if ( mealPercentage > 75 && mealPercentage <= 100){ // if the condition is true add sandwich to the arraylist
 							numberOfSandwich++;
-							if (mealPercentage > 75 && mealPercentage <= 90){
-								if ( sandwichPercentage <= 50){
+							if (mealPercentage > 75 && mealPercentage <= 90){ // if the condition is true add chicken sandwich to the arraylist
+								if ( sandwichPercentage <= 50){ // if the condition is true add normal chicken sandwich with pickle and garlic to the arraylist
 									setMeals(new Sandwich());
 								}
-								else if (sandwichPercentage > 50 && sandwichPercentage <= 60){
-									Meal spicy = new Sandwich();
-									((Sandwich) spicy).makeSpicy();
+								else if (sandwichPercentage > 50 && sandwichPercentage <= 60){ // if the condition is true add spicy chicken sandwich with pickle and garlic to the arraylist
+									Meal spicy = new Sandwich(); // create object from meal
+									((Sandwich) spicy).makeSpicy(); // make the sandwich spicy
 									setMeals(spicy);
 								}
-								else if (sandwichPercentage > 60 && sandwichPercentage <= 70){
-									Meal noPickle = new Sandwich();
-									((Sandwich) noPickle).withoutPickles();
-									makeItSpecial();
+								else if (sandwichPercentage > 60 && sandwichPercentage <= 70){ // if the condition is true add normal chicken sandwich without pickle and with garlic to the arraylist
+									Meal noPickle = new Sandwich(); // create object from meal
+									((Sandwich) noPickle).withoutPickles(); // make the sandwich without pickle
+									makeItSpecial(); // change the variable to true
 									setMeals(noPickle);
 								}
-								else if (sandwichPercentage > 70 && sandwichPercentage <= 80){
-									Meal noGarlic = new Sandwich();
-									((Sandwich) noGarlic).withoutGarlic();
-									makeItSpecial();
+								else if (sandwichPercentage > 70 && sandwichPercentage <= 80){ // if the condition is true add normal chicken sandwich without garlic and with pickle to the arraylist
+									Meal noGarlic = new Sandwich(); // create object from meal
+									((Sandwich) noGarlic).withoutGarlic(); // make the sandwich without garlic
+									makeItSpecial(); // change the variable to true
 									setMeals(noGarlic);
 								}
-								else if (sandwichPercentage > 80  && sandwichPercentage <= 90){
-									Meal noPGSpicy = new Sandwich();
-									((Sandwich) noPGSpicy).makeSpicy();
-									((Sandwich) noPGSpicy).withoutGarlic();
-									((Sandwich) noPGSpicy).withoutPickles();
+								else if (sandwichPercentage > 80  && sandwichPercentage <= 85){ // if the condition is true add normal chicken sandwich without garlic and pickle to the arraylist
+									Meal noPG = new Sandwich(); // create object from meal
+									((Sandwich) noPG).withoutGarlic(); // make the sandwich without garlic
+									((Sandwich) noPG).withoutPickles(); // make the sandwich without pickle
 									makeItSpecial();
+									setMeals(noPG);
+								}
+								else if (sandwichPercentage > 85  && sandwichPercentage <= 90){ // if the condition is true add spicy chicken sandwich without garlic and pickle to the arraylist
+									Meal noPGSpicy = new Sandwich(); // create object from meal
+									((Sandwich) noPGSpicy).makeSpicy(); // make the sandwich spicy
+									((Sandwich) noPGSpicy).withoutGarlic(); // make the sandwich without garlic
+									((Sandwich) noPGSpicy).withoutPickles(); // make the sandwich without pickle
+									makeItSpecial(); // change the variable to true
 									setMeals(noPGSpicy);
 								}
-								else if (sandwichPercentage > 90 && sandwichPercentage <= 95){
-									Meal noPSpicy = new Sandwich();
-									((Sandwich) noPSpicy).makeSpicy();
-									((Sandwich) noPSpicy).withoutPickles();
-									makeItSpecial();
+								else if (sandwichPercentage > 90 && sandwichPercentage <= 95){ // if the condition is true add spicy chicken sandwich without pickle and with garlic to the arraylist
+									Meal noPSpicy = new Sandwich(); // create object from meal
+									((Sandwich) noPSpicy).makeSpicy(); // make the sandwich spicy
+									((Sandwich) noPSpicy).withoutPickles(); // make the sandwich without pickle
+									makeItSpecial(); // change the variable to true
 									setMeals(noPSpicy);
 								}
-								else if(sandwichPercentage > 95 && sandwichPercentage <= 100){
-									Meal noGSpicy = new Sandwich();
-									((Sandwich) noGSpicy).makeSpicy();
-									((Sandwich) noGSpicy).withoutGarlic();
-									makeItSpecial();
+								else if(sandwichPercentage > 95 && sandwichPercentage <= 100){ // if the condition is true add spicy chicken sandwich without garlic and with pickle to the arraylist
+									Meal noGSpicy = new Sandwich(); // create object from meal
+									((Sandwich) noGSpicy).makeSpicy(); // make the sandwich spicy
+									((Sandwich) noGSpicy).withoutGarlic(); // make the sandwich without garlic
+									makeItSpecial(); // change the variable to true
 									setMeals(noGSpicy);
 									}
 					}
-					else{
-						if ( sandwichPercentage <= 50){
-							Meal fish = new Sandwich();
-							((Sandwich) fish).makeItFish();
+					else{ // if the condition is true add fish sandwich to the arraylist
+						if ( sandwichPercentage <= 50){ // if the condition is true add normal fish sandwich with pickle and garlic to the arraylist
+							Meal fish = new Sandwich(); // create object from meal
+							((Sandwich) fish).makeItFish(); // make it fish sandwich
 								setMeals(fish);
 						}
-						else if (sandwichPercentage > 50 && sandwichPercentage <= 60){
-							Meal spicy = new Sandwich();
-							((Sandwich) spicy).makeSpicy();
-							((Sandwich) spicy).makeItFish();
+						else if (sandwichPercentage > 50 && sandwichPercentage <= 60){ // if the condition is true add spicy fish sandwich with pickle and garlic to the arraylist
+							Meal spicy = new Sandwich(); // create object from meal
+							((Sandwich) spicy).makeSpicy(); // make the sandwich spicy
+							((Sandwich) spicy).makeItFish(); // make it fish sandwich
 							setMeals(spicy);
 						}
-						else if (sandwichPercentage > 60 && sandwichPercentage <= 70){
-							Meal noPickle = new Sandwich();
-							((Sandwich) noPickle).withoutPickles();
-							((Sandwich) noPickle).makeItFish();
+						else if (sandwichPercentage > 60 && sandwichPercentage <= 70){ // if the condition is true add normal fish sandwich pickle garlic and with garlic to the arraylist
+							Meal noPickle = new Sandwich(); // create object from meal
+							((Sandwich) noPickle).withoutPickles(); // make the sandwich without pickle
+							((Sandwich) noPickle).makeItFish(); // make it fish sandwich
 							makeItSpecial();
 							setMeals(noPickle);
 						}
-						else if (sandwichPercentage > 70 && sandwichPercentage <= 80){
-							Meal noGarlic = new Sandwich();
-							((Sandwich) noGarlic).withoutGarlic();
-							((Sandwich) noGarlic).makeItFish();
+						else if (sandwichPercentage > 70 && sandwichPercentage <= 80){ // if the condition is true add normal fish sandwich without garlic and with pickle to the arraylist
+							Meal noGarlic = new Sandwich(); // create object from meal
+							((Sandwich) noGarlic).withoutGarlic(); // make the sandwich without garlic
+							((Sandwich) noGarlic).makeItFish(); // make it fish sandwich
 							makeItSpecial();
 							setMeals(noGarlic);
 						}
-						else if (sandwichPercentage > 80  && sandwichPercentage <= 90){
-							Meal noPGSpicy = new Sandwich();
-							((Sandwich) noPGSpicy).makeSpicy();
-							((Sandwich) noPGSpicy).withoutGarlic();
-							((Sandwich) noPGSpicy).withoutPickles();
-							((Sandwich) noPGSpicy).makeItFish();
+						else if (sandwichPercentage > 80  && sandwichPercentage <= 85){ // if the condition is true add normal fish sandwich without garlic and pickle to the arraylist
+							Meal noPGSpicy = new Sandwich(); // create object from meal
+							((Sandwich) noPGSpicy).withoutGarlic(); // make the sandwich without garlic
+							((Sandwich) noPGSpicy).withoutPickles(); // make the sandwich without pickle
+							((Sandwich) noPGSpicy).makeItFish(); // make it fish sandwich
 							makeItSpecial();
 							setMeals(noPGSpicy);
 						}
-						else if (sandwichPercentage > 90 && sandwichPercentage <= 95){
-							Meal noPSpicy = new Sandwich();
-							((Sandwich) noPSpicy).makeSpicy();
-							((Sandwich) noPSpicy).withoutPickles();
-							((Sandwich) noPSpicy).makeItFish();
+						else if (sandwichPercentage > 85  && sandwichPercentage <= 90){ // if the condition is true add spicy fish sandwich without garlic and pickle to the arraylist
+							Meal noPGSpicy = new Sandwich(); // create object from meal
+							((Sandwich) noPGSpicy).makeSpicy(); // make the sandwich spicy
+							((Sandwich) noPGSpicy).withoutGarlic(); // make the sandwich without garlic
+							((Sandwich) noPGSpicy).withoutPickles(); // make the sandwich without pickle
+							((Sandwich) noPGSpicy).makeItFish(); // make it fish sandwich
+							makeItSpecial();
+							setMeals(noPGSpicy);
+						}
+						else if (sandwichPercentage > 90 && sandwichPercentage <= 95){ // if the condition is true add spicy fish sandwich without pickle and with garlic to the arraylist
+							Meal noPSpicy = new Sandwich(); // create object from meal
+							((Sandwich) noPSpicy).makeSpicy(); // make the sandwich spicy
+							((Sandwich) noPSpicy).withoutPickles(); // make the sandwich without pickle
+							((Sandwich) noPSpicy).makeItFish(); // make it fish sandwich
 							makeItSpecial();
 							setMeals(noPSpicy);
 						}
-						else if(sandwichPercentage > 95 && sandwichPercentage <= 100){
-							Meal noGSpicy = new Sandwich();
-							((Sandwich) noGSpicy).makeSpicy();
-							((Sandwich) noGSpicy).withoutGarlic();
-							((Sandwich) noGSpicy).makeItFish();
+						else if(sandwichPercentage > 95 && sandwichPercentage <= 100){ // if the condition is true add spicy fish sandwich without garlic and with pickle to the arraylist
+							Meal noGSpicy = new Sandwich(); // create object from meal
+							((Sandwich) noGSpicy).makeSpicy(); // make the sandwich spicy
+							((Sandwich) noGSpicy).withoutGarlic(); // make the sandwich without garlic
+							((Sandwich) noGSpicy).makeItFish(); // make it fish sandwich
 							makeItSpecial();
 							setMeals(noGSpicy);
 							}
@@ -164,39 +193,38 @@ public class Order {
 }
 	
 	
-	
-	public void generateOrderSnacks(int numberOfSnacks) {
-		for(int i = 0 ; i < numberOfSnacks ; i++){
-			int snackPercentage = Random.nextInt(101);
-			if( snackPercentage == 0){
+	public void generateOrderSnacks(int numberOfSnacks) { // method to generate snacks
+		for(int i = 0 ; i < numberOfSnacks ; i++){ // loop to generate snacks
+			int snackPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
+			if( snackPercentage == 0){ // if the condition is true exit the method 
 				break;
 			}
-			else if (snackPercentage >= 50){
+			else if (snackPercentage >= 50){ // if the condition is true add iceCream to the arraylist
 				numberOfIcecream++;
 				setSnacks(new IceCream());
 			}
-			else{
-				numberOfCorn++;
+			else if (snackPercentage > 50 && snackPercentage <= 80){ // if the condition is true add corn to the arraylist
+				numberOfIcecream++;
 				setSnacks(new Corn());
+			}
+			else{ // if the condition is true add drinks to the arraylist
+				numberOfDrinks++;
+				setSnacks(new Drinks());
 			}
 
 		}
 	}
 	
-	
-	
+
 	public ArrayList<Meal> getMeals() { // method to retrun all the meals
 		return meals;
 	}
 
 
-
-
 	public void setMeals(Meal meals) { // method to add meals in the arraylist
 		this.meals.add(meals);
-		orderAmount ++;
+		setOrderAmount();
 	}
-
 
 
 	public ArrayList<Snacks> getSnacks() { // method to retrun all the snacks
@@ -204,14 +232,10 @@ public class Order {
 	}
 
 
-
-
 	public void setSnacks(Snacks snacks) {// method to add snacks in the arraylist
 		this.snacks.add(snacks);
-		orderAmount ++;
+		setOrderAmount();
 	}
-
-
 
 
 	public int getOrderNumber() { // method to retrun order number
@@ -219,13 +243,9 @@ public class Order {
 	}
 
 
-
-
 	public void setOrderNumber(int orderNumber) { // method to enter order number
 		this.orderNumber = orderNumber;
 	}
-
-
 
 
 	public int getOrderAmount() { // method to retrun order amount
@@ -233,12 +253,9 @@ public class Order {
 	}
 
 
-
-
-	public void setOrderAmount(int orderAmount) { // method to enter order amount
-		this.orderAmount = orderAmount;
+	public void setOrderAmount() { // maybe deleted method to enter order amount
+		orderAmount ++;
 	}
-
 
 
 	public boolean getisItSpecial() { // method to retrun isitSpecial
@@ -246,16 +263,14 @@ public class Order {
 	}
 
 
-	
 	public void makeItSpecial() { // method to change the variable isitSpecial to true
 			isitSpecial= true;
 	}
 
+
 	public int getNumberOfBroast() { // method to return number of broast
 		return numberOfBroast;
 	}
-
-
 
 
 	public int getNumberOfNuggets() { // method to return number of nuggets
@@ -263,13 +278,9 @@ public class Order {
 	}
 
 
-
-
 	public int getNumberOfJumboShrimp() { // method to return number of jumboShrimp
 		return numberOfJumboShrimp;
 	}
-
-
 
 
 	public int getNumberOfSandwich() { // method to return number of snadwich
@@ -282,11 +293,12 @@ public class Order {
 	}
 
 
-
-
 	public int getNumberOfCorn() { // method to return number of corn
 		return numberOfCorn;
 	}
 
 
+	public int getNumberOfDrinks() { // method to return number of drinks
+		return numberOfDrinks;
+	}
 }
