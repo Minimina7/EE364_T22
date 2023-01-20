@@ -2,28 +2,27 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Order {
-	private ArrayList<Meal> meals = new ArrayList<Meal>();
-	private ArrayList<Snacks> snacks = new ArrayList<Snacks>();
-	private int orderNumber;
-	private int orderAmount = 0;
-	private boolean isitSpecial;
-	private	int numberOfBroast = 0;
-	private	int numberOfNuggets = 0;
-	private	int numberOfJumboShrimp = 0;
-	private	int numberOfSandwich = 0;
-
-
-	Random Random = new Random();
+	private ArrayList<Meal> meals = new ArrayList<Meal>(); // arraylist has all the meals
+	private ArrayList<Snacks> snacks = new ArrayList<Snacks>(); // arraylist has all the snacks
+	private int orderNumber; // instance variable that save the order number
+	private int orderAmount = 0; // instance variable that save the order amount
+	private boolean isitSpecial; // instance variable to check is it special order
+	private	int numberOfBroast = 0; // instance variable that count number of broast
+	private	int numberOfNuggets = 0; // instance variable that count number of nugget
+	private	int numberOfJumboShrimp = 0; // instance variable that count number of jumboShrimp
+	private	int numberOfSandwich = 0; // instance variable that count number of sandwich
+	private	int numberOfIcecream = 0; // instance variable that count number of icecream
+	private	int numberOfCorn = 0; // instance variable that count number of corn
+	Random Random = new Random(); // declare random object
 
 
 	// constructor
 	public Order() {
-		int amount = Random.nextInt(21); // from 0 to 20
-		generateOrderMeal(amount);
-		int amountt = 20- amount;
-		generateOrderSnacks(amountt);
+		int amountMeal = Random.nextInt(21); // from 0 to 20
+		generateOrderMeal(amountMeal);
+		int amountSnacks = Random.nextInt(20 -amountMeal)+ 1; // from 1 to 20-
+		generateOrderSnacks(amountSnacks);
 		//number of snaks must be rilstc : no 1meal and 12 drinks
-		
 	}
 	
 	
@@ -167,33 +166,47 @@ public class Order {
 	
 	
 	public void generateOrderSnacks(int numberOfSnacks) {
-		Snacks x = null;
+		for(int i = 0 ; i < numberOfSnacks ; i++){
+			int snackPercentage = Random.nextInt(101);
+			if( snackPercentage == 0){
+				break;
+			}
+			else if (snackPercentage >= 50){
+				numberOfIcecream++;
+				setSnacks(new IceCream());
+			}
+			else{
+				numberOfCorn++;
+				setSnacks(new Corn());
+			}
+
+		}
 	}
 	
 	
 	
-	public ArrayList<Meal> getMeals() {
+	public ArrayList<Meal> getMeals() { // method to retrun all the meals
 		return meals;
 	}
 
 
 
 
-	public void setMeals(Meal meals) {
+	public void setMeals(Meal meals) { // method to add meals in the arraylist
 		this.meals.add(meals);
 		orderAmount ++;
 	}
 
 
 
-	public ArrayList<Snacks> getSnacks() {
+	public ArrayList<Snacks> getSnacks() { // method to retrun all the snacks
 		return snacks;
 	}
 
 
 
 
-	public void setSnacks(Snacks snacks) {
+	public void setSnacks(Snacks snacks) {// method to add snacks in the arraylist
 		this.snacks.add(snacks);
 		orderAmount ++;
 	}
@@ -201,66 +214,78 @@ public class Order {
 
 
 
-	public int getOrderNumber() {
+	public int getOrderNumber() { // method to retrun order number
 		return orderNumber;
 	}
 
 
 
 
-	public void setOrderNumber(int orderNumber) {
+	public void setOrderNumber(int orderNumber) { // method to enter order number
 		this.orderNumber = orderNumber;
 	}
 
 
 
 
-	public int getOrderAmount() {
+	public int getOrderAmount() { // method to retrun order amount
 		return orderAmount;
 	}
 
 
 
 
-	public void setOrderAmount(int orderAmount) {
+	public void setOrderAmount(int orderAmount) { // method to enter order amount
 		this.orderAmount = orderAmount;
 	}
 
 
 
-	public boolean getisItSpecial() {
+	public boolean getisItSpecial() { // method to retrun isitSpecial
 		return isitSpecial;
 	}
 
 
 	
-	public void makeItSpecial() {
+	public void makeItSpecial() { // method to change the variable isitSpecial to true
 			isitSpecial= true;
 	}
 
-	public int getNumberOfBroast() {
+	public int getNumberOfBroast() { // method to return number of broast
 		return numberOfBroast;
 	}
 
 
 
 
-	public int getNumberOfNuggets() {
+	public int getNumberOfNuggets() { // method to return number of nuggets
 		return numberOfNuggets;
 	}
 
 
 
 
-	public int getNumberOfJumboShrimp() {
+	public int getNumberOfJumboShrimp() { // method to return number of jumboShrimp
 		return numberOfJumboShrimp;
 	}
 
 
 
 
-	public int getNumberOfSandwich() {
+	public int getNumberOfSandwich() { // method to return number of snadwich
 		return numberOfSandwich;
+	}
+	
+
+	public int getNumberOfIcecream() { // method to return number of icecream
+		return numberOfIcecream;
+	}
+
+
+
+
+	public int getNumberOfCorn() { // method to return number of corn
+		return numberOfCorn;
 	}
 
 
