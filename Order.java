@@ -7,13 +7,13 @@ public class Order {
 	private int orderNumber;
 	private int orderAmount = 0;
 	private boolean isitSpecial;
-	
-	// to generate an Order
-	// we can use random seed
 	Random Random = new Random();
+
+
 	// constructor
 	public Order() {
-		generateOrderMeal();
+		int x = Random.nextInt(101);
+		generateOrderMeal(5);
 		generateOrderSnacks();
 		//number of snaks must be rilstc : no 1meal and 12 drinks
 		
@@ -21,18 +21,17 @@ public class Order {
 	
 	
 	
-	// for Talal
-	// make it static to use in constrvter?
-	public void generateOrderMeal() {
+	
+	public void generateOrderMeal(int numberOfmeal) {
 
-		for(int i = 0 ; i < 4 ; i++){
-			int x = Random.nextInt(101);
-			int y = Random.nextInt(101);
-			if( x == 0){
+		for(int i = 0 ; i < numberOfmeal ; i++){
+			int mealPercentage = Random.nextInt(101);
+			int sandwichPercentage = Random.nextInt(101);
+			if( mealPercentage == 0){
 				break;
 			}
-			else if ( x <= 35){
-				if (x > 25 && x <= 35){
+			else if ( mealPercentage <= 35){
+				if (mealPercentage > 25 && mealPercentage <= 35){
 					Meal spicy = new Broast();
 					((Broast) spicy).makeSpicy();
 					setMeals(spicy);
@@ -40,8 +39,8 @@ public class Order {
 				else
 				setMeals(new Broast());
 			}
-				else if ( x > 35 && x <= 70){
-					if (x > 60 && x <= 70){
+				else if ( mealPercentage > 35 && mealPercentage <= 70){
+					if (mealPercentage > 60 && mealPercentage <= 70){
 						Meal spicy = new Nuggets();
 						((Nuggets) spicy).makeSpicy();
 						setMeals(spicy);
@@ -49,93 +48,103 @@ public class Order {
 					else
 					setMeals(new Nuggets());
 			}
-					else if ( x > 70 && x <= 75){
+					else if ( mealPercentage > 70 && mealPercentage <= 75){
 						setMeals(new JumboShrimp());
 					}
-						else if ( x > 75 && x <= 100){
-							if (x > 75 && x <= 90){
-								if ( y <= 50){
+						else if ( mealPercentage > 75 && mealPercentage <= 100){
+							if (mealPercentage > 75 && mealPercentage <= 90){
+								if ( sandwichPercentage <= 50){
 									setMeals(new Sandwich());
 								}
-								else if (y > 50 && y <= 60){
+								else if (sandwichPercentage > 50 && sandwichPercentage <= 60){
 									Meal spicy = new Sandwich();
 									((Sandwich) spicy).makeSpicy();
 									setMeals(spicy);
 								}
-								else if (y > 60 && y <= 70){
+								else if (sandwichPercentage > 60 && sandwichPercentage <= 70){
 									Meal noPickle = new Sandwich();
 									((Sandwich) noPickle).withoutPickles();
+									makeItSpecial();
 									setMeals(noPickle);
 								}
-								else if (y > 70 && y <= 80){
+								else if (sandwichPercentage > 70 && sandwichPercentage <= 80){
 									Meal noGarlic = new Sandwich();
 									((Sandwich) noGarlic).withoutGarlic();
+									makeItSpecial();
 									setMeals(noGarlic);
 								}
-								else if (y > 80  && y <= 90){
+								else if (sandwichPercentage > 80  && sandwichPercentage <= 90){
 									Meal noPGSpicy = new Sandwich();
 									((Sandwich) noPGSpicy).makeSpicy();
 									((Sandwich) noPGSpicy).withoutGarlic();
 									((Sandwich) noPGSpicy).withoutPickles();
+									makeItSpecial();
 									setMeals(noPGSpicy);
 								}
-								else if (y > 90 && y <= 95){
+								else if (sandwichPercentage > 90 && sandwichPercentage <= 95){
 									Meal noPSpicy = new Sandwich();
 									((Sandwich) noPSpicy).makeSpicy();
 									((Sandwich) noPSpicy).withoutPickles();
+									makeItSpecial();
 									setMeals(noPSpicy);
 								}
-								else if(y > 95 && y <= 100){
+								else if(sandwichPercentage > 95 && sandwichPercentage <= 100){
 									Meal noGSpicy = new Sandwich();
 									((Sandwich) noGSpicy).makeSpicy();
 									((Sandwich) noGSpicy).withoutGarlic();
+									makeItSpecial();
 									setMeals(noGSpicy);
 									}
 					}
 					else{
-						if ( y <= 50){
+						if ( sandwichPercentage <= 50){
 							Meal fish = new Sandwich();
 							((Sandwich) fish).makeItFish();
 								setMeals(fish);
 						}
-						else if (y > 50 && y <= 60){
+						else if (sandwichPercentage > 50 && sandwichPercentage <= 60){
 							Meal spicy = new Sandwich();
 							((Sandwich) spicy).makeSpicy();
 							((Sandwich) spicy).makeItFish();
 							setMeals(spicy);
 						}
-						else if (y > 60 && y <= 70){
+						else if (sandwichPercentage > 60 && sandwichPercentage <= 70){
 							Meal noPickle = new Sandwich();
 							((Sandwich) noPickle).withoutPickles();
 							((Sandwich) noPickle).makeItFish();
+							makeItSpecial();
 							setMeals(noPickle);
 						}
-						else if (y > 70 && y <= 80){
+						else if (sandwichPercentage > 70 && sandwichPercentage <= 80){
 							Meal noGarlic = new Sandwich();
 							((Sandwich) noGarlic).withoutGarlic();
 							((Sandwich) noGarlic).makeItFish();
+							makeItSpecial();
 							setMeals(noGarlic);
 						}
-						else if (y > 80  && y <= 90){
+						else if (sandwichPercentage > 80  && sandwichPercentage <= 90){
 							Meal noPGSpicy = new Sandwich();
 							((Sandwich) noPGSpicy).makeSpicy();
 							((Sandwich) noPGSpicy).withoutGarlic();
 							((Sandwich) noPGSpicy).withoutPickles();
 							((Sandwich) noPGSpicy).makeItFish();
+							makeItSpecial();
 							setMeals(noPGSpicy);
 						}
-						else if (y > 90 && y <= 95){
+						else if (sandwichPercentage > 90 && sandwichPercentage <= 95){
 							Meal noPSpicy = new Sandwich();
 							((Sandwich) noPSpicy).makeSpicy();
 							((Sandwich) noPSpicy).withoutPickles();
 							((Sandwich) noPSpicy).makeItFish();
+							makeItSpecial();
 							setMeals(noPSpicy);
 						}
-						else if(y > 95 && y <= 100){
+						else if(sandwichPercentage > 95 && sandwichPercentage <= 100){
 							Meal noGSpicy = new Sandwich();
 							((Sandwich) noGSpicy).makeSpicy();
 							((Sandwich) noGSpicy).withoutGarlic();
 							((Sandwich) noGSpicy).makeItFish();
+							makeItSpecial();
 							setMeals(noGSpicy);
 							}
 					}
@@ -215,13 +224,8 @@ public class Order {
 
 
 	// for talal
-	public boolean setisitSpecial() {
-		Sandwich checkSandwich = new Sandwich();
-		if(!checkSandwich.checkGarlic() || !checkSandwich.checkPickles()){
-			return true;
-		}
-		else
-		return false;
+	public void makeItSpecial() {
+			isitSpecial= true;
 	}
 
 

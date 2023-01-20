@@ -1,10 +1,8 @@
 public class test {
 	public static void main(String[] args) {
-		System.out.println("hello");
-		System.out.println("hello");
-		System.out.println("hello");
-		System.out.println("hello");
-		System.out.println("SUBHi");
+		Order order = new Order();
+		System.out.println(order.getOrderAmount());
+		System.out.println(order.getMeals());
 
 	}
 }
