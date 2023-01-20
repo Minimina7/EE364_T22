@@ -21,23 +21,23 @@ public class Order {
 	public Order() {
 		int random = Random.nextInt(101);
 		int amountMeal;
-		// normal order //
-		if (random <= 50) { // i can remove amountMeal and use Random.nextInt(2) dirict//
-			amountMeal = Random.nextInt(2); // from 0 to 2
+		// normal order
+		if (random <= 70) {
+			amountMeal = Random.nextInt(2) + 1; // from 1 to 3
 			generateOrderMeal(amountMeal);
 		}
-			else if (50 < random && random <= 85) {
-			amountMeal = Random.nextInt(5); // from 0 to 5
-			generateOrderMeal(amountMeal);
-		} 
-			else {
-			amountMeal = Random.nextInt(21); // from 0 to 20
+		// medium order
+		else if (70 < random && random <= 95) {
+			amountMeal = Random.nextInt(4) + 1; // from 1 to 5
+		}
+		// large order
+		else {
+			amountMeal = Random.nextInt(19) + 1; // from 1 to 20
 			generateOrderMeal(amountMeal);
 		}
-
-		int amountSnacks = Random.nextInt(amountMeal); // from 1 to 20-
+		// snacks order
+		int amountSnacks = Random.nextInt(amountMeal) + 1; // from 1 use amountMeal //
 		generateOrderSnacks(amountSnacks);
-		// number of snaks must be rilstc : no 1meal and 12 drinks
 
 	}
 	
