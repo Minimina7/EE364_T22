@@ -14,29 +14,28 @@ public class Order {
 	private	int numberOfIcecream = 0; // instance variable that count number of icecream
 	private	int numberOfCorn = 0; // instance variable that count number of corn
 	private	int numberOfDrinks = 0; // instance variable that count number of drinks
-	Random Random = new Random(); // declare random object
 
 
 	// constructor
 	public Order() {
-		int random = Random.nextInt(101);
+		int random = Restaurant.getRandom(0, 101);
 		int amountMeal;
 		// normal order
 		if (random <= 70) {
-			amountMeal = Random.nextInt(2) + 1; // from 1 to 3
+			amountMeal = Restaurant.getRandom(1, 3); // from 1 to 3
 			generateOrderMeal(amountMeal);
 		}
 		// medium order
 		else if (70 < random && random <= 95) {
-			amountMeal = Random.nextInt(4) + 1; // from 1 to 5
+			amountMeal = Restaurant.getRandom(1, 5); // from 1 to 5
 		}
 		// large order
 		else {
-			amountMeal = Random.nextInt(19) + 1; // from 1 to 20
+			amountMeal = Restaurant.getRandom(1, 20); // from 1 to 20
 			generateOrderMeal(amountMeal);
 		}
 		// snacks order
-		int amountSnacks = Random.nextInt(amountMeal) + 1; // from 1 use amountMeal //
+		int amountSnacks = Restaurant.getRandom(1, amountMeal); // from 1 to amountMeal 
 		generateOrderSnacks(amountSnacks);
 
 	}
@@ -45,8 +44,8 @@ public class Order {
 	public void generateOrderMeal(int numberOfMeal) { // method to generate meals
 
 		for(int i = 0 ; i < numberOfMeal ; i++){ // loop to generate meals
-			int mealPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
-			int sandwichPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
+			int mealPercentage = Restaurant.getRandom(0, 101); // Generate a random number from 0 to 100
+			int sandwichPercentage = Restaurant.getRandom(0, 101); // Generate a random number from 0 to 100
 			if( mealPercentage == 0){ // if the condition is true exit the method 
 				break;
 			}
@@ -195,7 +194,7 @@ public class Order {
 	
 	public void generateOrderSnacks(int numberOfSnacks) { // method to generate snacks
 		for(int i = 0 ; i < numberOfSnacks ; i++){ // loop to generate snacks
-			int snackPercentage = Random.nextInt(101); // Generate a random number from 0 to 100
+			int snackPercentage = Restaurant.getRandom(0, 101); // Generate a random number from 0 to 100
 			if( snackPercentage == 0){ // if the condition is true exit the method 
 				break;
 			}
