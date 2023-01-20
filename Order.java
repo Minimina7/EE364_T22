@@ -9,6 +9,7 @@ public class Order {
 	private boolean isitSpecial;
 	
 	// to generate an Order
+	// we can use random seed 
 	double Random1 = Math.random();
 	Random Random2 = new Random();
 	// constructor
