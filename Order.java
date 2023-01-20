@@ -19,9 +19,23 @@ public class Order {
 
 	// constructor
 	public Order() {
-		int amountMeal = Random.nextInt(21); // from 0 to 20
-		generateOrderMeal(amountMeal);
-		int amountSnacks = Random.nextInt(20 -amountMeal)+ 1; // from 1 to 20-
+		int random = Random.nextInt(101);
+		int amountMeal;
+		// normal order //
+		if(random =< 50) { //i can remove amountMeal and use Random.nextInt(2) dirict//
+			 amountMeal = Random.nextInt(2); // from 0 to 2
+			generateOrderMeal(amountMeal);
+		}
+		else if( 50 < random =< 85) {
+			 amountMeal = Random.nextInt(5); // from 0 to 5
+			generateOrderMeal(amountMeal);
+		}
+		else {
+			 amountMeal = Random.nextInt(21); // from 0 to 20
+			generateOrderMeal(amountMeal);
+		}
+
+		int amountSnacks = Random.nextInt(amountMeal); // from 1 to 20-
 		generateOrderSnacks(amountSnacks);
 		//number of snaks must be rilstc : no 1meal and 12 drinks
 	}
