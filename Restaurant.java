@@ -1,4 +1,5 @@
-import java.util.Random;
+import java.security.SecureRandom;
+;
 public class Restaurant {
 	
 
@@ -10,7 +11,7 @@ public class Restaurant {
 
 
  public static int getRandom(int firstNumber, int secondNumber) {
-	 Random randomNumber = new Random();
+	SecureRandom randomNumber = new SecureRandom();
 	 int random = randomNumber.nextInt(secondNumber)+ firstNumber;
 	 return random;}
  }

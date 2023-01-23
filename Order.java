@@ -4,15 +4,15 @@ public class Order {
 	private ArrayList<Meal> meals = new ArrayList<Meal>(); // arraylist has all the meals
 	private ArrayList<Snacks> snacks = new ArrayList<Snacks>(); // arraylist has all the snacks
 	private int orderNumber; // instance variable that save the order number
-	private int orderAmount = 0; // instance variable that save the order amount
+	private int orderAmount; // instance variable that save the order amount
 	private boolean isitSpecial; // instance variable to check is it special order
-	private	int numberOfBroast = 0; // instance variable that count number of broast
-	private	int numberOfNuggets = 0; // instance variable that count number of nugget
-	private	int numberOfJumboShrimp = 0; // instance variable that count number of jumboShrimp
-	private	int numberOfSandwich = 0; // instance variable that count number of sandwich
-	private	int numberOfIcecream = 0; // instance variable that count number of icecream
-	private	int numberOfCorn = 0; // instance variable that count number of corn
-	private	int numberOfDrinks = 0; // instance variable that count number of drinks
+	private	int numberOfBroast; // instance variable that count number of broast
+	private	int numberOfNuggets; // instance variable that count number of nugget
+	private	int numberOfJumboShrimp; // instance variable that count number of jumboShrimp
+	private	int numberOfSandwich; // instance variable that count number of sandwich
+	private	int numberOfIcecream; // instance variable that count number of icecream
+	private	int numberOfCorn; // instance variable that count number of corn
+	private	int numberOfDrinks; // instance variable that count number of drinks
 
 
 	// constructor
@@ -27,6 +27,7 @@ public class Order {
 		// medium order
 		else if (70 < random && random <= 95) {
 			amountMeal = Restaurant.getRandom(1, 5); // from 1 to 5
+			generateOrderMeal(amountMeal);
 		}
 		// large order
 		else {
@@ -50,7 +51,7 @@ public class Order {
 			}
 			else if ( mealPercentage <= 35){ // if the condition is true add broast to the arraylist
 				numberOfBroast++;
-				if (mealPercentage > 25 && mealPercentage <= 35){ // if the condition is true the broast is spicy
+				if (mealPercentage > 18 && mealPercentage <= 35){ // if the condition is true the broast is spicy
 					Meal spicy = new Broast(); // create object from meal
 					((Broast) spicy).makeSpicy(); // make the broast spicy
 					setMeals(spicy); // add spicy broast to the arraylist
@@ -60,7 +61,7 @@ public class Order {
 			}
 				else if ( mealPercentage > 35 && mealPercentage <= 70){ // if the condition is true add nuggets to the arraylist
 					numberOfNuggets++;
-					if (mealPercentage > 60 && mealPercentage <= 70){ // if the condition is true the nuggets is spicy
+					if (mealPercentage > 54 && mealPercentage <= 70){ // if the condition is true the nuggets is spicy
 						Meal spicy = new Nuggets(); // create object from meal
 						((Nuggets) spicy).makeSpicy(); // make the nugget spicy
 						setMeals(spicy); // add spicy nugget to the arraylist
@@ -195,7 +196,7 @@ public class Order {
 		for(int i = 0 ; i < numberOfSnacks ; i++){ // loop to generate snacks
 			int snackPercentage = Restaurant.getRandom(0, 101); // Generate a random number from 0 to 100
 			if( snackPercentage == 0){ // if the condition is true exit the method 
-				break;
+				break; // delete this if
 			}
 			else if (snackPercentage >= 50){ // if the condition is true add iceCream to the arraylist
 				numberOfIcecream++;
