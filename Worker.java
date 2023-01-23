@@ -16,4 +16,7 @@ public void setCustomerOrder(Order customerOrder) {
 	this.customerOrder = customerOrder;
 }
 public abstract void serveCustomer(Customers customersAtservice);
+public Customers getServedCustomer() {
+	return customersAtservice;
+}
 }
