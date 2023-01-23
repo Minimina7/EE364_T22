@@ -42,16 +42,48 @@ import java.util.ArrayList;
 
 public class Server {
 
+	private Order customerOrder;
+	private Customers customerSarve;
+	private ArrayList<Meal> meals = new ArrayList<Meal>();
+	private ArrayList<Snacks> snacks = new ArrayList<Snacks>();
+	private ArrayList<IceCream> icecream = new ArrayList<IceCream>();
+	private ArrayList<Drinks> drinks = new ArrayList<Drinks>();
+	private boolean avaliable;
+ 
 	
-	public void preaperorder(int meal, ArrayList<Food> mealArray ) {
-		while (meal !=0) {
-			if (mealArray.size() >= 1) {
-				mealArray.remove(0);
-				meal--;}}
-		
+
+	public void preaperorder(int order, ArrayList<Food> foodArray ) {
+		while (order !=0) {
+			if (foodArray.size() >= 1) {
+				foodArray.remove(0);
+				order--;}
+		}
 		
 	}
 	
+	public void makeIceCream(IceCream icecream) {
+		this.icecream.add(icecream);
+	}
+	
+	public void makeDrinks(Drinks drinks) {
+		this.drinks.add(drinks);
+}
+
+	public Order getCustomerOrder() {
+		return customerOrder;
+	}
+
+	public void setCustomerOrder(Order customerOrder) {
+		this.customerOrder = customerOrder;
+	}
+
+	public Customers getCustomerSarve() {
+		return customerSarve;
+	}
+
+	public void setCustomerSarve(Customers customerSarve) {
+		this.customerSarve = customerSarve;
+	}
 }
 
 
