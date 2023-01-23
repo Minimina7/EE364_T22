@@ -62,11 +62,11 @@ public class Server {
 	}
 	
 	public void makeIceCream(IceCream icecream) {
-		this.icecream.add(icecream);
+		this.icecream.add(icecream);//may remove insted of add
 	}
 	
 	public void makeDrinks(Drinks drinks) {
-		this.drinks.add(drinks);
+		this.drinks.add(drinks);//may remove insted of add
 }
 
 	public Order getCustomerOrder() {
