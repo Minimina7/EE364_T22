@@ -8,6 +8,7 @@ public class test {
 		System.out.println(order.getNumberOfJumboShrimp());
 		System.out.println(order.getNumberOfNuggets());
 		System.out.println(order.getNumberOfSandwich());
+		System.out.println(order.getisItSpecial());
 
 	}
 }
