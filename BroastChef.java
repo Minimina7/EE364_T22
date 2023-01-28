@@ -1,12 +1,12 @@
 
 public class BroastChef extends Chef{
 	
-	public BroastChef(int x,int y){
+	public BroastChef(int nofspicy,int nofnormal){
 		Meal spicy=new Broast();
 		((Broast) spicy).makeSpicy();
 		Meal normal=new Broast();
-		cookeSpicy(x,spicy);
-		cookeNormal(y,normal);
+		cookeSpicy(nofspicy,spicy);
+		cookeNormal(nofnormal,normal);
 		}
 		
 		
