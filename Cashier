@@ -1,9 +1,9 @@
 public class Cashier extends Worker{
 
-    public  Order serveCustomer(Customers customersAtservice){
+    public  void serveCustomer(Customers customersAtservice){
         setCustomerOrder(customersAtservice.getCustomerOrder);
         setOrderNumber();
-        return getCustomerOrder();
+        
 
     }
     

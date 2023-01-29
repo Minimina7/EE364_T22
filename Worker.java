@@ -16,7 +16,7 @@ public Order getCustomerOrder() { // method to get customer order
 public void setCustomerOrder(Order customerOrder) { // method to set customer order
 	this.customerOrder = customerOrder;
 }
-public abstract Order serveCustomer(Customers customersAtservice); // abstract method to serve the customer
+public abstract void serveCustomer(Customers customersAtservice); // abstract method to serve the customer
 
 public Customers getServedCustomer() { // method that return the service to the customer
 	return customersAtservice;
