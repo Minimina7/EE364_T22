@@ -9,12 +9,13 @@ public int getOrderNumber() { // method to get the order number
 }
 public void setOrderNumber(int orderNumber) { // method to set order number
 	this.orderNumber = orderNumber;
+	customersAtservice.setOrderNumber(orderNumber);
 }
 public Order getCustomerOrder() { // method to get customer order
 	return customerOrder;
 }
-public void setCustomerOrder(Order customerOrder) { // method to set customer order
-	this.customerOrder = customerOrder;
+public void setCustomerOrder(Customers customersAtservice) { // method to set customer order
+	this.customerOrder = customersAtservice.getCustomerOrder();
 }
 public abstract void serveCustomer(Customers customersAtservice); // abstract method to serve the customer
 
