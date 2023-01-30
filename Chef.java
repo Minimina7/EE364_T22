@@ -4,11 +4,36 @@ public abstract class Chef {
 
 	private int amountMade;
 	//private int timeNeedsToCooke;
-	private ArrayList<Meal> spicymeals = new ArrayList<Meal>();
-	private ArrayList<Meal> normalmeals = new ArrayList<Meal>();
+	private ArrayList<Meal> spicymeals;
+	private ArrayList<Meal> normalmeals;
 	
-	public abstract void cookeSpicy(int x,Meal y);
-	public abstract void cookeNormal(int x,Meal y);
+	//public abstract void getBeanch(ArrayList<Meal> meals, int time);
+		
+	
+	
+	
+	public ArrayList<Meal> getSpicymeals() {
+		return spicymeals;
+	}
+
+
+	public void setSpicymeals(ArrayList<Meal> spicymeals) {
+		this.spicymeals = spicymeals;
+	}
+
+
+	public ArrayList<Meal> getNormalmeals() {
+		return normalmeals;
+	}
+
+
+	public void setNormalmeals(ArrayList<Meal> normalmeals) {
+		this.normalmeals = normalmeals;
+	}
+
+
+	//public abstract void cookeSpicy(int amount , int time);
+	//public abstract void cookeNormal(int amount , int time);
 	
 
 	public int getAmountMade() {
@@ -34,9 +59,9 @@ public abstract class Chef {
 	    this.amountMade=amountMade;
 	}
 	
-	public abstract int checkBench();
+	//public abstract int checkBench(ArrayList<Meal> nuggets, int time);
 	
-	public abstract int addToBench();
+	//public abstract int addToBench();
 	
 	public abstract int getTimeNeededToCooke();
 }
