@@ -3,12 +3,12 @@ import java.util.ArrayList;
 public abstract class Chef {
 
 	private int amountMade;
-	private int timeNeedsToCooke;
+	//private int timeNeedsToCooke;
 	private ArrayList<Meal> spicymeals = new ArrayList<Meal>();
 	private ArrayList<Meal> normalmeals = new ArrayList<Meal>();
 	
-	public abstract void cookeSpicy();
-	public abstract void cookeNormal();
+	public abstract void cookeSpicy(int x,Meal y);
+	public abstract void cookeNormal(int x,Meal y);
 	
 
 	public int getAmountMade() {

@@ -1,19 +1,27 @@
 
 public class ShrimpChef extends Chef{
 	
-	Meal spicy=new JumboShrimp();
 	Meal normal=new JumboShrimp();
 	
-	public void cookeNormal(int x) {
+	
+	public void cookeSpicy(int x,Meal y) {
+		
+	}
+	
+	public void cookeNormal(int x,Meal y) {
 			for (int i=0;i<x;i++) {
-			setNormalMeals(normal);
+			setNormalMeals(y);
 			}
 		}
 	
-    public int checkBench();
-    
 	
-	public int addToBench();
+    public int checkBench() {
+    	return;
+    }
+    
+	public int addToBench() {
+		return;
+	}
 	
 	public int getTimeNeededToCooke() {
 		return JumboShrimp.PREPARETIME;

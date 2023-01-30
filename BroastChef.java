@@ -1,4 +1,3 @@
-
 public class BroastChef extends Chef{
 	
 	public BroastChef(int nofspicy,int nofnormal){
@@ -22,10 +21,14 @@ public class BroastChef extends Chef{
 				}
 			}
 		
-	    public int checkBench();
+	    public int checkBench() {
+	    	return;
+	    }
 	    
 		
-		public int addToBench();
+		public int addToBench() {
+			return;
+		}
 		
 		public int getTimeNeededToCooke() {
 			return Nuggets.PREPARETIME;
