@@ -43,7 +43,7 @@ private ArrayList<Food> nuggetsMade;
 		spicyAmount=0;
 		normalAmount=0;
 		if (!(nuggetsMade.isEmpty())) {
-		addToBeanch(nuggetsMade,nuggets,time);
+		addToBeanch(nuggets,time);
 	}
 	}
 	
@@ -66,7 +66,7 @@ private ArrayList<Food> nuggetsMade;
 			return nuggetsMadeNormal;
 		}
 	
-	public void addToBeanch(ArrayList<Food> nuggetsMade , ArrayList<Food> nuggetsBeanch , int time) {
+	public void addToBeanch(ArrayList<Food> nuggetsBeanch , int time) {
 		if (time==(timeNeededToCooke+timeStartCooke)){
 			for (int i=0;i<nuggetsMade.size();i++) {
 				nuggetsBeanch.add(nuggetsBeanch.size(), nuggetsMade.get(i));
