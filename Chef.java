@@ -32,9 +32,9 @@ public abstract class Chef {
 	}
 
 
-	//public abstract void cookeSpicy(int amount , int time);
-	//public abstract void cookeNormal(int amount , int time);
-	
+	public abstract ArrayList<Food> cookeSpicy(int amount , int time);
+	public abstract ArrayList<Food> cookeNormal(int amount , int time);
+	public abstract void checkBeanch(ArrayList<Food> nuggets, int time);
 
 	public int getAmountMade() {
 		return amountMade;
@@ -58,8 +58,6 @@ public abstract class Chef {
 	public void setAmountMade(int amountMade) {
 	    this.amountMade=amountMade;
 	}
-	
-	//public abstract int checkBench(ArrayList<Meal> nuggets, int time);
 	
 	//public abstract int addToBench();
 	

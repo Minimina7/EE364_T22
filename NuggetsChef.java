@@ -2,16 +2,11 @@
 import java.util.ArrayList;
 
 public class NuggetsChef extends Chef{
-	//getSpicymeals()= new ArrayList<Meal>();
+	
 	public NuggetsChef() {
 		Nuggets nuggets = new Nuggets();
 		timeNeededToCooke = nuggets.PREPARETIME;
 	}
-	//Meal spicy=new Nuggets();
-	//((Nuggets) spicy).makeSpicy();
-	//Meal normal=new Nuggets();
-	//cookeSpicy(nofspicy,spicy);
-	//cookeNormal(nofnormal,normal);
 	
 private int spicyAmount;
 private int normalAmount;
@@ -20,10 +15,10 @@ private int timeStartCookeSpicy;
 private int timeStartCookeNormal;
 
 
-	public void checkBeanch(ArrayList<Nuggets> nuggets, int time) {
+	public void checkBeanch(ArrayList<Food> nuggets, int time) {
 		for(int i=0; i < nuggets.size();i++) {
 			
-			Nuggets singelNuggets = nuggets.get(i);
+			Nuggets singelNuggets = (Nuggets)nuggets.get(i);
 			if(singelNuggets.isItSpicy()){
 				spicyAmount++;
 				
@@ -48,18 +43,18 @@ private int timeStartCookeNormal;
 		addToBeanch(time);
 	}
 	
-	public ArrayList<Nuggets> cookeSpicy(int amount , int time) {
-		ArrayList<Nuggets> nuggetsMadeSpicy = cookeNormal(amount , time);
+	public ArrayList<Food> cookeSpicy(int amount , int time) {
+		ArrayList<Food> nuggetsMadeSpicy = cookeNormal(amount , time);
 		for(int i=0; i < nuggetsMadeSpicy.size();i++) {
-			Nuggets singelNuggets = nuggetsMadeSpicy.get(i);
+			Nuggets singelNuggets = (Nuggets)nuggetsMadeSpicy.get(i);
 			singelNuggets.makeSpicy();
 		}
 		return nuggetsMadeSpicy;
 			
 	}
 	
-	public ArrayList<Nuggets> cookeNormal(int amount , int time) {
-		ArrayList<Nuggets> nuggetsMadeNormal = null;
+	public ArrayList<Food> cookeNormal(int amount , int time) {
+		ArrayList<Food> nuggetsMadeNormal = null;
 			for (int i=0;i<amount;i++) {
 				Nuggets singelNuggets = new Nuggets();
 				nuggetsMadeNormal.add(singelNuggets);
@@ -67,15 +62,13 @@ private int timeStartCookeNormal;
 			return nuggetsMadeNormal;
 		}
 	
-   
-    
-	
 	public void addToBeanch(int time) {
 		
 	}
 	
 	public int getTimeNeededToCooke() {
 		return Nuggets.PREPARETIME;
-	}	
+	}
+	
 }
 
