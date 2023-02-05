@@ -21,4 +21,8 @@ public class Beanch<E extends Food> {
 	public int foodAmuont(){
 		return beanch.size();
 	}
+
+	public ArrayList<E> getBeanch() {
+		return beanch;
+	}
 }
