@@ -34,7 +34,7 @@ public abstract class Chef {
 
 	public abstract ArrayList<Food> cookeSpicy(int amount);
 	public abstract ArrayList<Food> cookeNormal(int amount);
-	public abstract void checkBeanch(ArrayList<Food> food, int time);
+	public abstract void checkBeanch(Beanch food, int time);
 
 	public int getAmountMade() {
 		return amountMade;
@@ -59,7 +59,7 @@ public abstract class Chef {
 	    this.amountMade=amountMade;
 	}
 	
-	public abstract void addToBeanch(ArrayList<Food> foodBeanch , int time);
+	//public abstract void addToBeanch(ArrayList<Food> foodBeanch , int time);
 	
 	public abstract int getTimeNeededToCooke();
 }
