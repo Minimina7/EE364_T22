@@ -12,47 +12,54 @@ private int normalAmount;
 private int timeNeededToCooke;
 private int timeStartCooke;
 private boolean chefIsCooking;
-private ArrayList<Food> nuggetsMade;
+private ArrayList<Food> nuggetsMadeSpicy;
+private ArrayList<Food> nuggetsMadeNormal;
 
-	public void checkBeanch(Beanch nuggets, int time) {
+	public void checkBeanch(Beanch spicyNuggets,Beanch normalNuggets, int time) {
 		
-		ArrayList<Nuggets>nuggetsArray = nuggets.getBeanch();
+		ArrayList<Nuggets>spicyNuggetsArray = spicyNuggets.getBeanch();
+		ArrayList<Nuggets>normalNuggetsArray = normalNuggets.getBeanch();
 		
-		for(Nuggets singelNuggets:nuggetsArray) {
+		for(Nuggets singelNuggets:spicyNuggetsArray) {
 		
-			if(singelNuggets.isItSpicy()){
 				spicyAmount++;
 				if (!(chefIsCooking)) {
 				if(spicyAmount<8) {
-					nuggetsMade = cookeSpicy(8);
+					nuggetsMadeSpicy = cookeSpicy(8);
 					timeStartCooke=time;
 					chefIsCooking=true;
 				}
-			}
-			}
-			else {
+				}
+		}
+			
+		for(Nuggets singelNuggets:normalNuggetsArray) {
+			
 				normalAmount++;
 			if (!(chefIsCooking)) {
 			if(normalAmount<8) {
-				nuggetsMade = cookeNormal(8);
+				nuggetsMadeNormal = cookeNormal(8);
 				timeStartCooke=time;
 				chefIsCooking=true;
 			}
 			}
-			}
 		}
-		
+			
 		spicyAmount=0;
 		normalAmount=0;
-		if (time==(timeNeededToCooke+timeStartCooke))
-		if (!(nuggetsMade.isEmpty())) 
-		nuggets.addToBeanch(nuggetsMade);
-		nuggetsMade.clear();
+		if (time==(timeNeededToCooke+timeStartCooke)) {
+		if (!(nuggetsMadeSpicy.isEmpty())) {
+			spicyNuggets.addToBeanch(nuggetsMadeSpicy);}
+		
+		if (!(nuggetsMadeNormal.isEmpty())) {
+			normalNuggets.addToBeanch(nuggetsMadeNormal);}
+		}
+		nuggetsMadeSpicy.clear();
+		nuggetsMadeNormal.clear();
 	}
 	
 	public ArrayList<Food> cookeSpicy(int amount) {
 		ArrayList<Food> nuggetsMadeSpicy = cookeNormal(amount);
-		for(int i=0; i < nuggetsMadeSpicy.size();i++) {
+		for(int i=0; i < (nuggetsMadeSpicy.size())-1;i++) {
 			Nuggets singelNuggets = (Nuggets)nuggetsMadeSpicy.get(i);
 			singelNuggets.makeSpicy();
 		}
