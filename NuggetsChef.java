@@ -20,9 +20,7 @@ private ArrayList<Food> nuggetsMadeNormal;
 		ArrayList<Nuggets>spicyNuggetsArray = spicyNuggets.getBeanch();
 		ArrayList<Nuggets>normalNuggetsArray = normalNuggets.getBeanch();
 		
-		for(Nuggets singelNuggets:spicyNuggetsArray) {
-		
-				spicyAmount++;
+				spicyAmount = spicyNuggetsArray.size();
 				if (!(chefIsCooking)) {
 				if(spicyAmount<8) {
 					nuggetsMadeSpicy = cookeSpicy(8);
@@ -30,11 +28,8 @@ private ArrayList<Food> nuggetsMadeNormal;
 					chefIsCooking=true;
 				}
 				}
-		}
-			
-		for(Nuggets singelNuggets:normalNuggetsArray) {
-			
-				normalAmount++;
+		
+				normalAmount = normalNuggetsArray.size();
 			if (!(chefIsCooking)) {
 			if(normalAmount<8) {
 				nuggetsMadeNormal = cookeNormal(8);
@@ -42,19 +37,23 @@ private ArrayList<Food> nuggetsMadeNormal;
 				chefIsCooking=true;
 			}
 			}
-		}
 			
 		spicyAmount=0;
 		normalAmount=0;
+		
 		if (time==(timeNeededToCooke+timeStartCooke)) {
 		if (!(nuggetsMadeSpicy.isEmpty())) {
-			spicyNuggets.addToBeanch(nuggetsMadeSpicy);}
+			spicyNuggets.addToBeanch(nuggetsMadeSpicy);
+			nuggetsMadeSpicy.clear();
+			chefIsCooking=false;
+			}
 		
 		if (!(nuggetsMadeNormal.isEmpty())) {
-			normalNuggets.addToBeanch(nuggetsMadeNormal);}
+			normalNuggets.addToBeanch(nuggetsMadeNormal);
+			nuggetsMadeNormal.clear();
+			chefIsCooking=false;
 		}
-		nuggetsMadeSpicy.clear();
-		nuggetsMadeNormal.clear();
+		}
 	}
 	
 	public ArrayList<Food> cookeSpicy(int amount) {

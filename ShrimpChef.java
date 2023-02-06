@@ -16,10 +16,8 @@ private ArrayList<Food> shrimpMade;
 	public void checkBeanch(Beanch shrimp, int time) {
 		
 		ArrayList<JumboShrimp>shrimpArray = shrimp.getBeanch();
-		
-		for(JumboShrimp singelShrimp:shrimpArray) {
-		
-				normalAmount++;
+	
+				normalAmount = shrimpArray.size();
 			if (!(chefIsCooking)) {
 			if(normalAmount<8) {
 				shrimpMade = cookeNormal(8);
@@ -27,15 +25,16 @@ private ArrayList<Food> shrimpMade;
 				chefIsCooking=true;
 			}
 			}
-			}
 		
 		normalAmount=0;
-		if (time==(timeNeededToCooke+timeStartCooke))
-		if (!(shrimpMade.isEmpty())) 
+		if (time==(timeNeededToCooke+timeStartCooke)) {
+		if (!(shrimpMade.isEmpty())) {
 		shrimp.addToBeanch(shrimpMade);
 		shrimpMade.clear();
+		chefIsCooking = false;
+		}
+		}
 	}
-	
 	
 	public ArrayList<Food> cookeNormal(int amount) {
 		ArrayList<Food> shrimpMadeNormal = null;
