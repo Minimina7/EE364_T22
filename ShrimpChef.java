@@ -37,7 +37,7 @@ private ArrayList<Food> shrimpMade;
 	}
 	
 	public ArrayList<Food> cookeNormal(int amount) {
-		ArrayList<Food> shrimpMadeNormal = null;
+		ArrayList<Food> shrimpMadeNormal = new ArrayList<Food>();
 			for (int i=0;i<amount;i++) {
 				JumboShrimp singelShrimp = new JumboShrimp();
 				shrimpMadeNormal.add(singelShrimp);

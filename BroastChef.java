@@ -67,7 +67,7 @@ public void checkBeanch(Beanch spicyBroast,Beanch normalBroast, int time) {
 	}
 	
 	public ArrayList<Food> cookeNormal(int amount) {
-		ArrayList<Food> broastMadeNormal = null;
+		ArrayList<Food> broastMadeNormal = new ArrayList<Food>();
 			for (int i=0;i<amount;i++) {
 				Broast singelBroast = new Broast();
 				broastMadeNormal.add(singelBroast);

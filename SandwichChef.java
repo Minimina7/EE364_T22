@@ -120,7 +120,7 @@ public void checkBeanch(Beanch sandwich, int time) {
 	
 	//CH not SP
 	public ArrayList<Food> cookeChickenSandwichNormal(int amount) {
-		ArrayList<Food> chickenSandwichMadeNormal = null;
+		ArrayList<Food> chickenSandwichMadeNormal = new ArrayList<Food>();
 		for (int i=0;i<amount;i++) {
 			Sandwich singelSandwich = new Sandwich();
 			chickenSandwichMadeNormal.add(singelSandwich);

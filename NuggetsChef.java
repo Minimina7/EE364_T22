@@ -67,7 +67,7 @@ private ArrayList<Food> nuggetsMadeNormal;
 	}
 	
 	public ArrayList<Food> cookeNormal(int amount) {
-		ArrayList<Food> nuggetsMadeNormal = null;
+		ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>();
 			for (int i=0;i<amount;i++) {
 				Nuggets singelNuggets = new Nuggets();
 				nuggetsMadeNormal.add(singelNuggets);
