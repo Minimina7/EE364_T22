@@ -12,8 +12,8 @@ private int normalAmount;
 private int timeNeededToCooke;
 private int timeStartCooke;
 private boolean chefIsCooking;
-private ArrayList<Food> broastMadeSpicy;
-private ArrayList<Food> broastMadeNormal;
+private ArrayList<Food> broastMadeSpicy = new ArrayList<Food>();
+private ArrayList<Food> broastMadeNormal = new ArrayList<Food>();
 
 
 public void checkBeanch(Beanch spicyBroast,Beanch normalBroast, int time) {

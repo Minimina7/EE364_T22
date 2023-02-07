@@ -11,7 +11,7 @@ private int normalAmount;
 private int timeNeededToCooke;
 private int timeStartCooke;
 private boolean chefIsCooking;
-private ArrayList<Food> shrimpMade;
+private ArrayList<Food> shrimpMade = new ArrayList<Food>();
 
 	public void checkBeanch(Beanch shrimp, int time) {
 		
@@ -37,7 +37,7 @@ private ArrayList<Food> shrimpMade;
 	}
 	
 	public ArrayList<Food> cookeNormal(int amount) {
-		ArrayList<Food> shrimpMadeNormal = new ArrayList<Food>();
+		ArrayList<Food> shrimpMadeNormal = null;
 			for (int i=0;i<amount;i++) {
 				JumboShrimp singelShrimp = new JumboShrimp();
 				shrimpMadeNormal.add(singelShrimp);

@@ -12,8 +12,8 @@ private int normalAmount;
 private int timeNeededToCooke;
 private int timeStartCooke;
 private boolean chefIsCooking;
-private ArrayList<Food> nuggetsMadeSpicy;
-private ArrayList<Food> nuggetsMadeNormal;
+private ArrayList<Food> nuggetsMadeSpicy = new ArrayList<Food>();
+private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>();
 
 	public void checkBeanch(Beanch spicyNuggets,Beanch normalNuggets, int time) {
 		

@@ -15,11 +15,11 @@ private int normalAmountFish;
 private int timeNeededToCooke;
 private int timeStartCooke;
 private boolean chefIsCooking;
-private ArrayList<Food> chickenMadeSpicy;
-private ArrayList<Food> chickenMadeNormal;
-private ArrayList<Food> fishMadeSpicy;
-private ArrayList<Food> fishMadeNormal;
-private ArrayList<Food> specialSandwiches;
+private ArrayList<Food> chickenMadeSpicy = new ArrayList<Food>();
+private ArrayList<Food> chickenMadeNormal = new ArrayList<Food>();
+private ArrayList<Food> fishMadeSpicy = new ArrayList<Food>();
+private ArrayList<Food> fishMadeNormal = new ArrayList<Food>();
+private ArrayList<Food> specialSandwiches = new ArrayList<Food>();
 
 public void checkBeanch(Beanch sandwich, int time) {
 	
