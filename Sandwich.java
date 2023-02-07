@@ -1,14 +1,19 @@
 
 public class Sandwich extends Meal implements Spicable {
 
+	// Data Field
 	private boolean spicy;
 	private boolean chickenOrFish;
 	private boolean pickles = true;
 	private boolean garlic = true;
+	private boolean isitSpecial;
 	public static final String NAME = "Sandwich";
 	public static final int PREPARETIME = 5;
 	private int timeOnBeanch;
 
+	// methods
+
+	// update the quality of the sandwich
 	public void editQuality() {
 		timeOnBeanch += 1;
 		if (timeOnBeanch > 15)
@@ -16,30 +21,30 @@ public class Sandwich extends Meal implements Spicable {
 				setQuality(100 - (timeOnBeanch - 15));
 	}
 
-	public Sandwich() {
-	}
-
 	// ChickenOrFish
 	public void makeItFish() {
 		chickenOrFish = true;
 	}
 
-	public boolean isItChickenOrFish() {
-		return chickenOrFish;
+	// this method check if the sandwich equal or not.
+	public boolean equalTo(Sandwich comparedSandwich) {
+		if (spicy == comparedSandwich.isItSpicy() && chickenOrFish == comparedSandwich.isItChickenOrFish()
+				&& pickles == comparedSandwich.checkPickles() && garlic == comparedSandwich.checkGarlic()) {
+			return true;
+		} else
+			return false;
 	}
 
-	// Pickles
+	// Pickles and special
 	public void withoutPickles() {
 		pickles = false;
+		setIsitSpecial();
 	}
 
-	public boolean checkPickles() {
-		return pickles;
-	}
-
-	// Garlic
+	// Garlic and special
 	public void withoutGarlic() {
 		garlic = false;
+		setIsitSpecial();
 	}
 
 	public boolean checkGarlic() {
@@ -55,6 +60,22 @@ public class Sandwich extends Meal implements Spicable {
 			return true;
 		else
 			return false;
+	}
+
+	public boolean isIsitSpecial() {
+		return isitSpecial;
+	}
+
+	public void setIsitSpecial() {
+		this.isitSpecial = true;
+	}
+
+	public boolean isItChickenOrFish() {
+		return chickenOrFish;
+	}
+
+	public boolean checkPickles() {
+		return pickles;
 	}
 
 }

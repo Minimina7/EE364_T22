@@ -1,28 +1,55 @@
 import java.util.ArrayList;
-public class Beanch<E extends Food> {
 
-	private ArrayList< E > beanch = new ArrayList< E >();
-	
-	
-	public void addToBeanch(ArrayList< E > addedFood){
-		for (E Food:addedFood) {
-			beanch.add(Food);
+public class Bench<E extends Food> {
+
+    // Data Field
+	private ArrayList<E> bench = new ArrayList<E>();
+
+	// Methods
+
+	// add by array
+	public void addToBeanch(ArrayList<E> addedFood) {
+		for (E Food : addedFood) {
+			bench.add(Food);
 		}
 		addedFood.clear();
 	}
-	
-	public void removeFromBeanch(ArrayList< E > addedFood){
-		for (E Food:addedFood) {
-			beanch.remove(Food);
-		}
-		addedFood.clear();
-	}
-	
-	public int foodAmuont(){
-		return beanch.size();
+
+	// overload : add by element
+	public void addToBeanch(E addedFood) {
+		bench.add(addedFood);
 	}
 
-	public ArrayList<E> getBeanch() {
-		return beanch;
+	// remove by array
+	public void removeFromBeanch(ArrayList<E> removedFood) {
+		for (E Food : removedFood) {
+			bench.remove(Food);
+		}
+		removedFood.clear();
+	}
+
+	// overload: remove by element
+	public void removeFromBeanch(int index) {
+		bench.remove(index);
+	}
+
+	// bring the food from the bench
+	public Food getFood(int index) {
+		return bench.get(index);
+	}
+
+	// bring the array
+	public ArrayList<E> getBenchArray() {
+		return bench;
+	}
+
+	// bring the element in the idex
+	public E getBenchArray(int x) {
+		return bench.get(x);
+	}
+
+	// tell you how many meal in the bench
+	public int foodAmuont() {
+		return bench.size();
 	}
 }
