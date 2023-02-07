@@ -8,7 +8,7 @@ public class Bench<E extends Food> {
 	// Methods
 
 	// add by array
-	public void addToBeanch(ArrayList<E> addedFood) {
+	public void addToBench(ArrayList<E> addedFood) {
 		for (E Food : addedFood) {
 			bench.add(Food);
 		}
@@ -16,12 +16,12 @@ public class Bench<E extends Food> {
 	}
 
 	// overload : add by element
-	public void addToBeanch(E addedFood) {
+	public void addToBench(E addedFood) {
 		bench.add(addedFood);
 	}
 
 	// remove by array
-	public void removeFromBeanch(ArrayList<E> removedFood) {
+	public void removeFromBench(ArrayList<E> removedFood) {
 		for (E Food : removedFood) {
 			bench.remove(Food);
 		}
@@ -29,7 +29,7 @@ public class Bench<E extends Food> {
 	}
 
 	// overload: remove by element
-	public void removeFromBeanch(int index) {
+	public void removeFromBench(int index) {
 		bench.remove(index);
 	}
 
