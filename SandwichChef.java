@@ -19,6 +19,7 @@ private ArrayList<Food> chickenMadeSpicy;
 private ArrayList<Food> chickenMadeNormal;
 private ArrayList<Food> fishMadeSpicy;
 private ArrayList<Food> fishMadeNormal;
+private ArrayList<Food> specialSandwiches;
 
 public void checkBeanch(Beanch sandwich, int time) {
 	
@@ -171,7 +172,30 @@ public void checkBeanch(Beanch sandwich, int time) {
 		return specialSandwich;
 	}
 
-
+	public void cookeSpecialSandwiches(Beanch sandwich, ArrayList<Food> specialSandwiches, int time) {
+		
+		this.specialSandwiches.clear();
+		
+		for (int i=0;i<(specialSandwiches.size())-1;i++) {
+			Sandwich singelSandwich = (Sandwich)specialSandwiches.get(i);
+			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
+			this.specialSandwiches.add(specialSingelSandwich);
+		}
+		
+		if (!(chefIsCooking)) {
+			timeStartCooke = time;
+			chefIsCooking = true;
+		}
+		
+		
+		if (time==(timeNeededToCooke+timeStartCooke)) {
+			if (!(specialSandwiches.isEmpty())) {
+				sandwich.addToBeanch(specialSandwiches);
+				specialSandwiches.clear();
+			    chefIsCooking = false;}
+		}
+		
+	}
 
 
 
