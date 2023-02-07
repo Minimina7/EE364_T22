@@ -39,12 +39,12 @@ public class Bench<E extends Food> {
 	}
 
 	// bring the array
-	public ArrayList<E> getBenchArray() {
+	public ArrayList<E> getBench() {
 		return bench;
 	}
 
 	// bring the element in the idex
-	public E getBenchArray(int x) {
+	public E getBench(int x) {
 		return bench.get(x);
 	}
 
