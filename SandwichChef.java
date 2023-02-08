@@ -172,12 +172,12 @@ public void checkBeanch(Bench sandwich, int time) {
 		return specialSandwich;
 	}
 
-	public void cookeSpecialSandwiches(Bench sandwich, ArrayList<Food> specialSandwiches, int time) {
+	public void cookeSpecialSandwiches(Bench sandwich, ArrayList<Sandwich> specialSandwiches, int time) {
 		
 		this.specialSandwiches.clear();
 		
 		for (int i=0;i<(specialSandwiches.size())-1;i++) {
-			Sandwich singelSandwich = (Sandwich)specialSandwiches.get(i);
+			Sandwich singelSandwich = specialSandwiches.get(i);
 			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
 			this.specialSandwiches.add(specialSingelSandwich);
 		}
