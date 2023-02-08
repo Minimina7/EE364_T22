@@ -50,7 +50,8 @@ public class Customers {
 		return orderNumber;}//done
 
 	public void setOrderNumber(int orderNumber) {
-		this.orderNumber = orderNumber;}//done // from cashier
+		this.orderNumber = orderNumber;
+		customerOrder.setOrderNumber(orderNumber);}//done // from cashier
 
 	public int getWaitingTime() {
 		return waitingTime;}//done // from cashier
