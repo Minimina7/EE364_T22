@@ -176,7 +176,7 @@ public class Server {
 		while (numberOfFood != 0) {
 			if (mealBench.foodAmuont()>=1) {
 				submittedOrder.add(mealBench.getFood(0));
-				mealBench.removeFromBeanch(0);
+				mealBench.removeFromBench(0);
 				numberOfFood--;
 			} else
 				break;
@@ -194,7 +194,7 @@ public class Server {
 				Sandwich sandwich = SandwichBench.getBenchArray(j);
 				if (orderedSandwich.equalTo(sandwich)) {
 					submittedOrder.add(sandwich);
-					SandwichBench.removeFromBeanch(j);
+					SandwichBench.removeFromBench(j);
 					SandwichOrdered.remove(i);
 					numberOfSandwich--;
 					k = numberOfSandwich;
@@ -219,8 +219,8 @@ public class Server {
 	// this method check the IceCream order and prepare it to the customer
 	public int iceCreamOrder(int numberOfIceCream, Bench<IceCream> iceCreamBench) {
 		while (numberOfIceCream != 0) {
-			iceCreamBench.addToBeanch(new IceCream());// Make iceCream
-			iceCreamBench.removeFromBeanch(0); // Give the iceCream to the customer
+			iceCreamBench.addToBench(new IceCream());// Make iceCream
+			iceCreamBench.removeFromBench(0); // Give the iceCream to the customer
 			numberOfIceCream--;
 		}
 		return 0;
@@ -230,8 +230,8 @@ public class Server {
 	// this method check the drinks order and prepare it to the customer
 	public int drinkOrder(int numberOfDrink, Bench<Drinks> drinkBench) {
 		while (numberOfDrink != 0) {
-			drinkBench.addToBeanch(new Drinks());// to ensure that there are Drinks
-			drinkBench.removeFromBeanch(0);// Give the drink to the customer
+			drinkBench.addToBench(new Drinks());// to ensure that there are Drinks
+			drinkBench.removeFromBench(0);// Give the drink to the customer
 			numberOfDrink--;
 		}
 		return 0;
@@ -241,8 +241,8 @@ public class Server {
 	// this method check the corn order and prepare it to the customer
 		public int cornOrder(int numberOfCorn, Bench<Corn> cornBench) {
 			while (numberOfCorn != 0) {
-				cornBench.addToBeanch(new Corn());// make corn order
-				cornBench.removeFromBeanch(0);// give the corn to the customer
+				cornBench.addToBench(new Corn());// make corn order
+				cornBench.removeFromBench(0);// give the corn to the customer
 				numberOfCorn--;
 			}
 			return 0;

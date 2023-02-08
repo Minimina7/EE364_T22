@@ -16,10 +16,10 @@ private ArrayList<Food> broastMadeSpicy = new ArrayList<Food>();
 private ArrayList<Food> broastMadeNormal = new ArrayList<Food>();
 
 
-public void checkBeanch(Beanch spicyBroast,Beanch normalBroast, int time) {
+public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 	
-	ArrayList<Broast>spicyBroastArray = spicyBroast.getBeanch();
-	ArrayList<Broast>normalBroastArray = normalBroast.getBeanch();
+	ArrayList<Broast>spicyBroastArray = spicyBroast.getBench();
+	ArrayList<Broast>normalBroastArray = normalBroast.getBench();
 	
 			spicyAmount = spicyBroastArray.size();
 			if (!(chefIsCooking)) {
@@ -43,13 +43,13 @@ public void checkBeanch(Beanch spicyBroast,Beanch normalBroast, int time) {
 	normalAmount=0;
 	if (time==(timeNeededToCooke+timeStartCooke)) {
 	if (!(broastMadeSpicy.isEmpty())) {
-		spicyBroast.addToBeanch(broastMadeSpicy);
+		spicyBroast.addToBench(broastMadeSpicy);
 		broastMadeSpicy.clear();
 		chefIsCooking=false;
 	}
 	
 	if (!(broastMadeNormal.isEmpty())) {
-		normalBroast.addToBeanch(broastMadeNormal);
+		normalBroast.addToBench(broastMadeNormal);
 		broastMadeNormal.clear();
 		chefIsCooking=false;
 	}
