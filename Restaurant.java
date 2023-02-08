@@ -5,7 +5,62 @@ public class Restaurant {
 
 
 	public static void main(String[] args) {
+		// chefs creation
+		BroastChef broastChef = new BroastChef();
+		NuggetsChef nuggetsChef = new NuggetsChef();
+		SandwichChef sandwichChef = new SandwichChef();
+		ShrimpChef shrimpChef = new ShrimpChef();
+		// bench initialization
+		ArrayList<Food> startingBroast = broastChef.cookeNormal(8);
+		for (Food singelBroast : startingBroast) {
+			broast.addToBench((Broast) singelBroast);
+		}
 
+		ArrayList<Food> startingBroastSpicy = broastChef.cookeSpicy(8);
+		for (Food singelBroast : startingBroastSpicy) {
+			spicyBroast.addToBench((Broast) singelBroast);
+		}
+
+		ArrayList<Food> startingNuggets = nuggetsChef.cookeNormal(8);
+		for (Food singelNuggets : startingNuggets) {
+			nuggets.addToBench((Nuggets) singelNuggets);
+		}
+
+		ArrayList<Food> startingNuggetsSpicy = nuggetsChef.cookeSpicy(8);
+		for (Food singelNuggets : startingNuggetsSpicy) {
+			spicyNuggets.addToBench((Nuggets) singelNuggets);
+		}
+
+		ArrayList<Food> startingJumboShrimp = shrimpChef.cookeNormal(8);
+		for (Food singelJumboShrimp : startingJumboShrimp) {
+			jumboShrimp.addToBench((JumboShrimp) singelJumboShrimp);
+		}
+
+		ArrayList<Food> startingSandwichCN = sandwichChef.cookeChickenSandwichNormal(5);
+		for (Food singelSandwich : startingSandwichCN) {
+			sandwich.addToBench((Sandwich) singelSandwich);
+		}
+
+		ArrayList<Food> startingSandwichCS = sandwichChef.cookeChickenSandwichSpicy(5);
+		for (Food singelSandwich : startingSandwichCS) {
+			sandwich.addToBench((Sandwich) singelSandwich);
+		}
+
+		ArrayList<Food> startingSandwichFN = sandwichChef.cookeFishSandwichNormal(5);
+		for (Food singelSandwich : startingSandwichFN) {
+			sandwich.addToBench((Sandwich) singelSandwich);
+		}
+
+		ArrayList<Food> startingSandwichFS = sandwichChef.cookeFishSandwichSpicy(5);
+		for (Food singelSandwich : startingSandwichFS) {
+			sandwich.addToBench((Sandwich) singelSandwich);
+		}
+
+		// checkBeanch
+		broastChef.checkBeanch(spicyBroast, broast, time);
+		nuggetsChef.checkBeanch(spicyNuggets, nuggets, time);
+		shrimpChef.checkBeanch(jumboShrimp, time);
+		sandwichChef.checkBeanch(sandwich, time);
 		
 		int normalServerNumber = 0 ; // check
 		int  onlineServerNumber = 1000; //check
