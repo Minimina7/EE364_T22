@@ -13,8 +13,12 @@ private int normalAmountChicken;
 private int spicyAmountFish;
 private int normalAmountFish;
 private int timeNeededToCooke;
-private int timeStartCooke;
-private boolean chefIsCooking;
+private int timeStartCookeChicken;
+private boolean chefIsCookingChicken;
+private int timeStartCookeFish;
+private boolean chefIsCookingFish;
+private int timeStartCookeSpecial;
+private boolean chefIsCookingSpecial;
 private ArrayList<Food> chickenMadeSpicy = new ArrayList<Food>();
 private ArrayList<Food> chickenMadeNormal = new ArrayList<Food>();
 private ArrayList<Food> fishMadeSpicy = new ArrayList<Food>();
@@ -32,11 +36,11 @@ public void checkBeanch(Bench sandwich, int time) {
 		}
 	}
 
-	if (!(chefIsCooking)) {
-		if (normalAmountChicken < 5) {
+	if (!(chefIsCookingChicken)) {
+		if (normalAmountChicken <= 0) {
 			chickenMadeNormal = cookeChickenSandwichNormal(5);
-			timeStartCooke = time;
-			chefIsCooking = true;
+			timeStartCookeChicken = time;
+			chefIsCookingChicken = true;
 		}
 	}
 //////////////////////////////////////////////////////////chickenMadeSpicy:
@@ -46,11 +50,11 @@ public void checkBeanch(Bench sandwich, int time) {
 		}
 	}
 
-	if (!(chefIsCooking)) {
-		if (spicyAmountChicken < 5) {
+	if (!(chefIsCookingChicken)) {
+		if (spicyAmountChicken <= 0) {
 			chickenMadeSpicy = cookeChickenSandwichSpicy(5);
-			timeStartCooke = time;
-			chefIsCooking = true;
+			timeStartCookeChicken = time;
+			chefIsCookingChicken = true;
 		}
 	}
 //////////////////////////////////////////////////////////fishMadeNormal:		
@@ -60,11 +64,11 @@ public void checkBeanch(Bench sandwich, int time) {
 		}
 	}
 
-	if (!(chefIsCooking)) {
-		if (normalAmountFish < 5) {
+	if (!(chefIsCookingFish)) {
+		if (normalAmountFish <= 0) {
 			fishMadeNormal = cookeFishSandwichNormal(5);
-			timeStartCooke = time;
-			chefIsCooking = true;
+			timeStartCookeFish = time;
+			chefIsCookingFish = true;
 		}
 	}
 //////////////////////////////////////////////////////////fishMadeSpicy:	
@@ -74,11 +78,11 @@ public void checkBeanch(Bench sandwich, int time) {
 		}
 	}
 
-	if (!(chefIsCooking)) {
-		if (spicyAmountFish < 5) {
+	if (!(chefIsCookingFish)) {
+		if (spicyAmountFish <= 0) {
 			fishMadeSpicy = cookeFishSandwichSpicy(5);
-			timeStartCooke = time;
-			chefIsCooking = true;
+			timeStartCookeFish = time;
+			chefIsCookingFish = true;
 		}
 	}
 //////////////////////////////////////////////////////////
@@ -87,27 +91,28 @@ public void checkBeanch(Bench sandwich, int time) {
 	spicyAmountChicken=0;
 	normalAmountFish=0;
 	spicyAmountFish=0;
-	if (time==(timeNeededToCooke+timeStartCooke)) {
+	if (time==(timeNeededToCooke+timeStartCookeChicken)) {
 		
 	if (!(chickenMadeNormal.isEmpty())) {
 		sandwich.addToBench(chickenMadeNormal);
 	chickenMadeNormal.clear();
-	chefIsCooking = false;}
+	chefIsCookingChicken = false;}
 	
 	if (!(chickenMadeSpicy.isEmpty())) {
 		sandwich.addToBench(chickenMadeSpicy);
 		chickenMadeSpicy.clear();
-		chefIsCooking = false;}
-	
+		chefIsCookingChicken = false;}
+	}
+	if (time==(timeNeededToCooke+timeStartCookeFish)) {
 	if (!(fishMadeNormal.isEmpty())) {
 		sandwich.addToBench(fishMadeNormal);
 		fishMadeNormal.clear();
-		chefIsCooking = false;}
+		chefIsCookingFish = false;}
 	
 	if (!(fishMadeSpicy.isEmpty())) {
 		sandwich.addToBench(fishMadeSpicy);
 		fishMadeSpicy.clear();
-		chefIsCooking = false;}
+		chefIsCookingFish = false;}
 	}
 	
 }
@@ -131,7 +136,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	//CH yes SP
 	public ArrayList<Food> cookeChickenSandwichSpicy(int amount) {
 		ArrayList<Food> chickenSandwichMadeSpicy = cookeChickenSandwichNormal(amount) ;
-		for (int i=0;i<(chickenSandwichMadeSpicy.size())-1;i++) {
+		for (int i=0;i<=(chickenSandwichMadeSpicy.size())-1;i++) {
 			Sandwich singelSandwich = (Sandwich)chickenSandwichMadeSpicy.get(i);
 			singelSandwich.makeSpicy();
 		}
@@ -140,7 +145,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	//F not SP
 	public ArrayList<Food> cookeFishSandwichNormal(int amount) {
 		ArrayList<Food> fishSandwichMadeNormal = cookeChickenSandwichNormal(amount) ;
-		for (int i=0;i<(fishSandwichMadeNormal.size())-1;i++) {
+		for (int i=0;i<=(fishSandwichMadeNormal.size())-1;i++) {
 			Sandwich singelSandwich = (Sandwich)fishSandwichMadeNormal.get(i);
 			singelSandwich.makeItFish();
 		}
@@ -149,7 +154,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	//F yes SP
 	public ArrayList<Food> cookeFishSandwichSpicy(int amount) {
 		ArrayList<Food> fishSandwichMadeSpicy = cookeChickenSandwichNormal(amount) ;
-		for (int i=0;i<(fishSandwichMadeSpicy.size())-1;i++) {
+		for (int i=0;i<=(fishSandwichMadeSpicy.size())-1;i++) {
 			Sandwich singelSandwich = (Sandwich)fishSandwichMadeSpicy.get(i);
 			singelSandwich.makeItFish();
 			singelSandwich.makeSpicy();
@@ -176,23 +181,42 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		this.specialSandwiches.clear();
 		
-		for (int i=0;i<(specialSandwiches.size())-1;i++) {
+		for (int i=0;i<=(specialSandwiches.size())-1;i++) {
+
 			Sandwich singelSandwich = specialSandwiches.get(i);
 			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
 			this.specialSandwiches.add(specialSingelSandwich);
-		}
+			}
+//		System.out.println(this.specialSandwiches.size()+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+//		System.out.println(this.specialSandwiches+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+//		System.out.println(specialSandwiches.size()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//		System.out.println(specialSandwiches+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			//System.out.println("chi "+" moha "+"this sandwich with garlic"+specialSandwiches.get(i).checkGarlic()+"this sandwich with picels"+specialSandwiches.get(i).checkPickles() );
+//			if(specialSandwiches.size()>1) {
+//			if(!(singelSandwich.equalTo(specialSandwiches.get(i)))) {
+//			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
+//			this.specialSandwiches.add(specialSingelSandwich);}
+			//System.out.println("chi "+"tala"+"this sandwich with garlic"+specialSingelSandwich.checkGarlic()+"this sandwich with picels"+specialSingelSandwich.checkPickles() );
+//			}
+//			else
 		
-		if (!(chefIsCooking)) {
-			timeStartCooke = time;
-			chefIsCooking = true;
-		}
+		
+		if (!(this.specialSandwiches.isEmpty())) {
+		if (!(chefIsCookingSpecial)) {
+			timeStartCookeSpecial = time;
+			chefIsCookingSpecial = true;
+		}}
 		
 		
-		if (time==(timeNeededToCooke+timeStartCooke)) {
-			if (!(specialSandwiches.isEmpty())) {
-				sandwich.addToBench(specialSandwiches);
-				specialSandwiches.clear();
-			    chefIsCooking = false;}
+		if (time==(timeNeededToCooke+timeStartCookeSpecial)) {
+			if (!(this.specialSandwiches.isEmpty())) {
+				sandwich.addToBench(this.specialSandwiches);
+				
+				
+				System.out.println("\\\\\\\\\\\\special done///////////");
+				
+				this.specialSandwiches.clear();
+			    chefIsCookingSpecial = false;}
 		}
 		
 	}

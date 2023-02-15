@@ -45,14 +45,7 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>();
 			return shrimpMadeNormal;
 		}
 	
-	/*public void addToBeanch(ArrayList<Food> nuggetsBeanch , int time) {
-		if (time==(timeNeededToCooke+timeStartCooke)){
-			for (int i=0;i<nuggetsMade.size();i++) {
-				nuggetsBeanch.add(nuggetsBeanch.size(), nuggetsMade.get(i));
-			}
-			nuggetsMade.clear();
-		}
-	}*/
+
 	
 	public int getTimeNeededToCooke() {
 		return JumboShrimp.PREPARETIME;

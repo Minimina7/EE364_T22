@@ -24,7 +24,6 @@ public abstract class Worker {
 		this.customerOrder = customersAtservice.getCustomerOrder();
 	}
 
-	public abstract void serveCustomer(Customers customersAtservice); // abstract method to serve the customer
 
 	public Customers getServedCustomer() { // method that return the service to the customer
 		return customersAtservice;

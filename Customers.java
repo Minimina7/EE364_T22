@@ -1,15 +1,17 @@
+import java.util.ArrayList;
 
 public class Customers {
 	private boolean specialOrder; // determine if the customer have special order or not 
 	private boolean largeOrder; // determine if the customer have large order or not 
 	private boolean onlineOrder; // determine if the customer order online or not
 	private int numberOfOrders; // determine how many meal the customer want
-	private int orderNumber;// show the order number // given by cashier
+	private int orderNumber;// show the order number // given 
 	private int waitingTime;// show how much time the customer wait // from restaurant 
 	private Order customerOrder; // the order of the customer
 	private double customerRating; // the rating of the customer related to the food quality // from server
+	private ArrayList<Food> receivedOrder = new ArrayList<Food>();
 
-	
+
 	public Customers() {
 		Order customerOrder = new Order();
 		this.customerOrder = customerOrder;
@@ -56,7 +58,7 @@ public class Customers {
 	public int getWaitingTime() {
 		return waitingTime;}//done // from cashier
 
-	public void setWaitingTime(int waitingTime) {
+	public void setWaitingTime() {
 		this.waitingTime +=1;}//done // from restaurant 
 
 	public Order getCustomerOrder() {
@@ -70,4 +72,16 @@ public class Customers {
 
 	public void setCustomerRating(double customerRating) {
 		this.customerRating = customerRating;}//need more thinking // from server
+	
+	
+	public ArrayList<Food> getReceivedOrder() {
+		return receivedOrder;
+	}
+	
+	
+	public void setReceivedOrder(ArrayList<Food> receivedOrder) {
+		this.receivedOrder = receivedOrder;
+	}
+	
+	
 	}

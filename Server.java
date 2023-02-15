@@ -1,23 +1,28 @@
 import java.util.ArrayList;
 
-public class Server {
+public class Server extends Worker {
 
 	// Data field
+	
+	private String name ;
 	
 	// The order that the server serve it right now.
 	private Order currentOrder;
 	
-	//private boolean serverAvailable;
-	
+	// determine if the order is ready to submit or not. 
+	private boolean orderIsReady;	
+
 	// determine if there special order or not 
 	private boolean isThereSpecialOrder;
+	
 	// determine if there server take online order or not
 	private boolean serverTookOnlineNumber;
+	
 	// determine if there server take Normal order or not
 	private boolean serverTookNormalNumber;
 
 	// The order that the customer will take from the server.
-	private ArrayList<Food> submittedOrder = new ArrayList<Food>();//customers edit 
+	private ArrayList<Food> submittedOrder = new ArrayList<Food>();
 
 	// Food bench arrays
 	private Bench<Broast> broastArray;
@@ -40,20 +45,24 @@ public class Server {
 	private int drinks;
 	private int corn;
 	private int iceCream;
+	
+	// the number of the customer
+	private int customerOrderNumber;
 
 	// Some array that needed to accomplish the code
 	private ArrayList<Customers> customersArray;
-	private ArrayList<Sandwich> SandwichOrdered;
-	private ArrayList<Sandwich> SpecialSandwich; // goes to the chief to cooking it
+	private ArrayList<Sandwich> SandwichOrdered = new ArrayList<Sandwich>();
+	private ArrayList<Sandwich> SpecialSandwich = new ArrayList<Sandwich>(); // goes to the chief to cooking it
 
 
 	// Constructor
-	public Server(ArrayList<Customers> CustomersArray, Bench<Broast> Broast, Bench<Broast> spicyBroast,
+	public Server(String name ,ArrayList<Customers> CustomersArray, Bench<Broast> Broast, Bench<Broast> spicyBroast,
 			Bench<Nuggets> nuggets, Bench<Nuggets> spicyNuggets, Bench<JumboShrimp> jumboShrimp,
 			Bench<Sandwich> sandwich, Bench<Corn> corn, Bench<Drinks> drinks, Bench<IceCream> iceCream) {
 
 		// shallow copy of the customers array that created in the main loop
 		this.customersArray = CustomersArray;
+		this.name = name;
 
 		// shallow copy of the bench created in the main loop
 		broastArray = Broast;
@@ -75,59 +84,76 @@ public class Server {
 	// The goal of this method is determine whether the server will take the next order or not 
 	// If the sever didn't take the next order that mean the server didn't finish the previous one.
 	public void takeNextOrder(int onlineServerNumber, int normalServerNumber) {
+		//SpecialSandwich.clear();
 		setThereSpecialOrder(false);
+		boolean takenumber = true;
 
+		
 		// check if the server finish the previous order or not
 		if (isServerAvailable()) {
 			
 			// the server finish the previous order
 			// check for the online order
+			if (takenumber) {
 			for (Customers CustomerOrder : customersArray) {
 				if (CustomerOrder.getOrderNumber() == onlineServerNumber) {
 					currentOrder = CustomerOrder.getCustomerOrder();// take the customer order
+					customerOrderNumber = CustomerOrder.getOrderNumber();
+					//System.out.println(name +" take order online");
 					setServerTookOnlineNumber(true);
 					setServerTookNormalNumber(false);
 					submittedOrder.clear();
 					SpecialSandwich.clear();
 					readOrder();
+					takenumber = false;
 					break;
 				}
 			}
-			
+			}
 			// there is no online order
 			// check normal order
+			if (takenumber) {
 			for (Customers CustomerOrder : customersArray) {
-				if (CustomerOrder.getOrderNumber() == normalServerNumber) {
+				//System.out.println("CustomerOrder : "+CustomerOrder.getOrderNumber());
+				//System.out.println("mainupcounter : "+normalServerNumber);
+				if (CustomerOrder.getOrderNumber() == normalServerNumber ) {
 					currentOrder = CustomerOrder.getCustomerOrder();// take the customer order
+					customerOrderNumber = CustomerOrder.getOrderNumber();
+					//System.out.println(name +" take order normal");
 					setServerTookOnlineNumber(false);
 					setServerTookNormalNumber(true);
 					submittedOrder.clear();
 					SpecialSandwich.clear();
 					readOrder();
+					takenumber = false;
 					break;
 				}
 			}
 		}
-		
+		}
 		// the server didn't finish the previous order
 		else {
+			
 			setServerTookOnlineNumber(false);
 			setServerTookNormalNumber(false);
 			readOrder();
+			
 		}
 	}
 	
 
 	// the goal of this method is sorting the order and geting the number order of each food type
 	public void readOrder() {
-		sortOrder();
-		jumboShrimp = currentOrder.getNumberOfJumboShrimp();
-		sandwich = currentOrder.getNumberOfSandwich();
-		drinks = currentOrder.getNumberOfDrinks();
-		corn = currentOrder.getNumberOfCorn();
-		iceCream = currentOrder.getNumberOfIcecream();
-		prepareOrder();
-	}
+        if(isServerAvailable()) {
+        sortOrder();
+        jumboShrimp = currentOrder.getNumberOfJumboShrimp();
+        sandwich = currentOrder.getNumberOfSandwich();
+        drinks = currentOrder.getNumberOfDrinks();
+        corn = currentOrder.getNumberOfCorn();
+        iceCream = currentOrder.getNumberOfIcecream();
+        }
+        prepareOrder();
+    }
 	
 	
 	// the goal of this method is doing array of Sandwich Order of the customer
@@ -156,6 +182,8 @@ public class Server {
 
 	// prepare the order for the customer
 	public void prepareOrder() {
+		
+		System.out.println(name +" :    "+currentOrder.getSnacks()+ currentOrder.getMeals() +currentOrder.getisItSpecial() );
 		broast = mealOrder(broast, broastArray);
 		spicyBroast = mealOrder(spicyBroast, spicyBroastArray);
 		nuggets = mealOrder(nuggets, nuggetsArray);
@@ -166,6 +194,7 @@ public class Server {
 		drinks = drinkOrder(drinks, drinksArray);
 		iceCream = iceCreamOrder(iceCream, iceCreamArray);
 		updateQuality();
+		setOrderIsReady();
 
 	}
 
@@ -187,13 +216,18 @@ public class Server {
 	
 	// this method deal with sandwich order
 	public int sandwichOrder(int numberOfSandwich, Bench<Sandwich> SandwichBench) {
+		//SpecialSandwich.clear();
 		int k = numberOfSandwich;
 		for (int i = 0; i <= (SandwichOrdered.size() - 1); i++) {// look at customer sand
 			Sandwich orderedSandwich = SandwichOrdered.get(i);
+			
 			for (int j = 0; j <= (SandwichBench.foodAmuont() - 1); j++) {// search about the special sandwich
-				Sandwich sandwich = SandwichBench.getBenchArray(j);
+				//System.out.println("sersh "+"this sandwich with garlic"+orderedSandwich.checkGarlic()+"this sandwich with picels"+orderedSandwich.checkPickles() );
+
+				Sandwich sandwich = SandwichBench.getBench(j);
 				if (orderedSandwich.equalTo(sandwich)) {
 					submittedOrder.add(sandwich);
+					//System.out.println("addd "+"this sandwich with garlic"+orderedSandwich.checkGarlic()+"this sandwich with picels"+orderedSandwich.checkPickles() );
 					SandwichBench.removeFromBench(j);
 					SandwichOrdered.remove(i);
 					numberOfSandwich--;
@@ -206,9 +240,18 @@ public class Server {
 			}
 			if (k != numberOfSandwich) { // if the sandwich not exist in the bench 
 				if (orderedSandwich.isIsitSpecial()) { // if the sandwich special
-					setThereSpecialOrder(true);
-					SpecialSandwich.add(orderedSandwich);
-				} 
+                    setThereSpecialOrder(true);
+                    int check =0;
+                    for(Sandwich sandwich:SpecialSandwich) {
+                        if (!(sandwich.equalTo(orderedSandwich))) {
+                            check++;
+                        }
+                    }
+                    if(check==SpecialSandwich.size()) {
+                        SpecialSandwich.add(orderedSandwich);
+                    }
+
+                }
 				k = numberOfSandwich;
 			}
 		}
@@ -322,5 +365,23 @@ public class Server {
 	}
 	
 	
+	public boolean isOrderIsReady() {
+		return orderIsReady;
+	}
+	
+	
+	public void setOrderIsReady() {
+		orderIsReady = false;
+		if (isServerAvailable()) {
+			orderIsReady=true;
+		}
+	}
+	
+	
+	public int getCustomerOrderNumber() {
+		return customerOrderNumber;
+	}
+	
 }
+
 

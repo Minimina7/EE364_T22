@@ -10,8 +10,10 @@ public class NuggetsChef extends Chef{
 private int spicyAmount;
 private int normalAmount;
 private int timeNeededToCooke;
-private int timeStartCooke;
-private boolean chefIsCooking;
+private int timeStartCookeNormal;
+private boolean chefIsCookingNormal;
+private int timeStartCookeSpicy;
+private boolean chefIsCookingSpicy;
 private ArrayList<Food> nuggetsMadeSpicy = new ArrayList<Food>();
 private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>();
 
@@ -21,44 +23,44 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>();
 		ArrayList<Nuggets>normalNuggetsArray = normalNuggets.getBench();
 		
 				spicyAmount = spicyNuggetsArray.size();
-				if (!(chefIsCooking)) {
+				if (!(chefIsCookingSpicy)) {
 				if(spicyAmount<8) {
 					nuggetsMadeSpicy = cookeSpicy(8);
-					timeStartCooke=time;
-					chefIsCooking=true;
+					timeStartCookeSpicy=time;
+					chefIsCookingSpicy=true;
 				}
 				}
 		
 				normalAmount = normalNuggetsArray.size();
-			if (!(chefIsCooking)) {
+			if (!(chefIsCookingNormal)) {
 			if(normalAmount<8) {
 				nuggetsMadeNormal = cookeNormal(8);
-				timeStartCooke=time;
-				chefIsCooking=true;
+				timeStartCookeNormal=time;
+				chefIsCookingNormal=true;
 			}
 			}
 			
 		spicyAmount=0;
 		normalAmount=0;
 		
-		if (time==(timeNeededToCooke+timeStartCooke)) {
+		if (time==(timeNeededToCooke+timeStartCookeSpicy)) {
 		if (!(nuggetsMadeSpicy.isEmpty())) {
 			spicyNuggets.addToBench(nuggetsMadeSpicy);
 			nuggetsMadeSpicy.clear();
-			chefIsCooking=false;
-			}
-		
+			chefIsCookingSpicy=false;
+			}}
+		if (time==(timeNeededToCooke+timeStartCookeNormal)) {
 		if (!(nuggetsMadeNormal.isEmpty())) {
 			normalNuggets.addToBench(nuggetsMadeNormal);
 			nuggetsMadeNormal.clear();
-			chefIsCooking=false;
+			chefIsCookingNormal=false;
 		}
 		}
 	}
 	
 	public ArrayList<Food> cookeSpicy(int amount) {
 		ArrayList<Food> nuggetsMadeSpicy = cookeNormal(amount);
-		for(int i=0; i < (nuggetsMadeSpicy.size())-1;i++) {
+		for(int i=0; i <= (nuggetsMadeSpicy.size())-1;i++) {
 			Nuggets singelNuggets = (Nuggets)nuggetsMadeSpicy.get(i);
 			singelNuggets.makeSpicy();
 		}
@@ -75,14 +77,6 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>();
 			return nuggetsMadeNormal;
 		}
 	
-	/*public void addToBeanch(ArrayList<Food> nuggetsBeanch , int time) {
-		if (time==(timeNeededToCooke+timeStartCooke)){
-			for (int i=0;i<nuggetsMade.size();i++) {
-				nuggetsBeanch.add(nuggetsBeanch.size(), nuggetsMade.get(i));
-			}
-			nuggetsMade.clear();
-		}
-	}*/
 	
 	public int getTimeNeededToCooke() {
 		return Nuggets.PREPARETIME;

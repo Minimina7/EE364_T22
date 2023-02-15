@@ -1,6 +1,7 @@
 public class Cashier extends Worker{
 
-    private int OrderCounter = 1;
+    private int normalOrderCounter = 1;
+    private int onlineOrderCounter = 1000;
 
 // inside
 
@@ -8,12 +9,12 @@ public class Cashier extends Worker{
      setCustomerAndCustomerOrder(customersAtservice);
      
      if(customersAtservice.isOnlineOrder()) {
-         setOrderNumber(OrderCounter+1000);
-         OrderCounter++;
+         setOrderNumber(onlineOrderCounter);
+         onlineOrderCounter++;
      }
      else {
-         setOrderNumber(OrderCounter);
-         OrderCounter++; 
+         setOrderNumber(normalOrderCounter);
+         normalOrderCounter++; 
      }
 }
    
