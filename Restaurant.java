@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Restaurant {
@@ -171,7 +172,7 @@ public class Restaurant {
 				System.out.println("\\\\\\\\\\\\\\\\ min:  " + min + " ////////\n");
 
 				// random number to determine if customers will come or not
-				double randomNumber = Restaurant.getRandom(0, 100);
+				double randomNumber = getRandom(0, 100);
 				System.out.println("((((((((((((((( ramdom: " + randomNumber + "))))))))))))))))))\n");
 
 				// calculate customers enter probability
@@ -437,4 +438,9 @@ public class Restaurant {
 		int[] values = { numberOfEntered1, numberOfEntered2 };
 		return values;
 	}
+	
+	public static int getRandom(int firstNumber, int secondNumber) {
+		 Random randomNumber = new Random();
+		 int random = randomNumber.nextInt(secondNumber)+ firstNumber;
+		 return random;}
 }
