@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class aa2 {
+public class Restaurant {
 
 	public static void main(String[] args) {
 
