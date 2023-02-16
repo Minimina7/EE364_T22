@@ -356,6 +356,8 @@ public class Server extends Worker {
 	
 	// this method pass the submitted order
 	public ArrayList<Food> getSubmittedOrder() {
+		setServerTookOnlineNumber(false);
+		setServerTookNormalNumber(false);
 		return submittedOrder;
 	}
 	
