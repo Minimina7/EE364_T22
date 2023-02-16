@@ -37,7 +37,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingChicken)) {
-		if (normalAmountChicken <= 0) {
+		if (normalAmountChicken <= 1) {
 			chickenMadeNormal = cookeChickenSandwichNormal(5);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
@@ -51,7 +51,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingChicken)) {
-		if (spicyAmountChicken <= 0) {
+		if (spicyAmountChicken <= 1) {
 			chickenMadeSpicy = cookeChickenSandwichSpicy(5);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
@@ -65,7 +65,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingFish)) {
-		if (normalAmountFish <= 0) {
+		if (normalAmountFish <= 1) {
 			fishMadeNormal = cookeFishSandwichNormal(5);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
@@ -79,7 +79,7 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingFish)) {
-		if (spicyAmountFish <= 0) {
+		if (spicyAmountFish <= 1) {
 			fishMadeSpicy = cookeFishSandwichSpicy(5);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
