@@ -180,62 +180,63 @@ public class Restaurant {
 				System.out.println(EnterProbability);
 
 				if (randomNumber <= EnterProbability) {
+					if (randomNumber <= EnterProbability * 0.80) {
+						System.out.println("\n--------------probability------------");
+						System.out.println(randomNumber);
+						System.out.print(0 + " - ");
+						System.out.println(EnterProbability * 0.80);
+						System.out.println("one custmer entered\n");
+						System.out.println("--------------probability------------\n");
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						numberOfCustomersInThisHour--;
 
-					System.out.println("--------------probability------------");
-					System.out.println(randomNumber);
-					System.out.print(0 + " - ");
-					System.out.println(EnterProbability * 0.80);
-					System.out.println("--------------probability------------");
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					numberOfCustomersInThisHour--;
-
-				} else if (randomNumber <= EnterProbability * 0.95) {
-					System.out.println("--------------probability------------");
-					System.out.println(randomNumber);
-					System.out.print(EnterProbability * 0.80 + " - ");
-					System.out.println(EnterProbability * 0.95);
-					System.out.println("--------------probability------------");
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					numberOfCustomersInThisHour--;
-					System.out.println("cus enter" + ++cus);
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-				} else {
-					System.out.println("--------------probability------------");
-					System.out.println(randomNumber);
-					System.out.print(EnterProbability * 0.95 + " - ");
-					System.out.println(EnterProbability);
-					System.out.println("--------------probability------------");
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					numberOfCustomersInThisHour--;
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					numberOfCustomersInThisHour--;
-					onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					numberOfCustomersInThisHour--;
+					} else if (randomNumber <= EnterProbability * 0.95) {
+						System.out.println("\n--------------probability------------");
+						System.out.println(randomNumber);
+						System.out.print(EnterProbability * 0.80 + " - ");
+						System.out.println(EnterProbability * 0.95);
+						System.out.println("two custmer entered\n");
+						System.out.println("--------------probability------------\n");
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						numberOfCustomersInThisHour--;
+						System.out.println("cus enter" + ++cus);
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+					} else {
+						System.out.println("\n--------------probability------------");
+						System.out.println(randomNumber);
+						System.out.print(EnterProbability * 0.95 + " - ");
+						System.out.println(EnterProbability);
+						System.out.println("three custmer entered\n");
+						System.out.println("--------------probability------------\n");
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						numberOfCustomersInThisHour--;
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						numberOfCustomersInThisHour--;
+						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						numberOfCustomersInThisHour--;
+					}
 				}
-				
+				System.out.println("\nserveronly number in the resturant "+(serverCustomers.size()));
+				System.out.println("cashironly number in the resturant "+(+cashierCustomers.size()));
+				System.out.println("total number in the resturant "+(serverCustomers.size()+cashierCustomers.size())+"\n");
 				// chef check Bench 
 				broastChef.checkBeanch(spicyBroast, broast, totalTimeInMinute);
 				nuggetsChef.checkBeanch(spicyNuggets, nuggets, totalTimeInMinute);
 				shrimpChef.checkBeanch(jumboShrimp, totalTimeInMinute);
 				sandwichChef.checkBeanch(sandwich, totalTimeInMinute);
 				
-				// make cashier work
-				if (!(cashierCustomers.isEmpty())) {
-					Customers cachierCustomer = cashierCustomers.get(0);
-					cashier.serveCustomer(cachierCustomer);
-					serverCustomers.add(cachierCustomer);
-					cashierCustomers.remove(0);
-				}
-
+				
 				// make the server work
 				for (Server server: servers ) {
-						
+					System.out.println("\nnormalServerNumber  :"+normalServerNumber);	
 					server.takeNextOrder(onlineServerNumber, normalServerNumber);
 					if (server.isServerTookOnlineNumber()) {
 						onlineServerNumber+=1;
+						System.out.println("\n haaaaaahy tra srlha incrment onlyn");	
 					}
 					if (server.isServerTookNormalNumber()) {
 						normalServerNumber+=1;
+						System.out.println("\n haaaaaahy tra srlha incrment normal");
 					}
 					if (server.isThereSpecialOrder()) { // server need a sandwich not in the sandwiches bench
 						ArrayList<Sandwich> sandwiches = server.getSpecialSandwich();
@@ -275,6 +276,14 @@ public class Restaurant {
 						}
 					}
 
+				}
+				
+				// make cashier work
+				if (!(cashierCustomers.isEmpty())) {
+					Customers cachierCustomer = cashierCustomers.get(0);
+					cashier.serveCustomer(cachierCustomer);
+					serverCustomers.add(cachierCustomer);
+					cashierCustomers.remove(0);
 				}
 				
 				// time effect
@@ -338,7 +347,7 @@ public class Restaurant {
 				System.out.println("jumboShrimp = " + jumboShrimp.foodAmuont());
 				System.out.println(" =============================================== ");
 				System.out.println("((((((((((((((((((((((((((((((((((( "+ totalTimeInMinute + " )))))))))))))))))))))))))))))))))))");
-
+				System.out.println("in the rstrunt now"+serverCustomers.size());
 			} // end minute loop
 
 			System.out.println("[[[[[[[[[[[[[ cusnum: " + cus + " ]]]]]]]]]]]]\n");
