@@ -213,7 +213,7 @@ public void checkBeanch(Bench sandwich, int time) {
 				sandwich.addToBench(this.specialSandwiches);
 				
 				
-				System.out.println("\\\\\\\\\\\\special done///////////");
+				
 				
 				this.specialSandwiches.clear();
 			    chefIsCookingSpecial = false;}
