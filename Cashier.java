@@ -17,21 +17,5 @@ public class Cashier extends Worker{
      }
 }
    
-/* //outside
-  
-public  void serveCustomer(Customers customersAtservice,int OrderCounter){
- 
-  if(customersAtservice.isOnlineOrder()) {
-         customersAtservice.setOrderNumber(OrderCounter+1000);
-         OrderCounter++;
-     }
-     else {
-         customersAtservice.setOrderNumber(OrderCounter);
-         OrderCounter++; 
-     }
-  
-}
-
-*/ 
 
 }
