@@ -17,7 +17,8 @@ public class Restaurant {
 		int numberOfServedCustomers =0; // needed
 		double totalQualityAverage= 0; // needed
 		int totalWaitingTime = 0; // needed
-
+		
+		
 		System.out.println("Note:\nThe restaurant is not designed to handle more than 650 customers");
 		System.out.println("For more accuracy, we recommend the difference to be at least 50");
 		System.out.println("Enter the expected range of customers\n");
@@ -158,12 +159,24 @@ public class Restaurant {
 		/////////////////////////////////////////////////////// ////////////////////////////////////////////////
 
 		// Hour loop
-		for (int Hour = 1; Hour <= 16; Hour++) {
+		for (int Hour = 1; Hour <= 17; Hour++) {
 			System.out.println("[[[[[[[[[[[[[ Hour: " + (Hour) + " ]]]]]]]]]]]]\n");
-
-			int numberOfCustomersInThisHour = (numberOfCustomerPerHour[Hour - 1]);
+			int numberOfCustomersInThisHour =0;
+			if (Hour <= 16) {
+			numberOfCustomersInThisHour = (numberOfCustomerPerHour[Hour - 1]);
 			System.out.println("Hour: " + Hour + "\nnumber of customer: " + numberOfCustomersInThisHour);
-
+			}
+			else {
+				System.out.println("------------------------------------------------------------------------");
+				System.out.println("------------------------------------------------------------------------");
+				System.out.println("------------------- THE RESTAURANT IS ABOUT TO CLOSE -------------------");
+				System.out.println("---------------- NO CUSTOMERS WILL ENTER THE RESTAURANT ----------------");
+				System.out.println("------------------------------------------------------------------------");
+				System.out.println("------------------------------------------------------------------------");
+				
+			}
+			
+			
 			///////////////////////////////////////////////////// inner loop [minute]
 			///////////////////////////////////////////////////// //////////////////////////////////////////////
 
@@ -171,51 +184,55 @@ public class Restaurant {
 			for (int min = 0; min < 60; min++) {
 				System.out.println("\\\\\\\\\\\\\\\\ min:  " + min + " ////////\n");
 
-				// random number to determine if customers will come or not
-				double randomNumber = getRandom(0, 100);
-				System.out.println("((((((((((((((( ramdom: " + randomNumber + "))))))))))))))))))\n");
+				if (Hour <= 16) {
+					// random number to determine if customers will come or not
+					double randomNumber = getRandom(0, 100);
+					System.out.println("((((((((((((((( ramdom: " + randomNumber + "))))))))))))))))))\n");
 
-				// calculate customers enter probability
-				double EnterProbability = ((double) numberOfCustomersInThisHour / (60 - min)) * 100;
-				System.out.println(EnterProbability);
+					// calculate customers enter probability
+					double EnterProbability = ((double) numberOfCustomersInThisHour / (60 - min)) * 100;
+					System.out.println(EnterProbability);
 
-				if (randomNumber <= EnterProbability) {
-					if (randomNumber <= EnterProbability * 0.80) {
-						System.out.println("\n--------------probability------------");
-						System.out.println(randomNumber);
-						System.out.print(0 + " - ");
-						System.out.println(EnterProbability * 0.80);
-						System.out.println("one custmer entered\n");
-						System.out.println("--------------probability------------\n");
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-						numberOfCustomersInThisHour--;
+					if (randomNumber <= EnterProbability) {
+						if (randomNumber <= EnterProbability * 0.80) {
+							System.out.println("\n--------------probability------------");
+							System.out.println(randomNumber);
+							System.out.print(0 + " - ");
+							System.out.println(EnterProbability * 0.80);
+							System.out.println("one custmer entered\n");
+							System.out.println("--------------probability------------\n");
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+							numberOfCustomersInThisHour--;
 
-					} else if (randomNumber <= EnterProbability * 0.95) {
-						System.out.println("\n--------------probability------------");
-						System.out.println(randomNumber);
-						System.out.print(EnterProbability * 0.80 + " - ");
-						System.out.println(EnterProbability * 0.95);
-						System.out.println("two custmer entered\n");
-						System.out.println("--------------probability------------\n");
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-						numberOfCustomersInThisHour--;
-						System.out.println("cus enter" + ++cus);
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-					} else {
-						System.out.println("\n--------------probability------------");
-						System.out.println(randomNumber);
-						System.out.print(EnterProbability * 0.95 + " - ");
-						System.out.println(EnterProbability);
-						System.out.println("three custmer entered\n");
-						System.out.println("--------------probability------------\n");
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-						numberOfCustomersInThisHour--;
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-						numberOfCustomersInThisHour--;
-						onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
-						numberOfCustomersInThisHour--;
+						} else if (randomNumber <= EnterProbability * 0.95) {
+							System.out.println("\n--------------probability------------");
+							System.out.println(randomNumber);
+							System.out.print(EnterProbability * 0.80 + " - ");
+							System.out.println(EnterProbability * 0.95);
+							System.out.println("two custmer entered\n");
+							System.out.println("--------------probability------------\n");
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+							numberOfCustomersInThisHour--;
+							System.out.println("cus enter" + ++cus);
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+						} else {
+							System.out.println("\n--------------probability------------");
+							System.out.println(randomNumber);
+							System.out.print(EnterProbability * 0.95 + " - ");
+							System.out.println(EnterProbability);
+							System.out.println("three custmer entered\n");
+							System.out.println("--------------probability------------\n");
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+							numberOfCustomersInThisHour--;
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+							numberOfCustomersInThisHour--;
+							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
+							numberOfCustomersInThisHour--;
+						}
 					}
 				}
+				
+				
 				System.out.println("\nserveronly number in the resturant "+(serverCustomers.size()));
 				System.out.println("cashironly number in the resturant "+(+cashierCustomers.size()));
 				System.out.println("total number in the resturant "+(serverCustomers.size()+cashierCustomers.size())+"\n");
@@ -335,9 +352,9 @@ public class Restaurant {
 				}
 				
 				totalTimeInMinute++;
-
-				System.out.println("avr = " + totalQualityAverage/numberOfServedCustomers);
-				System.out.println("Time = " + totalWaitingTime);
+				
+				System.out.println("avr = " + ((numberOfServedCustomers > 0) ? totalQualityAverage/numberOfServedCustomers : 0));
+				System.out.println("Time = " + ((numberOfServedCustomers> 0) ? totalWaitingTime/numberOfServedCustomers : 0));
 				System.out.println(" ====================Benches===================== ");
 				System.out.println("broast = " + broast.foodAmuont());
 				System.out.println("spicyBroast = " + spicyBroast.foodAmuont());
