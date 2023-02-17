@@ -2,17 +2,19 @@ import java.util.ArrayList;
 
 public class ShrimpChef extends Chef{
 	
+private int normalAmount; // instance variable that save the amount of normal shrimp
+private int timeNeededToCooke; // 10 minutes needs to cooke shrimp
+private int timeStartCooke; // the time that the chef start cooking shrimp
+private boolean chefIsCooking; // instance variable to check is the chef is cooking or not
+private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that save shrimp made 
+
+    // constructor
 	public ShrimpChef() {
 		JumboShrimp shrimp = new JumboShrimp();
 		timeNeededToCooke = shrimp.PREPARETIME;
 	}
-	
-private int normalAmount;
-private int timeNeededToCooke;
-private int timeStartCooke;
-private boolean chefIsCooking;
-private ArrayList<Food> shrimpMade = new ArrayList<Food>();
 
+	// Method that add shrimp to the beanch if needed
 	public void checkBeanch(Bench shrimp, int time) {
 		
 		ArrayList<JumboShrimp>shrimpArray = shrimp.getBench();
@@ -36,6 +38,7 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>();
 		}
 	}
 	
+	// To cooke normal shrimp
 	public ArrayList<Food> cookeNormal(int amount) {
 		ArrayList<Food> shrimpMadeNormal = new ArrayList<Food>();
 			for (int i=0;i<amount;i++) {
@@ -44,8 +47,6 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>();
 			}
 			return shrimpMadeNormal;
 		}
-	
-
 	
 	public int getTimeNeededToCooke() {
 		return JumboShrimp.PREPARETIME;

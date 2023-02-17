@@ -2,16 +2,10 @@ import java.util.ArrayList;
 
 public abstract class Chef {
 
-	private int amountMade;
-	//private int timeNeedsToCooke;
-	private ArrayList<Meal> spicymeals;
-	private ArrayList<Meal> normalmeals;
-	
-	//public abstract void getBeanch(ArrayList<Meal> meals, int time);
-		
-	
-	
-	
+	private int amountMade; // instance variable that save the amount made 
+	private ArrayList<Meal> spicymeals; // ArrayList has all the spicy meals
+	private ArrayList<Meal> normalmeals; // ArrayList has all the normal meals
+
 	public ArrayList<Meal> getSpicymeals() {
 		return spicymeals;
 	}
@@ -31,21 +25,20 @@ public abstract class Chef {
 		this.normalmeals = normalmeals;
 	}
 
-
-	//public abstract ArrayList<Food> cookeSpicy(int amount);
 	public abstract ArrayList<Food> cookeNormal(int amount);
-	//public abstract void checkBeanch(Beanch food, int time);
 
 	public int getAmountMade() {
 		return amountMade;
 	}
 	
-	public void setSpicyMeals(Meal meals) { // method to add meals in the arraylist
+	 // method to add meals in the ArrayList
+	public void setSpicyMeals(Meal meals) {
 		this.spicymeals.add(meals);
 		setAmountMade();
 	}
 	
-	public void setNormalMeals(Meal meals) { // method to add meals in the arraylist
+	// method to add meals in the ArrayList
+	public void setNormalMeals(Meal meals) { 
 		this.normalmeals.add(meals);
 		setAmountMade();
 	}
@@ -58,8 +51,6 @@ public abstract class Chef {
 	public void setAmountMade(int amountMade) {
 	    this.amountMade=amountMade;
 	}
-	
-	//public abstract void addToBeanch(ArrayList<Food> foodBeanch , int time);
 	
 	public abstract int getTimeNeededToCooke();
 }
