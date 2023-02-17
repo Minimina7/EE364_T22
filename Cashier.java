@@ -1,18 +1,17 @@
 public class Cashier extends Worker{
 
-    private int normalOrderCounter = 1;
-    private int onlineOrderCounter = 1000;
+    private int normalOrderCounter = 1; // instance variable that save the order counter
+    private int onlineOrderCounter = 1000; // instance variable that save the order counter for online orders
 
-// inside
 
- public  void serveCustomer(Customers customersAtservice){
+ public  void serveCustomer(Customers customersAtservice){ // method to get the order from the customer and give it a number
      setCustomerAndCustomerOrder(customersAtservice);
      
-     if(customersAtservice.isOnlineOrder()) {
+     if(customersAtservice.isOnlineOrder()) { // if the order is online set the order number from onlineOrderCounter variable 
          setOrderNumber(onlineOrderCounter);
          onlineOrderCounter++;
      }
-     else {
+     else { // if the order is not online set the order number from normalOrderCounter variable 
          setOrderNumber(normalOrderCounter);
          normalOrderCounter++; 
      }
