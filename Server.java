@@ -99,7 +99,6 @@ public class Server extends Worker {
 				if (CustomerOrder.getOrderNumber() == onlineServerNumber) {
 					currentOrder = CustomerOrder.getCustomerOrder();// take the customer order
 					customerOrderNumber = CustomerOrder.getOrderNumber();
-					//System.out.println(name +" take order online");
 					setServerTookOnlineNumber(true);
 					setServerTookNormalNumber(false);
 					submittedOrder.clear();
@@ -114,12 +113,9 @@ public class Server extends Worker {
 			// check normal order
 			if (takenumber) {
 			for (Customers CustomerOrder : customersArray) {
-				//System.out.println("CustomerOrder : "+CustomerOrder.getOrderNumber());
-				//System.out.println("mainupcounter : "+normalServerNumber);
 				if (CustomerOrder.getOrderNumber() == normalServerNumber ) {
 					currentOrder = CustomerOrder.getCustomerOrder();// take the customer order
 					customerOrderNumber = CustomerOrder.getOrderNumber();
-					//System.out.println(name +" take order normal");
 					setServerTookOnlineNumber(false);
 					setServerTookNormalNumber(true);
 					submittedOrder.clear();
@@ -222,12 +218,10 @@ public class Server extends Worker {
 			Sandwich orderedSandwich = SandwichOrdered.get(i);
 			
 			for (int j = 0; j <= (SandwichBench.foodAmuont() - 1); j++) {// search about the special sandwich
-				//System.out.println("sersh "+"this sandwich with garlic"+orderedSandwich.checkGarlic()+"this sandwich with picels"+orderedSandwich.checkPickles() );
-
+				
 				Sandwich sandwich = SandwichBench.getBench(j);
 				if (orderedSandwich.equalTo(sandwich)) {
 					submittedOrder.add(sandwich);
-					//System.out.println("addd "+"this sandwich with garlic"+orderedSandwich.checkGarlic()+"this sandwich with picels"+orderedSandwich.checkPickles() );
 					SandwichBench.removeFromBench(j);
 					SandwichOrdered.remove(i);
 					numberOfSandwich--;
@@ -262,7 +256,9 @@ public class Server extends Worker {
 	// this method check the IceCream order and prepare it to the customer
 	public int iceCreamOrder(int numberOfIceCream, Bench<IceCream> iceCreamBench) {
 		while (numberOfIceCream != 0) {
-			iceCreamBench.addToBench(new IceCream());// Make iceCream
+			IceCream icecream = new IceCream();
+			iceCreamBench.addToBench(icecream);// Make iceCream
+			submittedOrder.add(icecream);// prepare it for the customer
 			iceCreamBench.removeFromBench(0); // Give the iceCream to the customer
 			numberOfIceCream--;
 		}
@@ -273,7 +269,9 @@ public class Server extends Worker {
 	// this method check the drinks order and prepare it to the customer
 	public int drinkOrder(int numberOfDrink, Bench<Drinks> drinkBench) {
 		while (numberOfDrink != 0) {
-			drinkBench.addToBench(new Drinks());// to ensure that there are Drinks
+			Drinks drink = new Drinks();
+			drinkBench.addToBench(drink);// to ensure that there are Drinks
+			submittedOrder.add(drink);// prepare it for the customer
 			drinkBench.removeFromBench(0);// Give the drink to the customer
 			numberOfDrink--;
 		}
@@ -284,7 +282,9 @@ public class Server extends Worker {
 	// this method check the corn order and prepare it to the customer
 		public int cornOrder(int numberOfCorn, Bench<Corn> cornBench) {
 			while (numberOfCorn != 0) {
-				cornBench.addToBench(new Corn());// make corn order
+				Corn corn = new Corn();
+				cornBench.addToBench(corn);// make corn order
+				submittedOrder.add(corn);// prepare it for the customer
 				cornBench.removeFromBench(0);// give the corn to the customer
 				numberOfCorn--;
 			}
