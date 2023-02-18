@@ -21,8 +21,8 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 	
 				normalAmount = shrimpArray.size();
 			if (!(chefIsCooking)) {
-			if(normalAmount<8) {
-				shrimpMade = cookeNormal(8);
+			if(normalAmount<3) {
+				shrimpMade = cookeNormal(6);
 				timeStartCooke=time;
 				chefIsCooking=true;
 			}
@@ -50,6 +50,13 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 	
 	public int getTimeNeededToCooke() {
 		return JumboShrimp.PREPARETIME;
+	}
+	
+	public boolean isChefCooking() {
+		if(chefIsCooking) 
+			return true;	
+		
+		return false;
 	}
 	
 }

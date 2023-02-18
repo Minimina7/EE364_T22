@@ -53,6 +53,7 @@ public abstract class Chef {
 	}
 	
 	public abstract int getTimeNeededToCooke();
+	public abstract boolean isChefCooking();
 }
 
 

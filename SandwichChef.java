@@ -37,8 +37,8 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingChicken)) {
-		if (normalAmountChicken <= 1) {
-			chickenMadeNormal = cookeChickenSandwichNormal(5);
+		if (normalAmountChicken <= 2) {
+			chickenMadeNormal = cookeChickenSandwichNormal(4);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
 		}
@@ -51,8 +51,8 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingChicken)) {
-		if (spicyAmountChicken <= 1) {
-			chickenMadeSpicy = cookeChickenSandwichSpicy(5);
+		if (spicyAmountChicken <= 2) {
+			chickenMadeSpicy = cookeChickenSandwichSpicy(4);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
 		}
@@ -65,8 +65,8 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingFish)) {
-		if (normalAmountFish <= 1) {
-			fishMadeNormal = cookeFishSandwichNormal(5);
+		if (normalAmountFish <= 2) {
+			fishMadeNormal = cookeFishSandwichNormal(4);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
 		}
@@ -79,8 +79,8 @@ public void checkBeanch(Bench sandwich, int time) {
 	}
 
 	if (!(chefIsCookingFish)) {
-		if (spicyAmountFish <= 1) {
-			fishMadeSpicy = cookeFishSandwichSpicy(5);
+		if (spicyAmountFish <= 2) {
+			fishMadeSpicy = cookeFishSandwichSpicy(4);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
 		}
@@ -221,7 +221,12 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 	}
 
-
+	public boolean isChefCooking() {
+		if(chefIsCookingChicken|| chefIsCookingFish ||chefIsCookingSpecial) 
+			return true;	
+		
+		return false;
+	}
 
 	@Override
 	public ArrayList<Food> cookeNormal(int amount) {
