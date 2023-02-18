@@ -4,13 +4,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Restaurant {
-
+	public static ArrayList<Integer> customersHourlyWaitingTimeAverage = new ArrayList<Integer>();
+	public static ArrayList<Double> customersHourlyQualityAverag = new ArrayList<Double>();
+	public static ArrayList<Customers> allCustomersServed = new ArrayList<Customers>();
 	public static void main(String[] args) {
 		while (true) {
 ////////////////////////////////////////////////////////  before loop  ///////////////////////////////////////////////////////////
 
 		// variables
-		int onlinCashier = 1000; 
+		int onlinCashier = 1000;
 		int totalTimeInMinute=0;
 		int normalServerNumber = 1 ;
 		int  onlineServerNumber = 1000; 
@@ -53,11 +55,6 @@ public class Restaurant {
 		// divided by 2 to get the average, 16 to get the average per Hour
 		double coustomerAvreage = (((double) sumOfRangeBound) / (2 * 16));
 
-//		System.out.println("The avrage ia : " + coustomerAvreage); //////////////////////////////////////////////// not
-																	//////////////////////////////////////////////// important
-//		System.out.println("coustommer per H");/////////////////////////////////////////////////////////////////// not
-												/////////////////////////////////////////////////////////////////// important
-
 		// determine weight of rush hour
 		double[] timeprobability = { 0.3, 0.6, 0.8, 1.3, 1.7, 1.0, 1.1, 1.4, 0.8, 0.5, 0.6, 0.9, 1.1, 1.7, 1.2, 1.0 };
 
@@ -70,14 +67,8 @@ public class Restaurant {
 			int customersNumber = (int) Math.round((coustomerAvreage * timeProprobability));
 			totalNumberofCustomers += customersNumber; // for test
 			numberOfCustomerPerHour[i] = customersNumber;
-//			System.out.print(numberOfCustomerPerHour[i] + "  "); /////////////////////////////////////////////////// not
-																	/////////////////////////////////////////////////// important
+
 		}
-
-//		System.out.println("total : " + totalNumberofCustomers); ///////////////////////////////////////////////// not
-																	///////////////////////////////////////////////// important
-
-		int cus = 0; // not important
 
 		// customers array
 		ArrayList<Customers> people = new ArrayList<Customers>();
@@ -91,10 +82,15 @@ public class Restaurant {
 			people.add(customers);
 		}
 
-		// check the cutomors lenght
-//		System.out.println(people.size()); ///////////////////////////////////////////////////////////////////// not
-											///////////////////////////////////////////////////////////////////// important
-
+		// cashier creation
+		Cashier cashier = new Cashier();
+		
+		// chefs creation
+		BroastChef broastChef = new BroastChef();
+		NuggetsChef nuggetsChef = new NuggetsChef();
+		SandwichChef sandwichChef = new SandwichChef();
+		ShrimpChef shrimpChef = new ShrimpChef();
+		
 		// bench creation
 		Bench<Broast> broast = new Bench<Broast>();
 		Bench<Broast> spicyBroast = new Bench<Broast>();
@@ -120,14 +116,7 @@ public class Restaurant {
 				jumboShrimp, sandwich, corn, drinks, iceCream);
 		servers.add(server3);// add the server to the array
 
-		// cashier creation
-		Cashier cashier = new Cashier();
 
-		// chefs creation
-		BroastChef broastChef = new BroastChef();
-		NuggetsChef nuggetsChef = new NuggetsChef();
-		SandwichChef sandwichChef = new SandwichChef();
-		ShrimpChef shrimpChef = new ShrimpChef();
 
 		// bench initialization
 		ArrayList<Food> startingBroast = broastChef.cookeNormal(8);
@@ -230,13 +219,20 @@ public class Restaurant {
 //			System.out.println("Hour: " + Hour + "\nnumber of customer: " + numberOfCustomersInThisHour);
 			}
 			else {
-				System.out.println("------------------------------------------------------------------------");
-				System.out.println("------------------------------------------------------------------------");
-				System.out.println("------------------- THE RESTAURANT IS ABOUT TO CLOSE -------------------");
-				System.out.println("---------------- NO CUSTOMERS WILL ENTER THE RESTAURANT ----------------");
-				System.out.println("------------------------------------------------------------------------");
-				System.out.println("------------------------------------------------------------------------");
-				
+				if(!(slowRunHours) && !(slowRunMinutes)) {
+					
+				}
+				else {
+					
+					System.out.println(
+							"\n-----------------------------------------------------------------------------------------------------------------------------------------------");
+					System.out.println("------------------------------------------------------- THE RESTAURANT IS ABOUT TO CLOSE ------------------------------------------------------");
+					System.out.println("---------------------------------------------------- NO CUSTOMERS WILL ENTER THE RESTAURANT ---------------------------------------------------");
+					System.out.println(
+							"-----------------------------------------------------------------------------------------------------------------------------------------------");
+					
+				}
+					
 			}
 			
 			if(slowRunMinutes) {
@@ -532,7 +528,18 @@ int[] orderTypes = divideTheOrder(servedCustomers);//{normal ,special ,large,onl
 
 int numberOfCustomersServedAtThisHour = servedCustomersThisHour.size();
 int totalNumberOfCustomersServed = servedCustomers.size();
+if(numberOfCustomersServedAtThisHour!=0) {
+customersHourlyWaitingTimeAverage.add(hourlyWaitingTimeAverage/numberOfCustomersServedAtThisHour);
+customersHourlyQualityAverag.add(hourlyQualityAverage/numberOfCustomersServedAtThisHour);
+}
+// deep copy
+allCustomersServed.clear();
+for(Customers customers: servedCustomers) {
+	allCustomersServed.add(customers);
+}
+
 /*
+ * 
  * hourlyQualityAverage
  * hourlyWaitingTimeAverage
  * totalQualityAverage 
@@ -722,13 +729,17 @@ if(answer.equals("Yes")) {
 				String answer2 = input.next();
 				if(answer2.equals("Yes")) {
 					
-					System.out.println("|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
+					System.out.println("\n|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
 					System.out.println("|                                           |");
 					System.out.println("|            - CUSTOMER ORDER -             |");
 					System.out.println("|       -----------------------------       |");
 					System.out.println("|                                           |");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Broast         :    ",order.getNumberOfBroast(),"|");
-					System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets        :    ",order.getNumberOfNuggets(),"|");
+					System.out.printf("|%-9s%s%3d%11s%n",""," Broast Normal  :    ",order.getNumberOfBroastNormal(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Broast Spicy   :    ",order.getNumberOfBroastSpicy(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets        :    ",order.getNumberOfNuggets(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets Normal :    ",order.getNumberOfNuggetsNormal(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets Spicy  :    ",order.getNumberOfNuggetsSpicy(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Jumbo Shrimps  :    ",order.getNumberOfJumboShrimp(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Sandwichs      :    ",order.getNumberOfSandwich(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Corns          :    ",order.getNumberOfCorn(),"|");
@@ -738,7 +749,7 @@ if(answer.equals("Yes")) {
 					System.out.println("|       -----------------------------       |");
 					System.out.println("|            - CUSTOMER ORDER -             |");
 					System.out.println("|                                           |");
-					System.out.println("|-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-|");
+					System.out.println("|-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-|\n");
 				 
 					
 				 break;
@@ -824,13 +835,17 @@ if(answer.equals("Yes")) {
 				String answer3 = input.next();
 				if(answer3.equals("Yes")) {
 					
-					System.out.println("|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
+					System.out.println("\n|-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
 					System.out.println("|                                           |");
 					System.out.println("|            - CUSTOMER ORDER -             |");
 					System.out.println("|       -----------------------------       |");
 					System.out.println("|                                           |");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Broast         :    ",order.getNumberOfBroast(),"|");
-					System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets        :    ",order.getNumberOfNuggets(),"|");
+					System.out.printf("|%-9s%s%3d%11s%n",""," Broast Normal  :    ",order.getNumberOfBroastNormal(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Broast Spicy   :    ",order.getNumberOfBroastSpicy(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets        :    ",order.getNumberOfNuggets(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets Normal :    ",order.getNumberOfNuggetsNormal(),"|");
+			        System.out.printf("|%-9s%s%3d%11s%n",""," Nuggets Spicy  :    ",order.getNumberOfNuggetsSpicy(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Jumbo Shrimps  :    ",order.getNumberOfJumboShrimp(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Sandwichs      :    ",order.getNumberOfSandwich(),"|");
 					System.out.printf("|%-9s%s%3d%11s%n",""," Corns          :    ",order.getNumberOfCorn(),"|");
@@ -840,7 +855,7 @@ if(answer.equals("Yes")) {
 					System.out.println("|       -----------------------------       |");
 					System.out.println("|            - CUSTOMER ORDER -             |");
 					System.out.println("|                                           |");
-					System.out.println("|-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-|");
+					System.out.println("|-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-‾-|\n");
 			 					
 				 break;
 				}
