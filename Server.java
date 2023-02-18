@@ -208,7 +208,7 @@ public class Server extends Worker {
 
 	
 	// this method deal with sandwich order
-	public int sandwichOrder(int numberOfSandwich, Bench<Sandwich> SandwichBench) {s
+	public int sandwichOrder(int numberOfSandwich, Bench<Sandwich> SandwichBench) {
 		int k = numberOfSandwich;
 		for (int i = 0; i <= (SandwichOrdered.size() - 1); i++) {// look at customer sandwich
 			Sandwich orderedSandwich = SandwichOrdered.get(i);
