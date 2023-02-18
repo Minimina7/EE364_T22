@@ -300,4 +300,74 @@ public class Order {
 	public int getNumberOfDrinks() { // method to return number of drinks
 		return numberOfDrinks;
 	}
+	public ArrayList<Spicable> getSpicable() {// method to return spicable array content spicable meals
+		ArrayList<Spicable> spicableNew = new ArrayList<Spicable>();
+		for(int i=0; i<= meals.size()-1;i++) {
+			if(meals.get(i) instanceof Spicable) {
+				spicableNew.add((Spicable) meals.get(i));}  
+        }
+		spicable = spicableNew;
+		return spicable; 
+	}
+	
+	public int getNumberOfBroastSpicy() { // method to return number of BroastSpicy
+		int counterBroastSpicy = 0;
+		ArrayList<Spicable> lookingForSpicyBroast = getSpicable();
+		
+		for(int i=0; i<= (lookingForSpicyBroast.size()-1);i++) {
+			
+			if(lookingForSpicyBroast.get(i) instanceof Broast) {
+				
+				Broast singlebroast = (Broast)lookingForSpicyBroast.get(i);
+				if(singlebroast.isItSpicy()) {
+				counterBroastSpicy++;}
+				}
+		}
+		
+		return counterBroastSpicy;
+		}
+	
+	public int getNumberOfBroastNormal() { // method to return number of BroastNormal
+		int counterForBroast = 0;
+		ArrayList<Spicable> lookingForBroast = getSpicable();
+		for(int i=0; i<= lookingForBroast.size()-1;i++) {
+			if((lookingForBroast.get(i) instanceof Broast)) {
+			Broast singlebroast = (Broast)lookingForBroast.get(i);
+			if(!(singlebroast.isItSpicy())) {
+			counterForBroast++;}
+			}
+		}
+		
+		
+		return counterForBroast;
+	}
+	
+	public int getNumberOfNuggetsSpicy() { // method to return number of NuggetsSpicy
+		int counterNuggetsSpicy = 0;
+		ArrayList<Spicable> lookingForNuggetsSpicy = getSpicable();
+		for(int i=0; i<= lookingForNuggetsSpicy.size()-1;i++) {
+			if((lookingForNuggetsSpicy.get(i) instanceof Nuggets)) {
+				Nuggets singleNuggets = (Nuggets)lookingForNuggetsSpicy.get(i);
+			if(singleNuggets.isItSpicy()) {
+			counterNuggetsSpicy++;}
+			}
+		}
+		
+		
+		return counterNuggetsSpicy;
+	}
+	public int getNumberOfNuggetsNormal() { // method to return number of NuggetsNormal
+		int counterNuggets = 0;
+		ArrayList<Spicable> lookingForNuggets = getSpicable();
+		for(int i=0; i<= lookingForNuggets.size()-1;i++) {
+			if((lookingForNuggets.get(i) instanceof Nuggets)) {
+				Nuggets singleNuggets = (Nuggets)lookingForNuggets.get(i);
+			if(!(singleNuggets.isItSpicy())) {
+				counterNuggets++;}
+			}
+		}
+		
+		
+		return counterNuggets;
+	}
 }
