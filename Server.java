@@ -84,7 +84,6 @@ public class Server extends Worker {
 	// The goal of this method is determine whether the server will take the next order or not 
 	// If the sever didn't take the next order that mean the server didn't finish the previous one.
 	public void takeNextOrder(int onlineServerNumber, int normalServerNumber) {
-		//SpecialSandwich.clear();
 		setThereSpecialOrder(false);
 		boolean takenumber = true;
 
@@ -152,8 +151,7 @@ public class Server extends Worker {
     }
 	
 	
-	// the goal of this method is doing array of Sandwich Order of the customer
-	// orders
+	// the goal of this method is doing array of Sandwich Order of the customer orders
 	public void sortOrder() {
 		for (Meal order : currentOrder.getMeals()) {
 			if (order instanceof Sandwich) {
@@ -179,7 +177,6 @@ public class Server extends Worker {
 	// prepare the order for the customer
 	public void prepareOrder() {
 		
-		System.out.println(name +" :    "+currentOrder.getSnacks()+ currentOrder.getMeals() +currentOrder.getisItSpecial() );
 		broast = mealOrder(broast, broastArray);
 		spicyBroast = mealOrder(spicyBroast, spicyBroastArray);
 		nuggets = mealOrder(nuggets, nuggetsArray);
@@ -211,16 +208,15 @@ public class Server extends Worker {
 
 	
 	// this method deal with sandwich order
-	public int sandwichOrder(int numberOfSandwich, Bench<Sandwich> SandwichBench) {
-		//SpecialSandwich.clear();
+	public int sandwichOrder(int numberOfSandwich, Bench<Sandwich> SandwichBench) {s
 		int k = numberOfSandwich;
-		for (int i = 0; i <= (SandwichOrdered.size() - 1); i++) {// look at customer sand
+		for (int i = 0; i <= (SandwichOrdered.size() - 1); i++) {// look at customer sandwich
 			Sandwich orderedSandwich = SandwichOrdered.get(i);
 			
 			for (int j = 0; j <= (SandwichBench.foodAmuont() - 1); j++) {// search about the special sandwich
 				
 				Sandwich sandwich = SandwichBench.getBench(j);
-				if (orderedSandwich.equalTo(sandwich)) {
+				if (orderedSandwich.equalTo(sandwich)) { // if the bench sandwich similar to customer sandwich
 					submittedOrder.add(sandwich);
 					SandwichBench.removeFromBench(j);
 					SandwichOrdered.remove(i);
@@ -237,7 +233,7 @@ public class Server extends Worker {
                     setThereSpecialOrder(true);
                     int check =0;
                     for(Sandwich sandwich:SpecialSandwich) {
-                        if (!(sandwich.equalTo(orderedSandwich))) {
+                        if (!(sandwich.equalTo(orderedSandwich))) {// to be ensure about the sandwichs
                             check++;
                         }
                     }
@@ -323,6 +319,15 @@ public class Server extends Worker {
 		return qualityAvr;
 	}
 	
+	// this method pass the submitted order
+	public ArrayList<Food> getSubmittedOrder() {
+		setServerTookOnlineNumber(false);
+		setServerTookNormalNumber(false);
+		return submittedOrder;
+	}
+	
+	
+	// the following methods are normal seters and gitters
 	
 	public boolean isServerTookOnlineNumber() {
 		return serverTookOnlineNumber;
@@ -354,12 +359,6 @@ public class Server extends Worker {
 	}
 	
 	
-	// this method pass the submitted order
-	public ArrayList<Food> getSubmittedOrder() {
-		setServerTookOnlineNumber(false);
-		setServerTookNormalNumber(false);
-		return submittedOrder;
-	}
 	
 	
 	public ArrayList<Sandwich> getSpecialSandwich() {
