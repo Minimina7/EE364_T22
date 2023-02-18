@@ -325,8 +325,8 @@ public class Server extends Worker {
 		
 		double qualityAvr = (quality) / (numberOfOrder);
 		
-		if (qualityAvr==0.0) {
-			qualityAvr = 50;
+		if (qualityAvr== 0.0) {
+			qualityAvr = 50.0;
 		}
 		
 		return qualityAvr;
