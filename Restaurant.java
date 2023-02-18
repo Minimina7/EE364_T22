@@ -8,7 +8,10 @@ public class Restaurant {
 	public static ArrayList<Double> customersHourlyQualityAverag = new ArrayList<Double>();
 	public static ArrayList<Customers> allCustomersServed = new ArrayList<Customers>();
 	public static void main(String[] args) {
+		
+		//to repeat every day
 		while (true) {
+			
 ////////////////////////////////////////////////////////  before loop  ///////////////////////////////////////////////////////////
 
 		// variables
@@ -48,8 +51,7 @@ public class Restaurant {
 		int[] rangeBounds = getNumbers();
 		int sumOfRangeBound = rangeBounds[0] + rangeBounds[1]; // lower bound [0], upper bound [1]
 
-		// determine the total number of customers that will enter the Restaurant [not
-		// accurate]
+		// determine the total number of customers that will enter the Restaurant [not accurate]
 		int totalNumberofCustomers = 0;
 
 		// divided by 2 to get the average, 16 to get the average per Hour
@@ -91,6 +93,8 @@ public class Restaurant {
 		SandwichChef sandwichChef = new SandwichChef();
 		ShrimpChef shrimpChef = new ShrimpChef();
 		
+		// array of servers
+		ArrayList<Server> servers = new ArrayList<Server>();
 		// bench creation
 		Bench<Broast> broast = new Bench<Broast>();
 		Bench<Broast> spicyBroast = new Bench<Broast>();
@@ -102,9 +106,6 @@ public class Restaurant {
 		Bench<Drinks> drinks = new Bench<Drinks>();
 		Bench<IceCream> iceCream = new Bench<IceCream>();
 
-		// array of servers
-		ArrayList<Server> servers = new ArrayList<Server>();
-
 		// Servers Creation
 		Server server1 = new Server("sserver1  ", serverCustomers, broast, spicyBroast, nuggets, spicyNuggets,
 				jumboShrimp, sandwich, corn, drinks, iceCream);
@@ -115,60 +116,54 @@ public class Restaurant {
 		Server server3 = new Server("sserver3  ", serverCustomers, broast, spicyBroast, nuggets, spicyNuggets,
 				jumboShrimp, sandwich, corn, drinks, iceCream);
 		servers.add(server3);// add the server to the array
-
-
-
+		
 		// bench initialization
 		ArrayList<Food> startingBroast = broastChef.cookeNormal(8);
 		for (Food singelBroast : startingBroast) {
 			broast.addToBench((Broast) singelBroast);
 		}
-
+		
 		ArrayList<Food> startingBroastSpicy = broastChef.cookeSpicy(8);
 		for (Food singelBroast : startingBroastSpicy) {
 			spicyBroast.addToBench((Broast) singelBroast);
 		}
-
+		
 		ArrayList<Food> startingNuggets = nuggetsChef.cookeNormal(8);
 		for (Food singelNuggets : startingNuggets) {
 			nuggets.addToBench((Nuggets) singelNuggets);
 		}
-
+		
 		ArrayList<Food> startingNuggetsSpicy = nuggetsChef.cookeSpicy(8);
 		for (Food singelNuggets : startingNuggetsSpicy) {
 			spicyNuggets.addToBench((Nuggets) singelNuggets);
 		}
-
+		
 		ArrayList<Food> startingJumboShrimp = shrimpChef.cookeNormal(8);
 		for (Food singelJumboShrimp : startingJumboShrimp) {
 			jumboShrimp.addToBench((JumboShrimp) singelJumboShrimp);
 		}
-
+		
 		ArrayList<Food> startingSandwichCN = sandwichChef.cookeChickenSandwichNormal(5);
 		for (Food singelSandwich : startingSandwichCN) {
 			sandwich.addToBench((Sandwich) singelSandwich);
 		}
-
+		
 		ArrayList<Food> startingSandwichCS = sandwichChef.cookeChickenSandwichSpicy(5);
 		for (Food singelSandwich : startingSandwichCS) {
 			sandwich.addToBench((Sandwich) singelSandwich);
 		}
-
+		
 		ArrayList<Food> startingSandwichFN = sandwichChef.cookeFishSandwichNormal(5);
 		for (Food singelSandwich : startingSandwichFN) {
 			sandwich.addToBench((Sandwich) singelSandwich);
 		}
-
+		
 		ArrayList<Food> startingSandwichFS = sandwichChef.cookeFishSandwichSpicy(5);
 		for (Food singelSandwich : startingSandwichFS) {
 			sandwich.addToBench((Sandwich) singelSandwich);
 		}
-
-		/////////////////////////////////////////////////////// main loop [Hour]
-		/////////////////////////////////////////////////////// ////////////////////////////////////////////////
-
 		
-		//question 1 to determine how fast the code will run
+		//Question 1 to determine how fast the code will run in terms of hours
 		System.out.println("Do you want to be asked questions after each hour?");
 		while (true) {
 		System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
@@ -186,7 +181,7 @@ public class Restaurant {
 
 		}
 		
-		//question 2 to determine how fast the code will run
+		//question 2 to determine how fast the code will run in terms of minutes
 		System.out.println("Do you want to see everything happening in each minute?");
 		while (true) {
 		System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
@@ -208,16 +203,21 @@ public class Restaurant {
 			System.out.println("WELCOME TO THE RESTAURANT");
 		}
 		
+		/////////////////////////////////////////////////////  start Hours loop  /////////////////////////////////////////////////////
+		
 		// Hour loop
 		for (int Hour = 1; Hour <= 17; Hour++) {
-//			System.out.println("[[[[[[[[[[[[[ Hour: " + (Hour) + " ]]]]]]]]]]]]\n");
+			
+			//reset the values
 			 hourlyQualityAverage=0;
 			 hourlyWaitingTimeAverage=0;
 			int numberOfCustomersInThisHour =0;
+			
+			//to print the closing announcement
 			if (Hour <= 16) {
 			numberOfCustomersInThisHour = (numberOfCustomerPerHour[Hour - 1]);
-//			System.out.println("Hour: " + Hour + "\nnumber of customer: " + numberOfCustomersInThisHour);
 			}
+			
 			else {
 				if(!(slowRunHours) && !(slowRunMinutes)) {
 					
@@ -235,6 +235,7 @@ public class Restaurant {
 					
 			}
 			
+			//the headline of the minutes' table 
 			if(slowRunMinutes) {
 				System.out.println(
 						"-----------------------------------------------------------------------------------------------------------------------------------------------");
@@ -252,56 +253,40 @@ public class Restaurant {
 				
 			}
 			
-			///////////////////////////////////////////////////// inner loop [minute]
-			///////////////////////////////////////////////////// //////////////////////////////////////////////
+			/////////////////////////////////////////////////////  start minutes loop  ///////////////////////////////////////////////////// 
+			
 
 			// minute loop
 			for (int min = 0; min < 60; min++) {
-//				System.out.println("\\\\\\\\\\\\\\\\ min:  " + min + " ////////\n");
 
 				if (Hour <= 16) {
 					// random number to determine if customers will come or not
 					double randomNumber = getRandom(0, 100);
-//					System.out.println("((((((((((((((( ramdom: " + randomNumber + "))))))))))))))))))\n");
 
 					// calculate customers enter probability
 					double EnterProbability = ((double) numberOfCustomersInThisHour / (60 - min)) * 100;
-//					System.out.println(EnterProbability);
+					
+					//reset the value
 					numberOfCustomersInThisMinute = 0;
 					
+					//determine how many customers will enter the restaurant
 					if (randomNumber <= EnterProbability) {						
 						if (randomNumber <= EnterProbability * 0.80) {
-//							System.out.println("\n--------------probability------------");
-//							System.out.println(randomNumber);
-//							System.out.print(0 + " - ");
-//							System.out.println(EnterProbability * 0.80);
-//							System.out.println("one custmer entered\n");
-//							System.out.println("--------------probability------------\n");
+							//one customer
 							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
 							numberOfCustomersInThisHour--;
 							numberOfCustomersInThisMinute++;
 
 						} else if (randomNumber <= EnterProbability * 0.95) {
-//							System.out.println("\n--------------probability------------");
-//							System.out.println(randomNumber);
-//							System.out.print(EnterProbability * 0.80 + " - ");
-//							System.out.println(EnterProbability * 0.95);
-//							System.out.println("two custmer entered\n");
-//							System.out.println("--------------probability------------\n");
+							//two customer
 							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
 							numberOfCustomersInThisHour--;
 							numberOfCustomersInThisMinute++;
-//							System.out.println("cus enter" + ++cus);
 							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
 							numberOfCustomersInThisHour--;
 							numberOfCustomersInThisMinute++;
 						} else {
-//							System.out.println("\n--------------probability------------");
-//							System.out.println(randomNumber);
-//							System.out.print(EnterProbability * 0.95 + " - ");
-//							System.out.println(EnterProbability);
-//							System.out.println("three custmer entered\n");
-//							System.out.println("--------------probability------------\n");
+							//three customer
 							onlinCashier = sortCustomes(people, serverCustomers, cashierCustomers, onlinCashier);
 							numberOfCustomersInThisHour--;
 							numberOfCustomersInThisMinute++;
@@ -316,39 +301,47 @@ public class Restaurant {
 				}
 				
 				
-//				System.out.println("\nserveronly number in the resturant "+(serverCustomers.size()));
-//				System.out.println("cashironly number in the resturant "+(+cashierCustomers.size()));
-//				System.out.println("total number in the resturant "+(serverCustomers.size()+cashierCustomers.size())+"\n");
-				
-				// chef check Bench 
-				
-				//counters
+
 				
 				
+				
+				
+				
+				 
+				
+				//reset the value
 				int chefsWorking = 0;
 				
+				
+				// chefs checking benches:
+				
+				// broastChef check broast bench 
 				spicyBroastAmount = spicyBroast.foodAmuont();
 				 broastAmount = broast.foodAmuont();
 				broastChef.checkBeanch(spicyBroast, broast, totalTimeInMinute);
 				if(broastChef.isChefCooking()) {
 					chefsWorking++;}
-				 
+				
+				// nuggetsChef check  nuggets bench 
 				spicyNuggetsAmount = spicyNuggets.foodAmuont();
 				nuggetsAmount = nuggets.foodAmuont();
 				nuggetsChef.checkBeanch(spicyNuggets, nuggets, totalTimeInMinute);
 				if(nuggetsChef.isChefCooking()) {
 					chefsWorking++;}
 				
+				// shrimpChef check jumboShrimAmount Bench 
 				jumboShrimAmount = jumboShrimp.foodAmuont();
 				shrimpChef.checkBeanch(jumboShrimp, totalTimeInMinute);
 				if(shrimpChef.isChefCooking()) {
 					chefsWorking++;}
 				
+				// sandwichChef check sandwich bench 
 				sandwichAmount = sandwich.foodAmuont();
 				sandwichChef.checkBeanch(sandwich, totalTimeInMinute);
 				if(sandwichChef.isChefCooking()) {
 					chefsWorking++;}
 				
+				// to determine how many Chefs are working now
 				if(spicyBroast.foodAmuont()>spicyBroastAmount)
 					numberOfBenchRefreshes++;
 				if(broast.foodAmuont()>broastAmount)
@@ -362,26 +355,25 @@ public class Restaurant {
 				if(sandwich.foodAmuont()>sandwichAmount)
 					numberOfBenchRefreshes++;
 				
-				
-				
-				
-				
+				//reset the value
 				existingCustomers =0;
-//				serverWorking = 0;
+
 				// make the server work
-				for (Server server: servers ) {
-//					System.out.println("\nnormalServerNumber  :"+normalServerNumber);	
+				for (Server server: servers ) {	
 					server.takeNextOrder(onlineServerNumber, normalServerNumber);
+					
+					//taking online order
 					if (server.isServerTookOnlineNumber()) {
 						serverWorking++;
-						onlineServerNumber+=1;
-//						System.out.println("\n haaaaaahy tra srlha incrment onlyn");	
+						onlineServerNumber+=1;	
 					}
+					
+					//taking normal order
 					if (server.isServerTookNormalNumber()) {
 						serverWorking++;
 						normalServerNumber+=1;
-//						System.out.println("\n haaaaaahy tra srlha incrment normal");
 					}
+					
 					if (server.isThereSpecialOrder()) { // server need a sandwich not in the sandwiches bench
 						ArrayList<Sandwich> sandwiches = server.getSpecialSandwich();
 						sandwichChef.cookeSpecialSandwiches(sandwich,sandwiches, totalTimeInMinute); // ask the chef to make the sandwich
@@ -414,8 +406,6 @@ public class Restaurant {
 								serverWorking--;
 								existingCustomers = existingCustomers+1;
 								
-								//System.out.println("Costomerkiked"+i+ "     "+ costomerNumber+"/////////////////////////////////"+ ++numberOfServedCustomers);// not importanyt
-								
 								// gather information
 								totalQualityAverage += foodQuality;
 								totalWaitingTime += customerWaitingTime;
@@ -440,7 +430,7 @@ public class Restaurant {
 					cashierCustomers.remove(0);
 				}
 				
-				// time effect
+				// time effect:
 
 				// customers
 				for (Customers customer : cashierCustomers) {
@@ -490,73 +480,54 @@ public class Restaurant {
 				
 				totalTimeInMinute++;
 				
-//				System.out.println("avr = " + ((numberOfServedCustomers > 0) ? totalQualityAverage/numberOfServedCustomers : 0));
-//				System.out.println("Time = " + ((numberOfServedCustomers> 0) ? totalWaitingTime/numberOfServedCustomers : 0));
-//				System.out.println(" ====================Benches===================== ");
-//				System.out.println("broast = " + broast.foodAmuont());
-//				System.out.println("spicyBroast = " + spicyBroast.foodAmuont());
-//				System.out.println("nuggets = " + nuggets.foodAmuont());
-//				System.out.println("spicyNuggets = " + spicyNuggets.foodAmuont());
-//				System.out.println("sandwich = " + sandwich.foodAmuont());
-//				System.out.println("jumboShrimp = " + jumboShrimp.foodAmuont());
-//				System.out.println(" =============================================== ");
-//				System.out.println("((((((((((((((((((((((((((((((((((( "+ totalTimeInMinute + " )))))))))))))))))))))))))))))))))))");
-//				System.out.println("in the rstrunt now"+serverCustomers.size());
+				//sum of the meals on the benches
 				int totalMeals = broast.foodAmuont() +spicyBroast.foodAmuont()+nuggets.foodAmuont()+spicyNuggets.foodAmuont()+sandwich.foodAmuont()+jumboShrimp.foodAmuont();				
 				
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				
+				
 
-				//System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
-			 if(slowRunMinutes) {
-				 System.out.printf(
-						 "|%-4s%2d%4s%s" + "%-8s%1d%8s%s%" + "-7s%3d%7s%s%" + "-8s%1d%s%8s%s" + "%-6s%3d%6s%s"
-								+ "%-8s%1d%s%8s%s" + "%-7s%3d%7s%s" + "%-9s%1d%9s%s%n",
-						"", (min+1), "", "|", "", numberOfCustomersInThisMinute, "", "|", "", cashierCustomers.size(), "", "|", "", chefsWorking, "/4", "", "|", "", totalMeals, "", "|", "",(serverWorking+existingCustomers), "/3",
-						"", "|", "", serverCustomers.size(), "", "|", "", existingCustomers, "", "|");
-			
-			
-}					
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////				
+				//in case the user asked for the data of the minutes
+				if (slowRunMinutes) {
+					System.out.printf(
+							"|%-4s%2d%4s%s" + "%-8s%1d%8s%s%" + "-7s%3d%7s%s%" + "-8s%1d%s%8s%s" + "%-6s%3d%6s%s"
+									+ "%-8s%1d%s%8s%s" + "%-7s%3d%7s%s" + "%-9s%1d%9s%s%n",
+							"", (min + 1), "", "|", "", numberOfCustomersInThisMinute, "", "|", "",
+							cashierCustomers.size(), "", "|", "", chefsWorking, "/4", "", "|", "", totalMeals, "", "|",
+							"", (serverWorking + existingCustomers), "/3", "", "|", "", serverCustomers.size(), "", "|",
+							"", existingCustomers, "", "|");
+				}		
 				
 				
 			} // end minute loop
 			
-	//servedCustomers		
-	//servedCustomersThisHour		
+	//servedCustomers: it is an array containing all the customers who have been served until now, and it is used to compute and display customers data. 		
+	//servedCustomersThisHour:	similar to servedCustomers but it contains the customer who have been served at this hour only
+int numberOfCustomersServedAtThisHour = servedCustomersThisHour.size();
+int totalNumberOfCustomersServed = servedCustomers.size();
+
 int[] arrayOfAmount = readOrder(servedCustomers); //{broast,nuggets,jumboShrimp,sandwich,drinks,corn,iceCream}
 int[] orderTypes = divideTheOrder(servedCustomers);//{normal ,special ,large,online}
 
-int numberOfCustomersServedAtThisHour = servedCustomersThisHour.size();
-int totalNumberOfCustomersServed = servedCustomers.size();
+// for the GUI 1
 if(numberOfCustomersServedAtThisHour!=0) {
 customersHourlyWaitingTimeAverage.add(hourlyWaitingTimeAverage/numberOfCustomersServedAtThisHour);
 customersHourlyQualityAverag.add(hourlyQualityAverage/numberOfCustomersServedAtThisHour);
 }
-// deep copy
+
+//for the GUI 2
+//deep copy to keep the data save and prevent unwanted changes
 allCustomersServed.clear();
 for(Customers customers: servedCustomers) {
 	allCustomersServed.add(customers);
 }
 
-/*
- * 
- * hourlyQualityAverage
- * hourlyWaitingTimeAverage
- * totalQualityAverage 
- * totalWaitingTime 
- * 
- */
-
-// qualti this and qualty all
-//time this and time all
 System.out.print("\n");
 
+//Question 1 Do you want hours summary?
 if(slowRunHours){
-//Q1
 if(Hour == 1)
-System.out.println("Do you want "+Hour+" hour summary");	
+System.out.println("Do you want "+Hour+" hour summary?");	
 else
-	System.out.println("Do you want "+Hour+" hours summary");
+	System.out.println("Do you want "+Hour+" hours summary?");
 
 while (true) {
 System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
@@ -600,7 +571,7 @@ if(answer.equals("Yes")) {
 	System.out.println(
 			"-----------------------------------------------------------------------------------------------------------------------------------------------\n");
 
-
+	//to protect the code if there are no customers in the restaurant
 if(numberOfCustomersServedAtThisHour==0) {
 		
 		System.out.println("                                                               GENERAL STATISTICS                                                              ");
@@ -626,6 +597,7 @@ if(numberOfCustomersServedAtThisHour==0) {
 
 	}
 
+//to protect the code if there are no customers in the restaurant
 if(totalNumberOfCustomersServed==0) {
 	
 	System.out.println("                                                             CUMULATIVE STATISTICS                                                             ");
@@ -668,7 +640,7 @@ else
 }
 
 
-//Q2
+//Question 2 Do you want to check on one of the customers?
 if(numberOfCustomersServedAtThisHour!=0) {
 System.out.println("Do you want to check on one of the customers that left the restaurant at this hour?");
 while (true) {
@@ -700,7 +672,7 @@ if(answer.equals("Yes")) {
 			 System.out.print("\n");
 			 System.out.println("Customers number: "+customers.getOrderNumber());
 			 
-			 
+			 //Type
 			 System.out.print("Type: ");
 			 if(customers.isSpecialOrder())
 				 System.out.print("Special ");
@@ -715,14 +687,13 @@ if(answer.equals("Yes")) {
 			 
 			 System.out.print("\n");
 			 
+			 //time and quality
+			 System.out.println("Waiting time: "+customers.getWaitingTime());
+			 System.out.println("order quality: "+customers.getCustomerRating());
 			 
-			 //////////////////////////////////////
-			 System.out.println("Waiting time: "+customers.getWaitingTime());//???????????
-			 System.out.println("order quality: "+customers.getCustomerRating());//??????????
-			 //////////////////////////////////////
 			 System.out.print("\n");
 			 
-			 
+			 	//order
 				System.out.println("Would you like to see his order?");
 				while (true) {
 				System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
@@ -779,8 +750,8 @@ else
 }
 }
 
-//Q3
-System.out.println("do you want to check on one of the customers who visited the restaurant?");
+//Question 3 Do you want to check on one of the customers?
+System.out.println("Do you want to check on one of the customers who visited the restaurant?");
 while (true) {
 System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
 String answer = input.next();
@@ -809,7 +780,7 @@ if(answer.equals("Yes")) {
 			 Order order = customers.getCustomerOrder();
 			 System.out.println("Customers number: "+customers.getOrderNumber());
 			 
-			 
+			 //Type
 			 System.out.print("Type: ");
 			 if(customers.isSpecialOrder())
 				 System.out.print("Special ");
@@ -824,11 +795,13 @@ if(answer.equals("Yes")) {
 			 
 			 System.out.println("\n");
 			 
-                 //////////////////////////////////////
-				System.out.println("Waiting time: " + customers.getWaitingTime());// ???????????
-				System.out.println("order quality: " + customers.getCustomerRating());// ??????????
-                 //////////////////////////////////////
-
+                 //time and quality
+				System.out.println("Waiting time: " + customers.getWaitingTime());
+				System.out.println("order quality: " + customers.getCustomerRating());
+				
+				System.out.println("\n");
+				
+				//order
 				System.out.println("Would you like to see his order?");
 				while (true) {
 				System.out.print("Enter "+ "\"Yes\""+" or " + "\"No\": ");
@@ -867,7 +840,8 @@ if(answer.equals("Yes")) {
 
 				}
 			 
-			// LastQ
+			//	will not be executed if no questions are asked
+			// Last Question to delay the next output until the user has finished reading the first output
 			 System.out.println("Are you done?");
 			 while (true) {
 			 System.out.println("Enter "+ "\"Yes\""+" to continue: ");
@@ -879,7 +853,6 @@ if(answer.equals("Yes")) {
 			 	System.out.println("Unaccepted response!!!");
 
 			 }
-			 ///////////////////////////////////////////////
 			break;	
 		}
 	}
@@ -903,7 +876,7 @@ servedCustomersThisHour.clear();
 
 
 		} //end Hour loop
-		// last qualty lasttime good or bad
+		// final summary
 		System.out.println(
 				"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 		System.out.println("----------------------------------------------------------------- FINAL SUMMARY ---------------------------------------------------------------");
