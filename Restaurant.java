@@ -76,8 +76,8 @@ public class Restaurant {
 		ArrayList<Customers> people = new ArrayList<Customers>();
 		ArrayList<Customers> cashierCustomers = new ArrayList<Customers>();
 		ArrayList<Customers> serverCustomers = new ArrayList<Customers>();
-		ArrayList<Customers> servedCustomers = new ArrayList<Customers>();
-		ArrayList<Customers> servedCustomersThisHour = new ArrayList<Customers>();
+		ArrayList<Customers> servedCustomers = new ArrayList<Customers>(); // it is an array containing all the customers who have been served until now, and it is used to compute and display customers data. 
+		ArrayList<Customers> servedCustomersThisHour = new ArrayList<Customers>(); // similar to servedCustomers but it contains the customer who have been served at this hour only
 		// create Customers [upper bound]
 		for (int i = 1; i <= rangeBounds[1]; i++) {
 			Customers customers = new Customers();
@@ -499,8 +499,7 @@ public class Restaurant {
 				
 			} // end minute loop
 			
-	//servedCustomers: it is an array containing all the customers who have been served until now, and it is used to compute and display customers data. 		
-	//servedCustomersThisHour:	similar to servedCustomers but it contains the customer who have been served at this hour only
+// 	Amount of served customers
 int numberOfCustomersServedAtThisHour = servedCustomersThisHour.size();
 int totalNumberOfCustomersServed = servedCustomers.size();
 
