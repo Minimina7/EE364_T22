@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Order {
 	private ArrayList<Meal> meals = new ArrayList<Meal>(); // arraylist has all the meals
+	private ArrayList<Spicable> spicable = new ArrayList<Spicable>();// arraylist has only the spicable meals
 	private ArrayList<Snacks> snacks = new ArrayList<Snacks>(); // arraylist has all the snacks
 	private int orderNumber; // instance variable that save the order number
 	private int orderAmount; // instance variable that save the order amount
