@@ -15,28 +15,28 @@ public class Restaurant {
 ////////////////////////////////////////////////////////  before loop  ///////////////////////////////////////////////////////////
 
 		// variables
-		int onlinCashier = 1000;
-		int totalTimeInMinute=0;
-		int normalServerNumber = 1 ;
-		int  onlineServerNumber = 1000; 
-		int numberOfServedCustomers =0; 
-		double totalQualityAverage= 0;
-		int totalWaitingTime = 0;
-		int numberOfCustomersInThisMinute =0;
-		int existingCustomers = 0;
-		int serverWorking = 0;
-		int numberOfBenchRefreshes = 0;
-		double hourlyQualityAverage=0;
-		int hourlyWaitingTimeAverage=0;
-		int spicyBroastAmount = 0;
-		int broastAmount = 0;
-		int spicyNuggetsAmount = 0;
-		int nuggetsAmount = 0;
-		int jumboShrimAmount = 0;
-		int sandwichAmount = 0;
-		boolean slowRunHours;
-		boolean slowRunMinutes;
-		Scanner input = new Scanner(System.in); 
+		int onlinCashier = 1000;// Customers counter 
+		int normalServerNumber = 1;// Customers counter 
+		int  onlineServerNumber = 1000;// Customers counter 
+		int existingCustomers = 0;// Customers counter 
+		int numberOfServedCustomers =0;// Customers counter  
+		int numberOfCustomersInThisMinute =0;// Customers counter 
+		int totalTimeInMinute=0;// time
+		int totalWaitingTime = 0;// time
+		int hourlyWaitingTimeAverage=0;// time
+		double totalQualityAverage= 0;//Quality
+		double hourlyQualityAverage=0;//Quality
+		int serverWorking = 0;//worker counter
+		int numberOfBenchRefreshes = 0;//worker counter
+		int spicyBroastAmount = 0;//food counter
+		int broastAmount = 0;//food counter
+		int spicyNuggetsAmount = 0;//food counter
+		int nuggetsAmount = 0;//food counter
+		int jumboShrimAmount = 0;//food counter
+		int sandwichAmount = 0;//food counter
+		boolean slowRunHours;//manage the run
+		boolean slowRunMinutes;//manage the run
+		Scanner input = new Scanner(System.in); //to take inputs
 		
 		
 
