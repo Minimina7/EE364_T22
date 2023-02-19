@@ -4,9 +4,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Restaurant {
+	
+	//Data field
+	//These arrays are going to be used in the GUI
 	public static ArrayList<Integer> customersHourlyWaitingTimeAverage = new ArrayList<Integer>();
 	public static ArrayList<Double> customersHourlyQualityAverag = new ArrayList<Double>();
 	public static ArrayList<Customers> allCustomersServed = new ArrayList<Customers>();
+	
 	public static void main(String[] args) {
 		
 		//to repeat every day
