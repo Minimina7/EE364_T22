@@ -187,18 +187,7 @@ public void checkBeanch(Bench sandwich, int time) {
 			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
 			this.specialSandwiches.add(specialSingelSandwich);
 			}
-//		System.out.println(this.specialSandwiches.size()+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-//		System.out.println(this.specialSandwiches+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-//		System.out.println(specialSandwiches.size()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-//		System.out.println(specialSandwiches+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-			//System.out.println("chi "+" moha "+"this sandwich with garlic"+specialSandwiches.get(i).checkGarlic()+"this sandwich with picels"+specialSandwiches.get(i).checkPickles() );
-//			if(specialSandwiches.size()>1) {
-//			if(!(singelSandwich.equalTo(specialSandwiches.get(i)))) {
-//			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
-//			this.specialSandwiches.add(specialSingelSandwich);}
-			//System.out.println("chi "+"tala"+"this sandwich with garlic"+specialSingelSandwich.checkGarlic()+"this sandwich with picels"+specialSingelSandwich.checkPickles() );
-//			}
-//			else
+
 		
 		
 		if (!(this.specialSandwiches.isEmpty())) {
