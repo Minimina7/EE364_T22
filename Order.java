@@ -199,7 +199,7 @@ public class Order {
 			if( snackPercentage == 0){ // if the condition is true exit the method 
 				break; // delete this if
 			}
-			else if (snackPercentage >= 50){ // if the condition is true add iceCream to the arraylist
+			else if (snackPercentage <= 50){ // if the condition is true add iceCream to the arraylist
 				numberOfIcecream++;
 				setSnacks(new IceCream());
 			}
