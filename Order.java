@@ -204,7 +204,7 @@ public class Order {
 				setSnacks(new IceCream());
 			}
 			else if (snackPercentage > 50 && snackPercentage <= 80){ // if the condition is true add corn to the arraylist
-				numberOfIcecream++;
+				numberOfCorn++;
 				setSnacks(new Corn());
 			}
 			else{ // if the condition is true add drinks to the arraylist
