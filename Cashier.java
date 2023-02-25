@@ -18,6 +18,7 @@ public class Cashier extends Worker{
      }
 }
  
+ // count the order of the customers and decide if needed to make the chef cook or not
  public  int[] chefTrigger(ArrayList<Customers> customersWhoOrdered){
 	 int[] chefTriggers = new int[6];//{broast,spicyBroast,nuggets,spicyNuggets,jumboShrimp,sandwich}
 
@@ -38,12 +39,9 @@ public class Cashier extends Worker{
 	       chefTriggers[4] += jumboShrimp;
 	       chefTriggers[5] += sandwich;
 	 }
-		 
-	 
-	 
+
 	 return chefTriggers;  
   
 }
-   
-
+ 
 }

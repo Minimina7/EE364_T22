@@ -52,6 +52,7 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 		return JumboShrimp.PREPARETIME;
 	}
 	
+	//check if the chef is cooking or not
 	public boolean isChefCooking() {
 		if(chefIsCooking) 
 			return true;	
@@ -59,33 +60,33 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 		return false;
 	}
 	
+	// to cook meals on the first hour
 	public void firstCookNormal(Bench bench, int amount) {
 		
 		ArrayList<Food> startingJumboShrimp = cookeNormal(amount);
 			bench.addToBench(startingJumboShrimp);
-		
 	
-		
 	}
 	
+	// to cook meals from hour 2 to hour 16
 	public void secondCookNormal(Bench bench, int amount) {
 		if(bench.foodAmuont()<5) {
 			ArrayList<Food> startingJumboShrimp = cookeNormal(amount);
 			bench.addToBench(startingJumboShrimp);
 		}
 	
-		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and amount
 	public void LastCookNormal(Bench bench, int amount) {
 		if(amount-bench.foodAmuont()>0) {
 			ArrayList<Food> startingJumboShrimp = cookeNormal(amount-bench.foodAmuont());
 			bench.addToBench(startingJumboShrimp);
 		}
 	
-		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and customer
 	public void LastCookNormal(Bench bench, Customers customers) {
 		int amount = 0;
 		Order order = customers.getCustomerOrder();
@@ -101,7 +102,6 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 			bench.addToBench(startingJumboShrimp);
 		}
 	
-		
 	}
 	
 }

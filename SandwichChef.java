@@ -25,6 +25,7 @@ private ArrayList<Food> fishMadeSpicy = new ArrayList<Food>();
 private ArrayList<Food> fishMadeNormal = new ArrayList<Food>();
 private ArrayList<Food> specialSandwiches = new ArrayList<Food>();
 
+//Method that add broast to the beanch if needed
 public void checkBeanch(Bench sandwich, int time) {
 	
 	ArrayList<Sandwich>sandwichArray = sandwich.getBench();
@@ -176,6 +177,7 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		return specialSandwich;
 	}
+	
 	public void cookeCustomersSpecialSandwiches(Bench sandwich, Customers customers) {
 		Order order  = customers.getCustomerOrder();
 		for(Meal singelSandwich:order.getMeals()) {
@@ -189,6 +191,7 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 
 		}
+	
 	public void cookeSpecialSandwiches(Bench sandwich, ArrayList<Sandwich> specialSandwiches, int time) {
 		
 		this.specialSandwiches.clear();
@@ -221,6 +224,7 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 	}
 
+	//check if the chef is cooking or not
 	public boolean isChefCooking() {
 		if(chefIsCookingChicken|| chefIsCookingFish ||chefIsCookingSpecial) 
 			return true;	
@@ -234,6 +238,7 @@ public void checkBeanch(Bench sandwich, int time) {
 		return cookeChickenSandwichNormal(amount);
 	}
 	
+	// to cook meals on the first hour
 	public void firstCookNormal(Bench bench, int amount) {
 		
 		int nmuberOfSandwichCN =0;
@@ -282,6 +287,7 @@ public void checkBeanch(Bench sandwich, int time) {
 			
 		}}
 	
+	// to cook meals from hour 2 to hour 16
 	public void secondCookNormal(Bench bench, int amount) {
 		int nmuberOfSandwichCN =0;
 		int nmuberOfSandwichCS =0;
@@ -312,27 +318,24 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		if(nmuberOfSandwichCN<3) {
 			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(amount);
-			System.out.println("Sacnd cooc cookeChickenSandwichNormal "+amount+" array "+startingSandwichCN.size());
 			bench.addToBench(startingSandwichCN);
 			}
 		
 		if(nmuberOfSandwichCS<3) {
 			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(amount);
-			System.out.println("Sacnd cooc cookeChickenSandwichSpicy "+amount);
 			bench.addToBench(startingSandwichCS);}
 		
 		if(nmuberOfSandwichFN<3) {
 			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(amount);
-			System.out.println("Sacnd cooc cookeFishSandwichNormal "+amount);
 			bench.addToBench(startingSandwichFN);}
 		
 		if(nmuberOfSandwichFS<3) {
 			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(amount);
-			System.out.println("Sacnd cooc cookeFishSandwichSpicy "+amount);
 			bench.addToBench(startingSandwichFS);}
 		
 		}
 	
+	// to cook meals on the last hour and it takes beanch and arraylist of customer
 	public void LastCookNormal(Bench bench, ArrayList<Customers> customers) {
 		int nmuberOfSandwichCNOnBench =0;
 		int nmuberOfSandwichCSOnBench =0;
@@ -412,6 +415,7 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		}
 		
+	// to cook meals on the last hour and it takes beanch and customer
 	public void LastCookNormal(Bench bench, Customers customers) {
 		int nmuberOfSandwichCNOnBench =0;
 		int nmuberOfSandwichCSOnBench =0;
@@ -470,27 +474,21 @@ public void checkBeanch(Bench sandwich, int time) {
 			
 		}
 		
-		
-		
 		if(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench>0 && nmuberOfSandwichCNOnBench<5) {
 			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench);
-			System.out.println("cookeChickenSandwichNormal" + (nmuberOfSandwichCN-nmuberOfSandwichCNOnBench));
 			bench.addToBench(startingSandwichCN);
 			}
 		
 		if(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench>0 && nmuberOfSandwichCSOnBench<5) {
 			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench);
-			System.out.println("cookeChickenSandwichSpicy" + (nmuberOfSandwichCS-nmuberOfSandwichCSOnBench));
 			bench.addToBench(startingSandwichCS);}
 		
 		if(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench>0 && nmuberOfSandwichFNOnBench<5) {
 			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench);
-			System.out.println("cookeFishSandwichNormal" + (nmuberOfSandwichFN-nmuberOfSandwichFNOnBench));
 			bench.addToBench(startingSandwichFN);}
 		
 		if(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench>0 &&  nmuberOfSandwichFSOnBench<5) {
 			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench);
-			System.out.println("cookeFishSandwichSpicy" + (nmuberOfSandwichFS-nmuberOfSandwichFSOnBench));
 			bench.addToBench(startingSandwichFS);}
 			
 		

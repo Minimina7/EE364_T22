@@ -83,6 +83,8 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 	public int getTimeNeededToCooke() {
 		return Broast.PREPARETIME;
 	}
+	
+	//check if the chef is cooking or not
 	public boolean isChefCooking() {
 		if(chefIsCookingNormal|| chefIsCookingSpicy) 
 			return true;	
@@ -90,33 +92,31 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		return false;
 	}
 	
+	// to cook meals on the first hour
 	public void firstCookNormal(Bench bench, int amount) {
 		
 		ArrayList<Food> startingBroast = cookeNormal(amount);
 		bench.addToBench(startingBroast);
-		
-	
-		
 	}
 
-	
+	// to cook meals on the first hour
 	public void firstCookSpicy(Bench bench, int amount) {
 			
 		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount);
 			bench.addToBench(startingBroastSpicy);
 		
-		
 	}
 	
+	// to cook meals from hour 2 to hour 16
 	public void secondCookNormal(Bench bench, int amount) {
 		if(bench.foodAmuont()<5) {
 		ArrayList<Food> startingBroast = cookeNormal(amount);
 		bench.addToBench(startingBroast);
 		}
 	
-		
 	}
 	
+	// to cook meals from hour 2 to hour 16
 	public void secondCookSpicy(Bench bench, int amount) {
 		if(bench.foodAmuont()<5) {
 		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount);
@@ -124,16 +124,15 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and amount
 	public void LastCookNormal(Bench bench, int amount) {
 		if(amount-bench.foodAmuont()>0) {
 		ArrayList<Food> startingBroast = cookeNormal(amount-bench.foodAmuont());
 		bench.addToBench(startingBroast);}
 		
-		
-	
-		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and amount
 	public void LastCookSpicy(Bench bench, int amount) {
 		if(amount-bench.foodAmuont()>0) {
 		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount-bench.foodAmuont());
@@ -141,6 +140,7 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and customer
 	public void LastCookNormal(Bench bench, Customers customers) {
 		int amount = 0;
 		Order order = customers.getCustomerOrder();
@@ -152,16 +152,13 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 				}
 		}}
 		
-		
 		if(amount-bench.foodAmuont()>0) {
 		ArrayList<Food> startingBroast = cookeNormal(amount-bench.foodAmuont());
 		bench.addToBench(startingBroast);}
-		
-		
 	
-		
 	}
 	
+	// to cook meals on the last hour and it takes beanch and customer
 	public void LastCookSpicy(Bench bench, Customers customers) {
 		int amount = 0;
 		Order order = customers.getCustomerOrder();
@@ -173,15 +170,11 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 				}
 		}}
 		
-		
 		if(amount-bench.foodAmuont()>0) {
 		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount-bench.foodAmuont());
 		bench.addToBench(startingBroastSpicy);}
 		
 	}
-	
-	
-	
 	
 }
 
