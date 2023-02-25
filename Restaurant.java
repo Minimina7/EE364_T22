@@ -488,30 +488,7 @@ public class Restaurant {
 				customersWhoOrdered.clear();//clearing orders
 					}
 				
-//				int nmuberOfSandwichCNOnBench =0;
-//				int nmuberOfSandwichCSOnBench =0;
-//				int nmuberOfSandwichFNOnBench =0;
-//				int nmuberOfSandwichFSOnBench =0;
-//				ArrayList<Sandwich> sAndwich = sandwich.getBench();
-//				
-//				for(Food oneSandwich:sAndwich) {
-//					if(oneSandwich instanceof Sandwich ) {
-//					if(!((Sandwich)oneSandwich).isIsitSpecial()) {
-//						
-//					if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
-//						nmuberOfSandwichCNOnBench++;
-//						
-//					
-//					else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
-//						nmuberOfSandwichCSOnBench++;
-//					
-//					else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
-//						nmuberOfSandwichFNOnBench++; 
-//						
-//					
-//					else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
-//						nmuberOfSandwichFSOnBench++;
-//					}}}
+
 				
 				
 				// Last hour using LastCook methods
