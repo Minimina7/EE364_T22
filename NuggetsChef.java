@@ -27,8 +27,8 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>(); // ArrayList 
 		
 				spicyAmount = spicyNuggetsArray.size();
 				if (!(chefIsCookingSpicy)) {
-				if(spicyAmount<2) {
-					nuggetsMadeSpicy = cookeSpicy(3);
+				if(spicyAmount<3) {
+					nuggetsMadeSpicy = cookeSpicy(2);
 					timeStartCookeSpicy=time;
 					chefIsCookingSpicy=true;
 				}
@@ -36,8 +36,8 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>(); // ArrayList 
 		
 				normalAmount = normalNuggetsArray.size();
 			if (!(chefIsCookingNormal)) {
-			if(normalAmount<2) {
-				nuggetsMadeNormal = cookeNormal(3);
+			if(normalAmount<3) {
+				nuggetsMadeNormal = cookeNormal(2);
 				timeStartCookeNormal=time;
 				chefIsCookingNormal=true;
 			}

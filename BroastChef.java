@@ -26,8 +26,8 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 	
 			spicyAmount = spicyBroastArray.size();
 			if (!(chefIsCookingSpicy)) {
-			if(spicyAmount<2) {
-				broastMadeSpicy = cookeSpicy(3);
+			if(spicyAmount<3) {
+				broastMadeSpicy = cookeSpicy(2);
 				timeStartCookeSpicy=time;
 				chefIsCookingSpicy=true;
 			}
@@ -35,8 +35,8 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		
 			normalAmount = normalBroastArray.size();
 		if (!(chefIsCookingNormal)) {
-		if(normalAmount<2) {
-			broastMadeNormal = cookeNormal(3);
+		if(normalAmount<3) {
+			broastMadeNormal = cookeNormal(2);
 			timeStartCookeNormal=time;
 			chefIsCookingNormal=true;
 		}

@@ -21,8 +21,8 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 	
 				normalAmount = shrimpArray.size();
 			if (!(chefIsCooking)) {
-			if(normalAmount<2) {
-				shrimpMade = cookeNormal(3);
+			if(normalAmount<3) {
+				shrimpMade = cookeNormal(2);
 				timeStartCooke=time;
 				chefIsCooking=true;
 			}
