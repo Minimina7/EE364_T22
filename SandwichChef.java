@@ -38,7 +38,7 @@ public void checkBeanch(Bench sandwich, int time) {
 
 	if (!(chefIsCookingChicken)) {
 		if (normalAmountChicken <= 2) {
-			chickenMadeNormal = cookeChickenSandwichNormal(4);
+			chickenMadeNormal = cookeChickenSandwichNormal(2);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
 		}
@@ -52,7 +52,7 @@ public void checkBeanch(Bench sandwich, int time) {
 
 	if (!(chefIsCookingChicken)) {
 		if (spicyAmountChicken <= 2) {
-			chickenMadeSpicy = cookeChickenSandwichSpicy(4);
+			chickenMadeSpicy = cookeChickenSandwichSpicy(2);
 			timeStartCookeChicken = time;
 			chefIsCookingChicken = true;
 		}
@@ -66,7 +66,7 @@ public void checkBeanch(Bench sandwich, int time) {
 
 	if (!(chefIsCookingFish)) {
 		if (normalAmountFish <= 2) {
-			fishMadeNormal = cookeFishSandwichNormal(4);
+			fishMadeNormal = cookeFishSandwichNormal(2);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
 		}
@@ -80,7 +80,7 @@ public void checkBeanch(Bench sandwich, int time) {
 
 	if (!(chefIsCookingFish)) {
 		if (spicyAmountFish <= 2) {
-			fishMadeSpicy = cookeFishSandwichSpicy(4);
+			fishMadeSpicy = cookeFishSandwichSpicy(2);
 			timeStartCookeFish = time;
 			chefIsCookingFish = true;
 		}
@@ -176,7 +176,19 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		return specialSandwich;
 	}
+	public void cookeCustomersSpecialSandwiches(Bench sandwich, Customers customers) {
+		Order order  = customers.getCustomerOrder();
+		for(Meal singelSandwich:order.getMeals()) {
+			if(singelSandwich instanceof Sandwich) {
+				if(((Sandwich)singelSandwich).isIsitSpecial()) {
+					Sandwich specialSingelSandwich = cookeSpecialSandwich((Sandwich)singelSandwich);
+					sandwich.addToBench(specialSingelSandwich);
+				}
+			}
+		}
+		
 
+		}
 	public void cookeSpecialSandwiches(Bench sandwich, ArrayList<Sandwich> specialSandwiches, int time) {
 		
 		this.specialSandwiches.clear();
@@ -187,7 +199,6 @@ public void checkBeanch(Bench sandwich, int time) {
 			Sandwich specialSingelSandwich = cookeSpecialSandwich(singelSandwich);
 			this.specialSandwiches.add(specialSingelSandwich);
 			}
-
 		
 		
 		if (!(this.specialSandwiches.isEmpty())) {
@@ -222,4 +233,267 @@ public void checkBeanch(Bench sandwich, int time) {
 		
 		return cookeChickenSandwichNormal(amount);
 	}
+	
+	public void firstCookNormal(Bench bench, int amount) {
+		
+		int nmuberOfSandwichCN =0;
+		int nmuberOfSandwichCS =0;
+		int nmuberOfSandwichFN =0;
+		int nmuberOfSandwichFS =0;
+		
+		ArrayList<Sandwich> sandwich = bench.getBench();
+		
+		for(Food oneSandwich:sandwich) {
+			if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+				
+			if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+				nmuberOfSandwichCN++;
+				
+			
+			else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichCS++;
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+				nmuberOfSandwichFN++; 
+				
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichFS++;
+			}}
+		
+		
+		if(amount>0) {
+		if(nmuberOfSandwichCN<2) {
+			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(1);
+			bench.addToBench(startingSandwichCN);
+			}
+		
+		if(nmuberOfSandwichCS<2) {
+			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(1);
+			bench.addToBench(startingSandwichCS);}
+		
+		if(nmuberOfSandwichFN<2) {
+			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(1);
+			bench.addToBench(startingSandwichFN);}
+		
+		if(nmuberOfSandwichFS<2) {
+			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(1);
+			bench.addToBench(startingSandwichFS);}
+			
+		}}
+	
+	public void secondCookNormal(Bench bench, int amount) {
+		int nmuberOfSandwichCN =0;
+		int nmuberOfSandwichCS =0;
+		int nmuberOfSandwichFN =0;
+		int nmuberOfSandwichFS =0;
+		
+		ArrayList<Sandwich> sandwich = bench.getBench();
+		
+		for(Food oneSandwich:sandwich) {
+			if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+				
+			if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+				nmuberOfSandwichCN++;
+				
+			
+			else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichCS++;
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+				nmuberOfSandwichFN++; 
+				
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichFS++;
+			}}
+		
+		
+		
+		if(nmuberOfSandwichCN<3) {
+			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(amount);
+			System.out.println("Sacnd cooc cookeChickenSandwichNormal "+amount+" array "+startingSandwichCN.size());
+			bench.addToBench(startingSandwichCN);
+			}
+		
+		if(nmuberOfSandwichCS<3) {
+			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(amount);
+			System.out.println("Sacnd cooc cookeChickenSandwichSpicy "+amount);
+			bench.addToBench(startingSandwichCS);}
+		
+		if(nmuberOfSandwichFN<3) {
+			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(amount);
+			System.out.println("Sacnd cooc cookeFishSandwichNormal "+amount);
+			bench.addToBench(startingSandwichFN);}
+		
+		if(nmuberOfSandwichFS<3) {
+			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(amount);
+			System.out.println("Sacnd cooc cookeFishSandwichSpicy "+amount);
+			bench.addToBench(startingSandwichFS);}
+		
+		}
+	
+	public void LastCookNormal(Bench bench, ArrayList<Customers> customers) {
+		int nmuberOfSandwichCNOnBench =0;
+		int nmuberOfSandwichCSOnBench =0;
+		int nmuberOfSandwichFNOnBench =0;
+		int nmuberOfSandwichFSOnBench =0;
+		
+		int nmuberOfSandwichCN =0;
+		int nmuberOfSandwichCS =0;
+		int nmuberOfSandwichFN =0;
+		int nmuberOfSandwichFS =0;
+		
+		ArrayList<Sandwich> sandwich = bench.getBench();
+		
+		for(Food oneSandwich:sandwich) {
+			if(oneSandwich instanceof Sandwich ) {
+			if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+				
+			if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+				nmuberOfSandwichCNOnBench++;
+				
+			
+			else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichCSOnBench++;
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+				nmuberOfSandwichFNOnBench++; 
+				
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichFSOnBench++;
+			}}}
+		
+		for(Customers onecustomers:customers) {
+			Order order = onecustomers.getCustomerOrder();
+			ArrayList<Meal> meal = order.getMeals();
+			for(Meal oneSandwich:meal) {
+				if(oneSandwich instanceof Sandwich ) {
+				if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+					
+					if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+						nmuberOfSandwichCN++;
+						
+					
+					else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+						nmuberOfSandwichCS++;
+					
+					else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+						nmuberOfSandwichFN++; 
+						
+					
+					else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+						nmuberOfSandwichFS++;
+					}	
+				
+			}
+			}
+		}
+		
+		
+		
+		if(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench>0) {
+			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench);
+			bench.addToBench(startingSandwichCN);
+			}
+		
+		if(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench>0) {
+			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench);
+			bench.addToBench(startingSandwichCS);}
+		
+		if(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench>0) {
+			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench);
+			bench.addToBench(startingSandwichFN);}
+		
+		if(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench>0) {
+			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench);
+			bench.addToBench(startingSandwichFS);}
+		
+		}
+		
+	public void LastCookNormal(Bench bench, Customers customers) {
+		int nmuberOfSandwichCNOnBench =0;
+		int nmuberOfSandwichCSOnBench =0;
+		int nmuberOfSandwichFNOnBench =0;
+		int nmuberOfSandwichFSOnBench =0;
+		
+		int nmuberOfSandwichCN =0;
+		int nmuberOfSandwichCS =0;
+		int nmuberOfSandwichFN =0;
+		int nmuberOfSandwichFS =0;
+		
+		ArrayList<Sandwich> sandwich = bench.getBench();
+		
+		for(Food oneSandwich:sandwich) {
+			if(oneSandwich instanceof Sandwich ) {
+			if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+				
+			if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+				nmuberOfSandwichCNOnBench++;
+				
+			
+			else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichCSOnBench++;
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+				nmuberOfSandwichFNOnBench++; 
+				
+			
+			else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+				nmuberOfSandwichFSOnBench++;
+			}}}
+		
+		
+			Order order = customers.getCustomerOrder();
+			ArrayList<Meal> meal = order.getMeals();
+			for(Meal oneSandwich:meal) {
+				if(oneSandwich instanceof Sandwich ) {
+				if(!((Sandwich)oneSandwich).isIsitSpecial()) {
+					
+					if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && !(((Sandwich)oneSandwich).isItSpicy())) 
+						nmuberOfSandwichCN++;
+						
+					
+					else if(!(((Sandwich)oneSandwich).isItChickenOrFish()) && ((Sandwich)oneSandwich).isItSpicy())
+						nmuberOfSandwichCS++;
+					
+					else if(((Sandwich)oneSandwich).isItChickenOrFish() && !(((Sandwich)oneSandwich).isItSpicy()))
+						nmuberOfSandwichFN++; 
+						
+					
+					else if(((Sandwich)oneSandwich).isItChickenOrFish() && ((Sandwich)oneSandwich).isItSpicy())
+						nmuberOfSandwichFS++;
+					}	
+				
+			}
+			
+		}
+		
+		
+		
+		if(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench>0 && nmuberOfSandwichCNOnBench<5) {
+			ArrayList<Food> startingSandwichCN = cookeChickenSandwichNormal(nmuberOfSandwichCN-nmuberOfSandwichCNOnBench);
+			System.out.println("cookeChickenSandwichNormal" + (nmuberOfSandwichCN-nmuberOfSandwichCNOnBench));
+			bench.addToBench(startingSandwichCN);
+			}
+		
+		if(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench>0 && nmuberOfSandwichCSOnBench<5) {
+			ArrayList<Food> startingSandwichCS = cookeChickenSandwichSpicy(nmuberOfSandwichCS-nmuberOfSandwichCSOnBench);
+			System.out.println("cookeChickenSandwichSpicy" + (nmuberOfSandwichCS-nmuberOfSandwichCSOnBench));
+			bench.addToBench(startingSandwichCS);}
+		
+		if(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench>0 && nmuberOfSandwichFNOnBench<5) {
+			ArrayList<Food> startingSandwichFN = cookeFishSandwichNormal(nmuberOfSandwichFN-nmuberOfSandwichFNOnBench);
+			System.out.println("cookeFishSandwichNormal" + (nmuberOfSandwichFN-nmuberOfSandwichFNOnBench));
+			bench.addToBench(startingSandwichFN);}
+		
+		if(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench>0 &&  nmuberOfSandwichFSOnBench<5) {
+			ArrayList<Food> startingSandwichFS = cookeFishSandwichSpicy(nmuberOfSandwichFS-nmuberOfSandwichFSOnBench);
+			System.out.println("cookeFishSandwichSpicy" + (nmuberOfSandwichFS-nmuberOfSandwichFSOnBench));
+			bench.addToBench(startingSandwichFS);}
+			
+		
+	}
+	
 }

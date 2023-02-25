@@ -21,8 +21,8 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 	
 				normalAmount = shrimpArray.size();
 			if (!(chefIsCooking)) {
-			if(normalAmount<3) {
-				shrimpMade = cookeNormal(6);
+			if(normalAmount<2) {
+				shrimpMade = cookeNormal(3);
 				timeStartCooke=time;
 				chefIsCooking=true;
 			}
@@ -57,6 +57,51 @@ private ArrayList<Food> shrimpMade = new ArrayList<Food>(); // ArrayList that sa
 			return true;	
 		
 		return false;
+	}
+	
+	public void firstCookNormal(Bench bench, int amount) {
+		
+		ArrayList<Food> startingJumboShrimp = cookeNormal(amount);
+			bench.addToBench(startingJumboShrimp);
+		
+	
+		
+	}
+	
+	public void secondCookNormal(Bench bench, int amount) {
+		if(bench.foodAmuont()<5) {
+			ArrayList<Food> startingJumboShrimp = cookeNormal(amount);
+			bench.addToBench(startingJumboShrimp);
+		}
+	
+		
+	}
+	
+	public void LastCookNormal(Bench bench, int amount) {
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingJumboShrimp = cookeNormal(amount-bench.foodAmuont());
+			bench.addToBench(startingJumboShrimp);
+		}
+	
+		
+	}
+	
+	public void LastCookNormal(Bench bench, Customers customers) {
+		int amount = 0;
+		Order order = customers.getCustomerOrder();
+		ArrayList<Meal> meal = order.getMeals();
+		for(Meal oneJumboShrimp:meal) {
+			if(oneJumboShrimp instanceof JumboShrimp ) {
+				
+					amount++;	
+				
+		}}
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingJumboShrimp = cookeNormal(amount-bench.foodAmuont());
+			bench.addToBench(startingJumboShrimp);
+		}
+	
+		
 	}
 	
 }

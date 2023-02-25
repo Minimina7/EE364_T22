@@ -54,6 +54,8 @@ public abstract class Chef {
 	
 	public abstract int getTimeNeededToCooke();
 	public abstract boolean isChefCooking();
+	public abstract void firstCookNormal(Bench bench, int amount);
+	
 }
 
 

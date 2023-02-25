@@ -27,8 +27,8 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>(); // ArrayList 
 		
 				spicyAmount = spicyNuggetsArray.size();
 				if (!(chefIsCookingSpicy)) {
-				if(spicyAmount<3) {
-					nuggetsMadeSpicy = cookeSpicy(6);
+				if(spicyAmount<2) {
+					nuggetsMadeSpicy = cookeSpicy(3);
 					timeStartCookeSpicy=time;
 					chefIsCookingSpicy=true;
 				}
@@ -36,8 +36,8 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>(); // ArrayList 
 		
 				normalAmount = normalNuggetsArray.size();
 			if (!(chefIsCookingNormal)) {
-			if(normalAmount<3) {
-				nuggetsMadeNormal = cookeNormal(6);
+			if(normalAmount<2) {
+				nuggetsMadeNormal = cookeNormal(3);
 				timeStartCookeNormal=time;
 				chefIsCookingNormal=true;
 			}
@@ -91,6 +91,92 @@ private ArrayList<Food> nuggetsMadeNormal = new ArrayList<Food>(); // ArrayList 
 		
 		return false;
 	}
+	
+	public void firstCookNormal(Bench bench, int amount) {
+		
+		ArrayList<Food> startingNuggets = cookeNormal(amount);
+			bench.addToBench(startingNuggets);
+		
+		
+	
+		
+	}
+	
+	public void firstCookSpicy(Bench bench, int amount) {
+			
+		ArrayList<Food> startingNuggetsSpicy = cookeSpicy(amount);
+		bench.addToBench(startingNuggetsSpicy);
+		
+	}
+	
+	public void secondCookNormal(Bench bench, int amount) {
+		if(bench.foodAmuont()<5) {
+			ArrayList<Food> startingNuggets = cookeNormal(amount);
+			bench.addToBench(startingNuggets);
+		}
+	
+		
+	}
+	
+	public void secondCookSpicy(Bench bench, int amount) {
+		if(bench.foodAmuont()<5) {
+			ArrayList<Food> startingNuggetsSpicy = cookeSpicy(amount);
+			bench.addToBench(startingNuggetsSpicy);
+			}
+		
+	}
+	public void LastCookNormal(Bench bench, int amount) {
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingNuggets = cookeNormal(amount-bench.foodAmuont());
+			bench.addToBench(startingNuggets);
+		}
+	
+		
+	}
+	
+	public void LastCookSpicy(Bench bench, int amount) {
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingNuggetsSpicy = cookeSpicy(amount-bench.foodAmuont());
+			bench.addToBench(startingNuggetsSpicy);
+			}
+		
+	}
+	
+	public void LastCookNormal(Bench bench, Customers customers) {
+		int amount = 0;
+		Order order = customers.getCustomerOrder();
+		ArrayList<Meal> meal = order.getMeals();
+		for(Meal oneNuggets:meal) {
+			if(oneNuggets instanceof Nuggets ) {
+				if(!((Nuggets)oneNuggets).isItSpicy()) {
+					amount++;	
+				}
+		}}
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingNuggets = cookeNormal(amount-bench.foodAmuont());
+			bench.addToBench(startingNuggets);
+		}
+	
+		
+	}
+	
+	public void LastCookSpicy(Bench bench, Customers customers) {
+		int amount = 0;
+		Order order = customers.getCustomerOrder();
+		ArrayList<Meal> meal = order.getMeals();
+		for(Meal oneNuggets:meal) {
+			if(oneNuggets instanceof Nuggets ) {
+				if(((Nuggets)oneNuggets).isItSpicy()) {
+					amount++;	
+				}
+		}}
+		if(amount-bench.foodAmuont()>0) {
+			ArrayList<Food> startingNuggetsSpicy = cookeSpicy(amount-bench.foodAmuont());
+			bench.addToBench(startingNuggetsSpicy);
+			}
+		
+	}
+	
 	
 }
 

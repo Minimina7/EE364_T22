@@ -26,8 +26,8 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 	
 			spicyAmount = spicyBroastArray.size();
 			if (!(chefIsCookingSpicy)) {
-			if(spicyAmount<3) {
-				broastMadeSpicy = cookeSpicy(6);
+			if(spicyAmount<2) {
+				broastMadeSpicy = cookeSpicy(3);
 				timeStartCookeSpicy=time;
 				chefIsCookingSpicy=true;
 			}
@@ -35,8 +35,8 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		
 			normalAmount = normalBroastArray.size();
 		if (!(chefIsCookingNormal)) {
-		if(normalAmount<3) {
-			broastMadeNormal = cookeNormal(6);
+		if(normalAmount<2) {
+			broastMadeNormal = cookeNormal(3);
 			timeStartCookeNormal=time;
 			chefIsCookingNormal=true;
 		}
@@ -89,6 +89,99 @@ public void checkBeanch(Bench spicyBroast,Bench normalBroast, int time) {
 		
 		return false;
 	}
+	
+	public void firstCookNormal(Bench bench, int amount) {
+		
+		ArrayList<Food> startingBroast = cookeNormal(amount);
+		bench.addToBench(startingBroast);
+		
+	
+		
+	}
+
+	
+	public void firstCookSpicy(Bench bench, int amount) {
+			
+		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount);
+			bench.addToBench(startingBroastSpicy);
+		
+		
+	}
+	
+	public void secondCookNormal(Bench bench, int amount) {
+		if(bench.foodAmuont()<5) {
+		ArrayList<Food> startingBroast = cookeNormal(amount);
+		bench.addToBench(startingBroast);
+		}
+	
+		
+	}
+	
+	public void secondCookSpicy(Bench bench, int amount) {
+		if(bench.foodAmuont()<5) {
+		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount);
+		bench.addToBench(startingBroastSpicy);}
+		
+	}
+	
+	public void LastCookNormal(Bench bench, int amount) {
+		if(amount-bench.foodAmuont()>0) {
+		ArrayList<Food> startingBroast = cookeNormal(amount-bench.foodAmuont());
+		bench.addToBench(startingBroast);}
+		
+		
+	
+		
+	}
+	
+	public void LastCookSpicy(Bench bench, int amount) {
+		if(amount-bench.foodAmuont()>0) {
+		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount-bench.foodAmuont());
+		bench.addToBench(startingBroastSpicy);}
+		
+	}
+	
+	public void LastCookNormal(Bench bench, Customers customers) {
+		int amount = 0;
+		Order order = customers.getCustomerOrder();
+		ArrayList<Meal> meal = order.getMeals();
+		for(Meal oneBroast:meal) {
+			if(oneBroast instanceof Broast ) {
+				if(!((Broast)oneBroast).isItSpicy()) {
+					amount++;	
+				}
+		}}
+		
+		
+		if(amount-bench.foodAmuont()>0) {
+		ArrayList<Food> startingBroast = cookeNormal(amount-bench.foodAmuont());
+		bench.addToBench(startingBroast);}
+		
+		
+	
+		
+	}
+	
+	public void LastCookSpicy(Bench bench, Customers customers) {
+		int amount = 0;
+		Order order = customers.getCustomerOrder();
+		ArrayList<Meal> meal = order.getMeals();
+		for(Meal oneBroast:meal) {
+			if(oneBroast instanceof Broast ) {
+				if(((Broast)oneBroast).isItSpicy()) {
+					amount++;	
+				}
+		}}
+		
+		
+		if(amount-bench.foodAmuont()>0) {
+		ArrayList<Food> startingBroastSpicy = cookeSpicy(amount-bench.foodAmuont());
+		bench.addToBench(startingBroastSpicy);}
+		
+	}
+	
+	
+	
 	
 }
 

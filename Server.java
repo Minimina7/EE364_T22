@@ -252,32 +252,45 @@ public class Server extends Worker {
 	
 	// This method check the IceCream order and prepare it to the customer
 	public int iceCreamOrder(int numberOfIceCream, Bench<IceCream> iceCreamBench) {
-		while (numberOfIceCream != 0) {
-			IceCream icecream = new IceCream();
-			iceCreamBench.addToBench(icecream);// Make iceCream
-			submittedOrder.add(icecream);// prepare it for the customer
-			iceCreamBench.removeFromBench(0); // Give the iceCream to the customer
-			numberOfIceCream--;
+
+		if (isMealReady()) {
+			while (numberOfIceCream != 0) {
+				IceCream icecream = new IceCream();
+				iceCreamBench.addToBench(icecream);// Make iceCream
+				submittedOrder.add(icecream);// prepare it for the customer
+				iceCreamBench.removeFromBench(0); // Give the iceCream to the customer
+				numberOfIceCream--;
+			}
+			return 0;
 		}
-		return 0;
+
+		else {
+			return numberOfIceCream;
+		}
+
 	}
 
 	
 	// this method check the drinks order and prepare it to the customer
 	public int drinkOrder(int numberOfDrink, Bench<Drinks> drinkBench) {
-		while (numberOfDrink != 0) {
-			Drinks drink = new Drinks();
-			drinkBench.addToBench(drink);// to ensure that there are Drinks
-			submittedOrder.add(drink);// prepare it for the customer
-			drinkBench.removeFromBench(0);// Give the drink to the customer
-			numberOfDrink--;
+
+		if (isMealReady()) {
+			while (numberOfDrink != 0) {
+				Drinks drink = new Drinks();
+				drinkBench.addToBench(drink);// to ensure that there are Drinks
+				submittedOrder.add(drink);// prepare it for the customer
+				drinkBench.removeFromBench(0);// Give the drink to the customer
+				numberOfDrink--;
+			}
+			return 0;
+		} else {
+			return numberOfDrink;
 		}
-		return 0;
 	}
 	
-	
 	// this method check the corn order and prepare it to the customer
-		public int cornOrder(int numberOfCorn, Bench<Corn> cornBench) {
+	public int cornOrder(int numberOfCorn, Bench<Corn> cornBench) {
+		if (isMealReady()) {
 			while (numberOfCorn != 0) {
 				Corn corn = new Corn();
 				cornBench.addToBench(corn);// make corn order
@@ -286,7 +299,10 @@ public class Server extends Worker {
 				numberOfCorn--;
 			}
 			return 0;
+		} else {
+			return numberOfCorn;
 		}
+	}
 		
 		
 		// This method is responsible for updating the quality of the food.
@@ -303,6 +319,10 @@ public class Server extends Worker {
 				&& sandwich == 0 && drinks == 0 && corn == 0 && iceCream == 0);
 	}
 	
+	public boolean isMealReady() {
+		return (broast == 0 && spicyBroast == 0 && nuggets == 0 && spicyNuggets == 0 && jumboShrimp == 0
+				&& sandwich == 0);
+	}
 	
 	// This method gives the special order to the chief
 	public ArrayList<Sandwich> callTheChief(){
